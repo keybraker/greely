@@ -59,62 +59,82 @@
 ο|Ο 					{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return ARSENIKO_ARTHRO; 
+							return ARS_EN_AR; 
 						}
 η|Η 					{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return THILIKO_ARTHRO; 
+							return THY_EN_AR; 
 						}
-το|Το|ΤΟ|Τον|τον|ΤΟΝ 	{
+οι|Οι|ΟΙ 				{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return OUDETERO_ARTHRO; 
+							return _PLY_AR; 
 						}
-τους|Τους|ΤΟΥΣ|Των|των|ΤΩΝ 	{
+το|Το|ΤΟ 			 	{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return OUDETERO_ARTHRO; 
+							return OUD_EN_AR; 
+						}
+τα|Τα|ΤΑ 			 	{
+							yylval.leksi = strdup(yytext); 
+							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+							return OUD_PL_AR; 
+						}
+Τον|τον|ΤΟΝ  			{
+							yylval.leksi = strdup(yytext); 
+							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+							return ARS_EN_AR; 
+						}
+τους|Τους|ΤΟΥΣ 			{
+							yylval.leksi = strdup(yytext); 
+							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+							return _EN_AR; //μπορει να ειναι μονα ουγετερο-αρσενικο φιξ πιο μετα
 						}
 τη|Τη|ΤΗ|Την|την|ΤΗΝ 	{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return THILIKO_ARTHRO; 
+							return THY_EN_AR; 
+						}
+Των|των|ΤΩΝ 			{
+							yylval.leksi = strdup(yytext); 
+							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+							return _PLY_AR; 
 						}
 Ένας|ένας|ΈΝΑΣ|ΕΝΑΣ		{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return ARSENIKO_ARTHRO; 
+							return ARS_EN_AR; 
 						}
 Έναν|έναν|ΈΝΑΝ|ΕΝΑΝ		{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return ARSENIKO_ARTHRO; 
+							return ARS_EN_AR; 
 						}
 Ένα|ένα|ΈΝΑ|ΕΝΑ			{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return OUDETERO_ARTHRO; 
+							return OUD_EN_AR; 
 						}
 Ενός|ενός|ΕΝΌΣ|ΕΝΟΣ		{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return ARSENIKO_ARTHRO; 
+							return ARS_EN_AR; 
 						}
 μια|Μια|ΜΙΑ 			{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return THILIKO_ARTHRO; 
+							return THY_EN_AR; 
 						}
 μιας|Μιας|ΜΙΑΣ  		{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return THILIKO_ARTHRO; 
+							return THY_EN_AR; 
 						}
 μιαν|Μιαν|ΜΙΑΝ  		{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
-							return THILIKO_ARTHRO; 
+							return THY_EN_AR; 
 						}
 
 [Α-ψ-ρ-π-ω-Ϋ][Α-ψ-ρ-π-ω-Ϋ]* 	{ 

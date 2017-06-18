@@ -102,7 +102,7 @@
 
 %token<epitheto>    EPITHETO
 %token<ousiastiko>  OUSIA
-%token<arthro>      ARSENIKO_ARTHRO THILIKO_ARTHRO OUDETERO_ARTHRO 
+%token<arthro>      ARS_EN_AR ARS_PL_AR THY_EN_AR THY_PL_AR OUD_EN_AR OUD_PL_AR _PLY_AR _EN_AR 
 
 %token<leksi>       LEKSI 
 %token<stiksi>      STIKSI
@@ -117,11 +117,6 @@
 
     LEKSEIS:    LEKSEIS MEROSLOGOU {    
 
-                                        if($<leksi>1 != NULL)  printf("$1 = %s\n", $<leksi>1);
-                                        else            printf("$1 = NULL\n");
-                                        if($<leksi>2 != NULL)  printf("$2 = %s\n", $<leksi>2);
-                                        else            printf("$2 = NULL\n");
-                                        
                                         if($1 == NULL && $2 != NULL){ printf("one\n");
                                             $$ = (char*) calloc (strlen($2)+1, sizeof(char));
 
@@ -148,9 +143,16 @@
 
     LLEKSI:     LEKSI               { $<leksi>$ = yylval.leksi;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
 
-    LARTHRO:    ARSENIKO_ARTHRO     { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> αρσενικό άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |THILIKO_ARTHRO     { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> θηλυκό άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |OUDETERO_ARTHRO    { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> ουδέτερο άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
+    LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το αρσενικό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το αρσενικό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+
+                |THY_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το θηλυκό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |THY_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το θηλυκό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+
+                |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το ουδέτερο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το ουδέτερο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+
+                |_PLY_AR            { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
     LARITHMOS:  ARITHMOS            { $<arithmos>$ = yylval.arithmos;           printf(a_c_y"|->αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
 
