@@ -33,6 +33,34 @@
 
     };
 
+
+    char* getPunctuation(int punc){
+
+        switch (punc) {
+            case 0:     return ","; break;
+            case 1:     return "."; break;
+            case 2:     return ";"; break; 
+            case 3:     return ":"; break;
+            case 4:     return "!"; break; 
+            case 5:     return "_"; break;
+            case 6:     return "("; break; 
+            case 7:     return ")"; break;
+            case 8:     return "["; break; 
+            case 9:     return "]"; break;
+            case 10:    return "{"; break; 
+            case 11:    return "}"; break;
+            case 12:    return "+"; break; 
+            case 13:    return "-"; break;
+            case 14:    return "*"; break; 
+            case 15:    return "/"; break;
+            case 16:    return "="; break; 
+            case 17:    return "\n"; break;
+
+            default:    exit(0);
+        }
+
+    }
+
     int yylex       (void);
     int yyerror     (char* yaccProvidedMessage);
     
@@ -59,13 +87,14 @@
 
 %start              PROTASI
 
-%type<leksi>        LLEKSI MEROSLOGOU
+%type<leksi>        LLEKSI MEROSLOGOU LEKSEIS
 %type<stiksi>       LSTIKSI
 %type<arithmos>     LARITHMOS 
+%type<arthro>       LARTHRO
 
 %token<epitheto>    EPITHETO
 %token<ousiastiko>  OUSIA
-%token<arthro>      ARTHRO
+%token<arthro>      ARSENIKO_ARTHRO THILIKO_ARTHRO OUDETERO_ARTHRO 
 
 %token<leksi>       LEKSI 
 %token<stiksi>      STIKSI
@@ -73,24 +102,50 @@
 
 %%
 
-    PROTASI:    LEKSEIS            { printf("Sentence is complete\n"); }
+    PROTASI:    LEKSEIS            { printf("|----->Η ολοκληρωμένη πρόταση είναι: %s\n",$<leksi>1); }
                 ;
 
-    LEKSEIS:    LEKSEIS MEROSLOGOU { printf("LEKSEIS MEROSLOGOU\n"); }
-                |
+    LEKSEIS:    LEKSEIS MEROSLOGOU {    
+                                        printf("$$ = %s\n", $$);
+                                        printf("$1 = %s\n", $1);
+                                        printf("$2 = %s\n", $2);
+                                        
+                                        if($$ == NULL && $1 == NULL && $2 != NULL){
+                                            $$ = calloc(strlen($2),sizeof(char));
+                                            strcpy($$,$2); 
+
+                                        }else if($$ != NULL && $1 != NULL && $2 != NULL){
+                                            char* tmp = $$;
+                                            $$ = calloc(strlen($$)+strlen($2),sizeof(char));
+                                            strcpy($$, tmp); strcat($$, " "); 
+                                            strcat($$, $2);
+
+                                        }
+
+                                        
+                                        printf("|---->λέξεις μέρος του λόγου: %s\n\n",$$);
+                                    }
+                |                   
                 ;
 
-    MEROSLOGOU: LLEKSI       { $$ = $1; printf("MEROSLOGOU is %s\n",($$));}
-                |LARITHMOS   { /*sprintf($$, "%d", $1);*/ }
-                |LSTIKSI     { $$ = "kappa"; /*switch case*/}
+    MEROSLOGOU: LLEKSI      { $<leksi>$ = $<leksi>1; printf("|--->Το μέρος του λόγου είναι: %s\n",($$)); }
+                |LARTHRO    { $<leksi>$ = $<arthro>1; printf("|--->Το μέρος του λόγου είναι: %s\n",($$)); }
+                |LARITHMOS  { /*sprintf($$, "%d", $1);*/ }
+                |LSTIKSI    { $$ = strdup(getPunctuation($1)); printf("|--->Το μέρος του λόγου είναι: %s\n",($$));/*switch case*/}
 
-    LLEKSI:     LEKSI       { $<leksi>$ = yylval.leksi; printf("leksi is %s\n",(yylval.leksi)); }
 
-    LARITHMOS:  ARITHMOS    { $<arithmos>$ = yylval.arithmos; printf("arithmos is %f\n",(yylval.arithmos)); }
+    LLEKSI:     LEKSI       { $<leksi>$ = yylval.leksi; printf("|-->λέξη είναι: %s\n",(yylval.leksi)); }
 
-    LSTIKSI:    STIKSI      { $<stiksi>$ = yylval.stiksi; printf("stiksi is %d\n",(yylval.stiksi)); }
+    LARTHRO:    ARSENIKO_ARTHRO     { $<arthro>$ = yylval.arthro; printf("|-> αρσενικό άρθρο είναι: %s\n",(yylval.arthro)); }
+                |THILIKO_ARTHRO     { $<arthro>$ = yylval.arthro; printf("|-> θηλυκό άρθρο είναι: %s\n",(yylval.arthro)); }
+                |OUDETERO_ARTHRO    { $<arthro>$ = yylval.arthro; printf("|-> ουδέτερο άρθρο είναι: %s\n",(yylval.arthro)); }
+
+    LARITHMOS:  ARITHMOS    { $<arithmos>$ = yylval.arithmos; printf("|->αριθμός είναι: %f\n",(yylval.arithmos)); }
+
+    LSTIKSI:    STIKSI      { $<stiksi>$ = yylval.stiksi; printf("|->σημείο στίξης είναι: %d\n",(yylval.stiksi)); }
 
 %%
+
 
 int yyerror (char* yaccProvidedMessage){
    
