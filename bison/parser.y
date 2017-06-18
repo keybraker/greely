@@ -19,18 +19,26 @@
     #define bold      "\e[1m"
     #define bold_re   "\e[0m"
 
-    enum stikser {
-
-        comma,
-        teleia,
-        erotimatiko,
-        anokatoteleia,
-        thaumastiko,
-        paula,
-        openpar,
-        closepar, 
-        enter
-
+    char* stikser[] = {
+        "comma",
+        "teleia",
+        "erotimatiko",
+        "anokatoteleia",
+        "thaumastiko",
+        "kato paula",
+        "openpar",
+        "closepar", 
+        "openblock",
+        "closeclock", 
+        "openbracket",
+        "closebracket", 
+        "plus", 
+        "minus",
+        "mul", 
+        "div",
+        "equal", 
+        "equal",
+        "enter"
     };
 
 
@@ -54,7 +62,7 @@
             case 14:    return "*"; break; 
             case 15:    return "/"; break;
             case 16:    return "="; break; 
-            case 17:    return "\n"; break;
+            case 17:    return "->"; break;
 
             default:    exit(0);
         }
@@ -106,15 +114,16 @@
                 ;
 
     LEKSEIS:    LEKSEIS MEROSLOGOU {    
+
                                         printf("$$ = %s\n", $$);
                                         printf("$1 = %s\n", $1);
                                         printf("$2 = %s\n", $2);
                                         
-                                        if($$ == NULL && $1 == NULL && $2 != NULL){
+                                        if($$ == NULL && $1 == NULL && $2 != NULL){ printf("one\n");
                                             $$ = calloc(strlen($2),sizeof(char));
                                             strcpy($$,$2); 
 
-                                        }else if($$ != NULL && $1 != NULL && $2 != NULL){
+                                        }else if($$ != NULL && $1 != NULL && $2 != NULL){ printf("two\n");
                                             char* tmp = $$;
                                             $$ = calloc(strlen($$)+strlen($2),sizeof(char));
                                             strcpy($$, tmp); strcat($$, " "); 
@@ -124,25 +133,26 @@
 
                                         
                                         printf(a_c_y"|---->λέξεις μέρος του λόγου: %s\n\n"a_c_re,$$);
+
                                     }
                 |                   
                 ;
 
-    MEROSLOGOU: LLEKSI      { $<leksi>$ = $<leksi>1; printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
-                |LARTHRO    { $<leksi>$ = $<arthro>1; printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
-                |LARITHMOS  { /*sprintf($$, "%d", $1);*/ }
-                |LSTIKSI    { $$ = strdup(getPunctuation($1)); printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$));/*switch case*/}
+    MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;            printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
+                |LARTHRO            { $<leksi>$ = $<arthro>1;           printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
+                |LARITHMOS          { $<leksi>$ = calloc(1, sizeof(char*)); sprintf($<leksi>$, "%f", $1); }
+                |LSTIKSI            { $<leksi>$ = strdup(getPunctuation($1));  printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$));/*switch case*/}
 
 
-    LLEKSI:     LEKSI       { $<leksi>$ = yylval.leksi; printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+    LLEKSI:     LEKSI               { $<leksi>$ = yylval.leksi; printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
 
     LARTHRO:    ARSENIKO_ARTHRO     { $<arthro>$ = yylval.arthro; printf(a_c_y"|-> αρσενικό άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
                 |THILIKO_ARTHRO     { $<arthro>$ = yylval.arthro; printf(a_c_y"|-> θηλυκό άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
                 |OUDETERO_ARTHRO    { $<arthro>$ = yylval.arthro; printf(a_c_y"|-> ουδέτερο άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
 
-    LARITHMOS:  ARITHMOS    { $<arithmos>$ = yylval.arithmos; printf(a_c_y"|->αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
+    LARITHMOS:  ARITHMOS            { $<arithmos>$ = yylval.arithmos; printf(a_c_y"|->αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
 
-    LSTIKSI:    STIKSI      { $<stiksi>$ = yylval.stiksi; printf(a_c_y"|->σημείο στίξης είναι: %d\n"a_c_re,(yylval.stiksi)); }
+    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi; printf(a_c_y"|->σημείο στίξης είναι: %d\n"a_c_re,(yylval.stiksi)); }
 
 %%
 

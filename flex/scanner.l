@@ -26,25 +26,25 @@
 
 %%
 
-","						{ yylval.stiksi = 0; 	return STIKSI; }
-"."						{ yylval.stiksi = 1; 	return STIKSI; }
-";"						{ yylval.stiksi = 2; 	return STIKSI; }
-":"						{ yylval.stiksi = 3; 	return STIKSI; }
-"!"						{ yylval.stiksi = 4; 	return STIKSI; }
-"_"						{ yylval.stiksi = 5; 	return STIKSI; }
-"("						{ yylval.stiksi = 6; 	return STIKSI; }
-")"						{ yylval.stiksi = 7; 	return STIKSI; }
-"["						{ yylval.stiksi = 8; 	return STIKSI; }
-"]"						{ yylval.stiksi = 9;	return STIKSI; }
-"{"						{ yylval.stiksi = 10; 	return STIKSI; }
-"}"						{ yylval.stiksi = 11; 	return STIKSI; }
-"+"						{ yylval.stiksi = 12; 	return STIKSI; }
-"-"						{ yylval.stiksi = 13; 	return STIKSI; }
-"*"						{ yylval.stiksi = 14; 	return STIKSI; }
-"/"						{ yylval.stiksi = 15; 	return STIKSI; }
-"="						{ yylval.stiksi = 16; 	return STIKSI; }
+","						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 0; 	return STIKSI; }
+"."						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 1; 	return STIKSI; }
+";"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 2; 	return STIKSI; }
+":"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 3; 	return STIKSI; }
+"!"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 4; 	return STIKSI; }
+"_"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 5; 	return STIKSI; }
+"("						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 6; 	return STIKSI; }
+")"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 7; 	return STIKSI; }
+"["						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 8; 	return STIKSI; }
+"]"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 9;	return STIKSI; }
+"{"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 10; 	return STIKSI; }
+"}"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 11; 	return STIKSI; }
+"+"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 12; 	return STIKSI; }
+"-"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 13; 	return STIKSI; }
+"*"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 14; 	return STIKSI; }
+"/"						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 15; 	return STIKSI; }
+"="						{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext); yylval.stiksi = 16; 	return STIKSI; }
 
-"\n"					{ yylval.stiksi = 17; 	return STIKSI; }
+"\n"					{ printf(a_c_c"Το σημείο στίξης από τον lex είναι: \\n\n"); yylval.stiksi = 17; 	return STIKSI; }
 
 [0-9]+\.[0-9]*			{ 
 							double arithmos ; sscanf(yytext,"%lf",&arithmos);
@@ -86,7 +86,7 @@
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 							return ARSENIKO_ARTHRO; 
 						}
-Ένα|ένα|ΈΝΑ|ΕΝΑ		{
+Ένα|ένα|ΈΝΑ|ΕΝΑ			{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 							return OUDETERO_ARTHRO; 
