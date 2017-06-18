@@ -124,10 +124,11 @@
                                         
                                         if($1 == NULL && $2 != NULL){ printf("one\n");
                                             $$ = (char*) calloc (strlen($2)+1, sizeof(char));
+                                            
                                             strcpy($$,$2); 
 
                                         }else if($$ != NULL && $1 != NULL && $2 != NULL){ printf("two\n");
-                                            $$ = (char*) calloc (strlen($1)+strlen($2)+1, sizeof(char));
+                                            $$ = (char*) calloc (1, (strlen($1)+strlen($2)+2) * sizeof(char));
                                             strcpy($$, $1); strcat($$, " "); 
                                             strcat($$, $2);
 
