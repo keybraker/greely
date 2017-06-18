@@ -19,6 +19,14 @@
     #define bold      "\e[1m"
     #define bold_re   "\e[0m"
 
+	#define false 0
+	#define true 1
+
+	int isName(char* name){
+
+
+		return false;
+	}
 %}
 
 %option noyywrap
