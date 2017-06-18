@@ -62,7 +62,7 @@
             case 14:    return "*"; break; 
             case 15:    return "/"; break;
             case 16:    return "="; break; 
-            case 17:    return "->"; break;
+            case 17:    return "~"; break;
 
             default:    exit(0);
         }
@@ -135,7 +135,7 @@
                                         printf(a_c_y"|---->λέξεις μέρος του λόγου: %s\n\n"a_c_re,$$);
 
                                     }
-                |                   
+                |                   { printf("MPIKA ?\n\n\n\n");}
                 ;
 
     MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;            printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
