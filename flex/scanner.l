@@ -122,6 +122,9 @@
 							printf(a_c_c"Η λέξη από τον lex είναι: %s\n"a_c_re, yytext); 
 							return LEKSI; 
 						}
+" "*					{
+
+						}
 .						{
 							printf(a_c_c"Δεν υπάρχει είσοδος.\n"a_c_re); 
 						}
