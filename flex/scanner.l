@@ -71,6 +71,11 @@
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 							return OUDETERO_ARTHRO; 
 						}
+τους|Τους|ΤΟΥΣ|Των|των|ΤΩΝ 	{
+							yylval.leksi = strdup(yytext); 
+							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+							return OUDETERO_ARTHRO; 
+						}
 τη|Τη|ΤΗ|Την|την|ΤΗΝ 	{
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
@@ -112,16 +117,15 @@
 							return THILIKO_ARTHRO; 
 						}
 
-[α-ωΑ-Ω][α-ωΑ-Ω0-9_]* 	{ 
+[Α-ψ-ρ-π-ω-Ϋ][Α-ψ-ρ-π-ω-Ϋ]* 	{ 
+
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Η λέξη από τον lex είναι: %s\n"a_c_re, yytext); 
 							return LEKSI; 
 						}
-[ά-ώΆ-Ώ][ά-ώΆ-Ώ0-9_]* 	{ 
-							yylval.leksi = strdup(yytext); 
-							printf(a_c_c"Η λέξη από τον lex είναι: %s\n"a_c_re, yytext); 
-							return LEKSI; 
-						}
+[a-zA-Z][a-zA-Z]* 	{
+							printf(a_c_c"Τα εγγλέζικα σου \"%s\", να τα πεις αλλού !\n"a_c_re, yytext); 
+						}	
 " "*					{
 
 						}
