@@ -110,8 +110,10 @@
 
 %%
 
-    PROTASI:    LEKSEIS            { printf(a_c_g"|----->Η ολοκληρωμένη πρόταση είναι: %s\n\n\n"a_c_re,$<leksi>1); }
-                ;
+    PROTASI:    LEKSEIS             { printf(a_c_g"|----->Η ολοκληρωμένη πρόταση είναι: ");
+                                      printf(a_c_m"%s\n\n\n"a_c_re,$<leksi>1); 
+                                    }
+                                    ;
 
     LEKSEIS:    LEKSEIS MEROSLOGOU {    
 
@@ -121,11 +123,11 @@
                                         else            printf("$2 = NULL\n");
                                         
                                         if($1 == NULL && $2 != NULL){ printf("one\n");
-                                            $$ = (char*) calloc (strlen($2), sizeof(char)+1);
+                                            $$ = (char*) calloc (strlen($2)+1, sizeof(char));
                                             strcpy($$,$2); 
 
                                         }else if($$ != NULL && $1 != NULL && $2 != NULL){ printf("two\n");
-                                            $$ = (char*) calloc (strlen($1)+strlen($2), sizeof(char)+1);
+                                            $$ = (char*) calloc (strlen($1)+strlen($2)+1, sizeof(char));
                                             strcpy($$, $1); strcat($$, " "); 
                                             strcat($$, $2);
 
