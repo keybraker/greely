@@ -22,12 +22,13 @@
 ")"						{ yylval.stiksi = 7; return STIKSI; }
 
 "\n"					{ yylval.stiksi = 8; return STIKSI; }
-[0-9]+\.[0-9]*			{ double arithmos ; sscanf(yytext,"%lf",&arithmos);
+[0-9]+\.[0-9]*			{ 
+						  double arithmos ; sscanf(yytext,"%lf",&arithmos);
 						  yylval.arithmos = arithmos; return ARITHMOS; 
 						}
 [0-9]+					{ int arithmos ; sscanf(yytext,"%d",&arithmos);
-						  yylval.arithmos = arithmos; printf("telos\n"); return ARITHMOS; 
+						  yylval.arithmos = arithmos; return ARITHMOS; 
 						}
-[a-zA-Z][a-zA-Z0-9_]* 	{ yylval.leksi = strdup(yytext); return LEKSI; }
+[a-zA-Z][a-zA-Z0-9_]* 	{ yylval.leksi = strdup(yytext); printf("lex lexi is %s\n", yytext); return LEKSI; }
 
 %%

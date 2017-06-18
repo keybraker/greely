@@ -80,7 +80,7 @@
                 |
                 ;
 
-    MEROSLOGOU: LLEKSI      { $$ = $1; }
+    MEROSLOGOU: LLEKSI       { $$ = $1; printf("MEROSLOGOU is %s\n",($$));}
                 |LARITHMOS   { /*sprintf($$, "%d", $1);*/ }
                 |LSTIKSI     { $$ = "kappa"; /*switch case*/}
 
