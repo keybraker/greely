@@ -134,7 +134,7 @@
                                         printf(a_c_y"|---->λέξεις μέρος του λόγου: %s\n\n"a_c_re,$$);
 
                                     }
-                |                   { printf("MPIKA ?\n\n\n\n");}
+                |                   { $$ = NULL; }
                 ;
 
     MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;                    printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
