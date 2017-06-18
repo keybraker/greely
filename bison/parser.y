@@ -115,21 +115,18 @@
 
     LEKSEIS:    LEKSEIS MEROSLOGOU {    
 
-                                        if($<leksi>$ != NULL)  printf("$$ = %s\n", $<leksi>$);
-                                        else            printf("$$ = NULL\n");
                                         if($<leksi>1 != NULL)  printf("$1 = %s\n", $<leksi>1);
                                         else            printf("$1 = NULL\n");
                                         if($<leksi>2 != NULL)  printf("$2 = %s\n", $<leksi>2);
                                         else            printf("$2 = NULL\n");
                                         
-                                        if($$ == NULL && $1 == NULL && $2 != NULL){ printf("one\n");
-                                            $$ = (char*)calloc(strlen($2),sizeof(char)+1);
+                                        if($1 == NULL && $2 != NULL){ printf("one\n");
+                                            $$ = (char*) calloc (strlen($2), sizeof(char)+1);
                                             strcpy($$,$2); 
 
                                         }else if($$ != NULL && $1 != NULL && $2 != NULL){ printf("two\n");
-                                            char* tmp = $$;
-                                            $$ = (char*)calloc(strlen($$)+strlen($2),sizeof(char)+1);
-                                            strcpy($$, tmp); strcat($$, " "); 
+                                            $$ = (char*) calloc (strlen($1)+strlen($2), sizeof(char)+1);
+                                            strcpy($$, $1); strcat($$, " "); 
                                             strcat($$, $2);
 
                                         }
