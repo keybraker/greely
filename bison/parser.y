@@ -115,9 +115,13 @@
 
     LEKSEIS:    LEKSEIS MEROSLOGOU {    
 
-                                        printf("$$ = %s\n", $$);
-                                        printf("$1 = %s\n", $1);
-                                        printf("$2 = %s\n", $2);
+                                        if($$ != NULL)  printf("$$ = %s\n", $$);
+                                        else            printf("$$ = NULL\n");
+                                        if($1 != NULL)  printf("$1 = %s\n", $1);
+                                        else            printf("$1 = NULL\n");
+
+                                        if($2 != NULL)  printf("$2 = %s\n", $2);
+                                        else            printf("$2 = NULL\n");
                                         
                                         if($$ == NULL && $1 == NULL && $2 != NULL){ printf("one\n");
                                             $$ = calloc(strlen($2),sizeof(char));
@@ -130,7 +134,6 @@
                                             strcat($$, $2);
 
                                         }
-
                                         
                                         printf(a_c_y"|---->λέξεις μέρος του λόγου: %s\n\n"a_c_re,$$);
 
