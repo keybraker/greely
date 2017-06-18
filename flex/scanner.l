@@ -24,7 +24,49 @@
 
 	int isName(char* name){
 
+		FILE *nameDatabase;
 
+		if ( (nameDatabase = fopen("database/greekNameDatabase.txt", "r")) == NULL) { 
+			printf (a_c_r"Couldn't open file nameDatabase %d\n"a_c_re, errno);
+	        exit(0);
+	    }
+
+	    char buffer[255];
+	    int j = 0, k = 0, bsize = 0, tmp = 0;
+	    
+	    while (fgets(buffer,255, nameDatabase)!= NULL)    {
+	        	        
+	        bsize = buffer[0] - '0'; bsize *= 10;
+	        if(buffer[1] == ' ') j = 2;
+	        else tmp = buffer[1] - '0'; bsize += tmp; j = 3;
+
+	        if(bsize == strlen(name)+1 || bsize == strlen(name)){ 
+				
+				/*for me*/
+				if(strcmp(name, "Ιωάννης") == 0){
+	        		printf("bsize = %d ", bsize);			
+					printf("strlen(name) = %lu \n", strlen(name));	
+	        	}
+	        	if(strcmp(name, "Ιωάννη") == 0){
+	        		printf("bsize = %d ", bsize);			
+					printf("strlen(name) = %lu \n", strlen(name));	
+	        	}
+				
+				k = j;
+		        while( j-k < bsize ){
+		      
+		        	if(buffer[j] != name[j-k]) break;
+		        	j++;
+		        	
+		        }
+
+		        if( j-k == bsize) return true;
+
+		    }
+
+	    }
+
+		fclose (nameDatabase);
 		return false;
 	}
 %}
@@ -146,6 +188,11 @@
 						}
 
 [Α-ψ-ρ-π-ω-Ϋ][Α-ψ-ρ-π-ω-Ϋ]* 	{ 
+							if(isName(yytext)){
+								printf("%s is name\n",yytext);
+							}else{
+								printf("%s isn't name\n",yytext);
+							}
 
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Η λέξη από τον lex είναι: %s\n"a_c_re, yytext); 
