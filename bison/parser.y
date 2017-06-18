@@ -102,7 +102,7 @@
 
 %%
 
-    PROTASI:    LEKSEIS            { printf("|----->Η ολοκληρωμένη πρόταση είναι: %s\n",$<leksi>1); }
+    PROTASI:    LEKSEIS            { printf(a_c_g"|----->Η ολοκληρωμένη πρόταση είναι: %s\n\n\n"a_c_re,$<leksi>1); }
                 ;
 
     LEKSEIS:    LEKSEIS MEROSLOGOU {    
@@ -123,26 +123,26 @@
                                         }
 
                                         
-                                        printf("|---->λέξεις μέρος του λόγου: %s\n\n",$$);
+                                        printf(a_c_y"|---->λέξεις μέρος του λόγου: %s\n\n"a_c_re,$$);
                                     }
                 |                   
                 ;
 
-    MEROSLOGOU: LLEKSI      { $<leksi>$ = $<leksi>1; printf("|--->Το μέρος του λόγου είναι: %s\n",($$)); }
-                |LARTHRO    { $<leksi>$ = $<arthro>1; printf("|--->Το μέρος του λόγου είναι: %s\n",($$)); }
+    MEROSLOGOU: LLEKSI      { $<leksi>$ = $<leksi>1; printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
+                |LARTHRO    { $<leksi>$ = $<arthro>1; printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
                 |LARITHMOS  { /*sprintf($$, "%d", $1);*/ }
-                |LSTIKSI    { $$ = strdup(getPunctuation($1)); printf("|--->Το μέρος του λόγου είναι: %s\n",($$));/*switch case*/}
+                |LSTIKSI    { $$ = strdup(getPunctuation($1)); printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$));/*switch case*/}
 
 
-    LLEKSI:     LEKSI       { $<leksi>$ = yylval.leksi; printf("|-->λέξη είναι: %s\n",(yylval.leksi)); }
+    LLEKSI:     LEKSI       { $<leksi>$ = yylval.leksi; printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
 
-    LARTHRO:    ARSENIKO_ARTHRO     { $<arthro>$ = yylval.arthro; printf("|-> αρσενικό άρθρο είναι: %s\n",(yylval.arthro)); }
-                |THILIKO_ARTHRO     { $<arthro>$ = yylval.arthro; printf("|-> θηλυκό άρθρο είναι: %s\n",(yylval.arthro)); }
-                |OUDETERO_ARTHRO    { $<arthro>$ = yylval.arthro; printf("|-> ουδέτερο άρθρο είναι: %s\n",(yylval.arthro)); }
+    LARTHRO:    ARSENIKO_ARTHRO     { $<arthro>$ = yylval.arthro; printf(a_c_y"|-> αρσενικό άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |THILIKO_ARTHRO     { $<arthro>$ = yylval.arthro; printf(a_c_y"|-> θηλυκό άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |OUDETERO_ARTHRO    { $<arthro>$ = yylval.arthro; printf(a_c_y"|-> ουδέτερο άρθρο είναι: %s\n"a_c_re,(yylval.arthro)); }
 
-    LARITHMOS:  ARITHMOS    { $<arithmos>$ = yylval.arithmos; printf("|->αριθμός είναι: %f\n",(yylval.arithmos)); }
+    LARITHMOS:  ARITHMOS    { $<arithmos>$ = yylval.arithmos; printf(a_c_y"|->αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
 
-    LSTIKSI:    STIKSI      { $<stiksi>$ = yylval.stiksi; printf("|->σημείο στίξης είναι: %d\n",(yylval.stiksi)); }
+    LSTIKSI:    STIKSI      { $<stiksi>$ = yylval.stiksi; printf(a_c_y"|->σημείο στίξης είναι: %d\n"a_c_re,(yylval.stiksi)); }
 
 %%
 
