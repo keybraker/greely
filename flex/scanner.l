@@ -38,7 +38,6 @@
 	        exit(0);
 	    }
 
-		
 	    char buffer[255];
 	    while (fgets(buffer,255, newer)!= NULL) { 
 	    	fprintf(older, "%s", buffer);
@@ -53,60 +52,65 @@
 
 		char* stringer = calloc(sizeof(buffer)+sizeof(token_prev)+sizeof(" 0 0\n")+3, sizeof(char));
 
+		printf("THIS:\n");
+		printf("buffer = %s\n", buffer);
+		printf("token_prev = %s\n", token_prev);
+		printf("type = %s\n", type);
+		
 		if (strcmp(type,"ARS_EN_AR") == 0){
 			strcpy(stringer, buffer);
 			strcat(stringer, " ");
 			strcat(stringer, token_prev);
-			strcat(stringer, " 0 0\n");
+			strcat(stringer, "\t0\t0\n");
 			return stringer;
 
-		}else if (strcmp(type,"THY_EN_AR") == 0){
+		}else if (strcmp(type,"THY_EN_AR") == 0){ 
 			strcpy(stringer, buffer);
 			strcat(stringer, " ");
 			strcat(stringer, token_prev);
-			strcat(stringer, " 1 0\n");
+			strcat(stringer, "\t1\t0\n");
 			return stringer;
 
 		}else if (strcmp(type,"OUD_EN_AR") == 0){
 			strcpy(stringer, buffer);
 			strcat(stringer, " ");
 			strcat(stringer, token_prev);
-			strcat(stringer, " 2 0\n");
+			strcat(stringer, "\t2\t0\n");
 			return stringer;
 
 		}else if (strcmp(type,"_EN_AR") == 0){
 			strcpy(stringer, buffer);
 			strcat(stringer, " ");
 			strcat(stringer, token_prev);
-			strcat(stringer, " 3 0\n");	
+			strcat(stringer, "\t3\t0\n");	
 			return stringer;
 
 		}else if (strcmp(type,"ARS_PL_AR") == 0){
 			strcpy(stringer, buffer);
 			strcat(stringer, " ");
 			strcat(stringer, token_prev);
-			strcat(stringer, " 0 1\n");	
+			strcat(stringer, "\t0\t1\n");	
 			return stringer;
 
 		}else if (strcmp(type,"THY_PL_AR") == 0){
 			strcpy(stringer, buffer);
 			strcat(stringer, " ");
 			strcat(stringer, token_prev);
-			strcat(stringer, " 1 1\n");	
+			strcat(stringer, "\t1\t1\n");	
 			return stringer;
 
 		}else if (strcmp(type,"OUD_PL_AR") == 0){
 			strcpy(stringer, buffer);
 			strcat(stringer, " ");
 			strcat(stringer, token_prev);
-			strcat(stringer, " 2 1\n");	
+			strcat(stringer, "\t2\t1\n");	
 			return stringer;
 
 		}else if (strcmp(type,"_PL_AR") == 0){
 			strcpy(stringer, buffer);
 			strcat(stringer, " ");
 			strcat(stringer, token_prev);
-			strcat(stringer, " 3 1\n");	
+			strcat(stringer, "\t3\t1\n");	
 			return stringer;
 
 		}else{
@@ -116,7 +120,7 @@
 	}
 
 	int isName(char* name, char* type){ 
-		printf("%s - %s\n",name, type);
+		//printf("%s - %s\n",name, type);
 
 	 	int returner = false;
 
@@ -136,9 +140,6 @@
 	    int  i = 0, bsize = 0, tmp = 0, length = 0;
 	    char *token_prev, *token, *stringer = NULL;
 
-		char str1[20];
-   		printf("1)Enter name: ");
-   		scanf("%s", str1);
 
 	    while (fgets(buffer,255, nameDatabase)!= NULL)    { 
 			
@@ -173,7 +174,7 @@
 		    }else{
 				stringer = calloc(sizeof(buffer)+sizeof(token_prev)+2, sizeof(char));
 		 		strcpy(stringer, buffer);
-		 		strcat(stringer, " ");
+		 		strcat(stringer, "\t");
 		 		strcat(stringer, token_prev);
 		 		strcat(stringer, "\n");
 		    	fprintf(newNameDatabase, "%s", stringer);
@@ -184,9 +185,6 @@
 
 	    fclose (newNameDatabase);
 		fclose (nameDatabase);
-
-   		printf("2)Enter name: ");
-   		scanf("%s", str1);
 
    		copyNewToOldFile("database/greekNameDatabase.txt","database/newGreekNameDatabase.txt");
 		
