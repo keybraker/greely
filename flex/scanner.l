@@ -32,10 +32,10 @@
 	    }
 
 	    char buffer[255];
-	    int bsize = 0, tmp = 0;
+	    int bsize = 0, tmp = 0, length = 0;
 	    char *token_prev, *token;
 
-	    while (fgets(buffer,255, nameDatabase)!= NULL)    {
+	    while (fgets(buffer,255, nameDatabase)!= NULL)    { 
 	        	        
 	        bsize = buffer[0] - '0'; bsize *= 10;
 	        if(buffer[1] != ' ') tmp = buffer[1] - '0'; bsize += tmp; 
@@ -48,16 +48,23 @@
 			    	token_prev = token;
 			    	token = strtok(NULL, " ");
 			   	}
-			   	token_prev = strtok(token_prev, "\n");
+				token_prev = strtok(token_prev, "\n");
 
 		        if(strcmp(token_prev, name) == 0) return true;
 
 		    }
-		    if(bsize == strlen(name)+2){
-				
-				token_prev = strtok(token_prev, "\n");
-				if(strncmp(token_prev, name, strlen(token_prev)-2) == 0) return true;
+		    if(bsize-2 == strlen(name)){
 
+				token = strtok(buffer, "\t");
+			   	while( token != NULL ) 
+			   	{
+			    	token_prev = token;
+			    	token = strtok(NULL, " ");
+			   	}
+				token_prev = strtok(token_prev, "\n");
+				
+				if(strncmp(token_prev, name, bsize-2) == 0) return true;
+				
 		    }
 
 	    }
