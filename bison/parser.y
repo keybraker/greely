@@ -117,12 +117,11 @@
 
     LEKSEIS:    LEKSEIS MEROSLOGOU {    
 
-                                        if($1 == NULL && $2 != NULL){ printf("one\n");
+                                        if($1 == NULL && $2 != NULL){ 
                                             $$ = (char*) calloc (strlen($2)+1, sizeof(char));
-
                                             strcpy($$,$2); 
 
-                                        }else if($$ != NULL && $1 != NULL && $2 != NULL){ printf("two\n");
+                                        }else if($$ != NULL && $1 != NULL && $2 != NULL){ 
                                             $$ = (char*) calloc (strlen($1)+strlen($2)+2, sizeof(char));
                                             strcpy($$, $1); strcat($$, " "); 
                                             strcat($$, $2);

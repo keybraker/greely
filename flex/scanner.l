@@ -32,35 +32,31 @@
 	    }
 
 	    char buffer[255];
-	    int j = 0, k = 0, bsize = 0, tmp = 0;
-	    
+	    int bsize = 0, tmp = 0;
+	    char *token_prev, *token;
+
 	    while (fgets(buffer,255, nameDatabase)!= NULL)    {
 	        	        
 	        bsize = buffer[0] - '0'; bsize *= 10;
-	        if(buffer[1] == ' ') j = 2;
-	        else tmp = buffer[1] - '0'; bsize += tmp; j = 3;
+	        if(buffer[1] != ' ') tmp = buffer[1] - '0'; bsize += tmp; 
 
-	        if(bsize == strlen(name)+1 || bsize == strlen(name)){ 
+	        if(bsize == strlen(name)){ 
 				
-				/*for me*/
-				if(strcmp(name, "Ιωάννης") == 0){
-	        		printf("bsize = %d ", bsize);			
-					printf("strlen(name) = %lu \n", strlen(name));	
-	        	}
-	        	if(strcmp(name, "Ιωάννη") == 0){
-	        		printf("bsize = %d ", bsize);			
-					printf("strlen(name) = %lu \n", strlen(name));	
-	        	}
-				
-				k = j;
-		        while( j-k < bsize ){
-		      
-		        	if(buffer[j] != name[j-k]) break;
-		        	j++;
-		        	
-		        }
+	        	token = strtok(buffer, "\t");
+			   	while( token != NULL ) 
+			   	{
+			    	token_prev = token;
+			    	token = strtok(NULL, " ");
+			   	}
+			   	token_prev = strtok(token_prev, "\n");
 
-		        if( j-k == bsize) return true;
+		        if(strcmp(token_prev, name) == 0) return true;
+
+		    }
+		    if(bsize == strlen(name)+2){
+				
+				token_prev = strtok(token_prev, "\n");
+				if(strncmp(token_prev, name, strlen(token_prev)-2) == 0) return true;
 
 		    }
 
