@@ -102,7 +102,7 @@
 
 %token<epitheto>    EPITHETO
 %token<ousiastiko>  OUSIA
-%token<arthro>      ARS_EN_AR ARS_PL_AR THY_EN_AR THY_PL_AR OUD_EN_AR OUD_PL_AR _PLY_AR _EN_AR 
+%token<arthro>      ARS_EN_AR ARS_PL_AR THY_EN_AR THY_PL_AR OUD_EN_AR OUD_PL_AR _PL_AR _EN_AR 
 
 %token<leksi>       LEKSI 
 %token<stiksi>      STIKSI
@@ -151,7 +151,8 @@
                 |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το ουδέτερο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
                 |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το ουδέτερο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
-                |_PLY_AR            { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |_EN_AR            { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |_PL_AR            { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
     LARITHMOS:  ARITHMOS            { $<arithmos>$ = yylval.arithmos;           printf(a_c_y"|->αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
 
