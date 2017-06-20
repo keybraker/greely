@@ -48,69 +48,56 @@
 
 	}
 
-	char* addInfo(char* buffer, char* token_prev, char* type){
+	char* addInfo(char* token, char* type){
 
-		char* stringer = calloc(sizeof(buffer)+sizeof(token_prev)+sizeof(" 0 0\n")+3, sizeof(char));
-
-		printf("THIS:\n");
-		printf("buffer = %s\n", buffer);
-		printf("token_prev = %s\n", token_prev);
-		printf("type = %s\n", type);
+		char* stringer = calloc(sizeof(token)+sizeof("|0|0\n")+3, sizeof(char));
 		
 		if (strcmp(type,"ARS_EN_AR") == 0){
-			strcpy(stringer, buffer);
-			strcat(stringer, " ");
-			strcat(stringer, token_prev);
-			strcat(stringer, "\t0\t0\n");
+			strcpy(stringer, "Y|");
+			strcat(stringer, token);
+			strcat(stringer, "|0|0|\n");
 			return stringer;
 
 		}else if (strcmp(type,"THY_EN_AR") == 0){ 
-			strcpy(stringer, buffer);
-			strcat(stringer, " ");
-			strcat(stringer, token_prev);
-			strcat(stringer, "\t1\t0\n");
+			strcpy(stringer, "Y|");
+			strcat(stringer, token);
+			strcat(stringer, "|1|0|\n");
 			return stringer;
 
 		}else if (strcmp(type,"OUD_EN_AR") == 0){
-			strcpy(stringer, buffer);
-			strcat(stringer, " ");
-			strcat(stringer, token_prev);
-			strcat(stringer, "\t2\t0\n");
+			strcpy(stringer, "Y|");
+			strcat(stringer, token);
+			strcat(stringer, "|2|0|\n");
 			return stringer;
 
 		}else if (strcmp(type,"_EN_AR") == 0){
-			strcpy(stringer, buffer);
-			strcat(stringer, " ");
-			strcat(stringer, token_prev);
-			strcat(stringer, "\t3\t0\n");	
+			strcpy(stringer, "Y|");
+			strcat(stringer, token);
+			strcat(stringer, "|3|0|\n");
 			return stringer;
 
 		}else if (strcmp(type,"ARS_PL_AR") == 0){
-			strcpy(stringer, buffer);
-			strcat(stringer, " ");
-			strcat(stringer, token_prev);
-			strcat(stringer, "\t0\t1\n");	
+			strcpy(stringer, "Y|");
+			strcat(stringer, token);
+			strcat(stringer, "|0|1|\n");
 			return stringer;
 
 		}else if (strcmp(type,"THY_PL_AR") == 0){
-			strcpy(stringer, buffer);
-			strcat(stringer, " ");
-			strcat(stringer, token_prev);
-			strcat(stringer, "\t1\t1\n");	
+			strcpy(stringer, "Y|");
+			strcat(stringer, token);
+			strcat(stringer, "|1|1|\n");
 			return stringer;
 
 		}else if (strcmp(type,"OUD_PL_AR") == 0){
-			strcpy(stringer, buffer);
-			strcat(stringer, " ");
-			strcat(stringer, token_prev);
-			strcat(stringer, "\t2\t1\n");	
+			strcpy(stringer, "Y|");
+			strcat(stringer, token);
+			strcat(stringer, "|2|1|\n");
 			return stringer;
 
 		}else if (strcmp(type,"_PL_AR") == 0){
-			strcpy(stringer, buffer);
-			strcat(stringer, " ");
-			strcat(stringer, token_prev);
-			strcat(stringer, "\t3\t1\n");	
+			strcpy(stringer, "Y|");
+			strcat(stringer, token);
+			strcat(stringer, "|3|1|\n");
 			return stringer;
 
 		}else{
@@ -137,49 +124,81 @@
 	    }
 
 	    char buffer[255];
-	    int  i = 0, bsize = 0, tmp = 0, length = 0;
-	    char *token_prev, *token, *stringer = NULL;
-
+	    char *token, *token_prev, *stringer = NULL;
 
 	    while (fgets(buffer,255, nameDatabase)!= NULL)    { 
 			
 			stringer = NULL;
-	  	      
-	        bsize = buffer[0] - '0'; bsize *= 10;
-	        if(buffer[1] != ' ') tmp = buffer[1] - '0'; bsize += tmp; 
 
-	        token = strtok(buffer, "\t");
-		   	while( token != NULL ) 
-		   	{
-		    	token_prev = token;
-		    	token = strtok(NULL, " ");
-		   	}
-			token_prev = strtok(token_prev, "\n");
+	        token = strtok(buffer, "|");
 
-	        if(bsize == strlen(name) && strcmp(token_prev, name) == 0){ 
-		        stringer = strdup(addInfo(buffer,token_prev,type));
-		       	returner = true;  
+	        if(strcmp(token,"N") == 0) { 
+		        
+			   	while( token != NULL ) 
+			   	{
+			    	token_prev = token;
+			    	token = strtok(NULL, " ");
+			   	}
+				token = strtok(token_prev, "|");
 
-		    }
-		    if(bsize-2 == strlen(name) && strncmp(token_prev, name, bsize-2) == 0){
-				stringer = strdup(addInfo(buffer,token_prev,type));
-		        returner = true;
+
+		        if(strcmp(token, name) == 0){ 
+			        stringer = strdup(addInfo(token,type));
+			       	returner = true;  
+
+			    }
+			    if(strncmp(token, name, strlen(name)-2) == 0){
+					stringer = strdup(addInfo(token,type));
+			        returner = true;
+					
+			    }
 				
-		    }
-			
 
-		    if(stringer != NULL){ 
-		    	fprintf(newNameDatabase, "%s", stringer);
+			    if(stringer != NULL){ 
+			    	fprintf(newNameDatabase, "%s", stringer);
 
-		    }else{
-				stringer = calloc(sizeof(buffer)+sizeof(token_prev)+2, sizeof(char));
-		 		strcpy(stringer, buffer);
-		 		strcat(stringer, "\t");
-		 		strcat(stringer, token_prev);
-		 		strcat(stringer, "\n");
-		    	fprintf(newNameDatabase, "%s", stringer);
+			    }else{
+					stringer = calloc(sizeof(buffer)+sizeof(token)+2, sizeof(char));
+			 		strcpy(stringer, "N|");
+			 		strcat(stringer, token);
+			 		strcat(stringer, "|\n");
+			    	fprintf(newNameDatabase, "%s", stringer);
 
-		    }
+			    }
+
+			}else{
+
+				while( token != NULL ) 
+			   	{
+			    	token_prev = token;
+			    	token = strtok(NULL, " ");
+			   	}
+				token = strtok(token_prev, "|");
+
+				stringer = calloc(sizeof("Y||0|0|\n")+sizeof(token)+2, sizeof(char));
+			 	strcpy(stringer, "Y|");
+			 	strcat(stringer, token);
+			 	strcat(stringer, "|");
+				while( token != NULL ) 
+			   	{
+			    	token_prev = token;
+			    	token = strtok(NULL, " ");
+			   	}
+				token = strtok(token_prev, "|");
+				strcat(stringer, token);
+				strcat(stringer, "|");
+				while( token != NULL ) 
+			   	{
+			    	token_prev = token;
+			    	token = strtok(NULL, " ");
+			   	}
+				token = strtok(token_prev, "|"); 
+				strcat(stringer, token);
+				strcat(stringer, "|\n");
+
+			    fprintf(newNameDatabase, "%s", stringer);
+
+			}
 
 	    }
 
@@ -189,6 +208,7 @@
    		copyNewToOldFile("database/greekNameDatabase.txt","database/newGreekNameDatabase.txt");
 		
 		return returner;
+
 	}
 
 	char* checktype(char* name){
