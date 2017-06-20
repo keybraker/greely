@@ -83,9 +83,15 @@
     
     char*   leksi;
 
-    char*   epitheto;
     char*   ousiastiko;
+    char*   epitheto;
+    char*   rima;
+    char*   epirima;
+    char*   antonumia;
     char*   arthro;
+    char*   prothesi;
+    char*   sundesmos;
+    char*   epifonima;
 
     int     stiksi;
 
@@ -100,11 +106,18 @@
 %type<arithmos>     LARITHMOS 
 %type<arthro>       LARTHRO
 
-%token<epitheto>    EPITHETO
-%token<ousiastiko>  OUSIA
 %token<arthro>      ARS_EN_AR ARS_PL_AR THY_EN_AR THY_PL_AR OUD_EN_AR OUD_PL_AR _PL_AR _EN_AR 
 
-%token<leksi>       LEKSI 
+%token<ousiastiko>  OUSIASTIKO 
+%token<epitheto>    EPITHETO 
+%token<rima>        RIMA 
+%token<epirima>     EPIRIMA 
+%token<antonumia>   ANTONUMIA 
+%token<arthro>      ARTHRO 
+%token<prothesi>    PROTHESI 
+%token<sundesmos>   SUDESMOS
+%token<epifonima>   EPIFONIMA 
+
 %token<stiksi>      STIKSI
 %token<arithmos>    ARITHMOS 
 
@@ -139,9 +152,6 @@
                 |LARITHMOS          { $<leksi>$ = calloc(1, sizeof(char*));     sprintf($<leksi>$, "%f", $1); }
                 |LSTIKSI            { $<leksi>$ = strdup(getPunctuation($1));   printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$));/*switch case*/}
 
-
-    LLEKSI:     LEKSI               { $<leksi>$ = yylval.leksi;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-
     LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το αρσενικό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
                 |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το αρσενικό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
@@ -151,12 +161,22 @@
                 |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το ουδέτερο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
                 |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το ουδέτερο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
-                |_EN_AR            { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |_PL_AR            { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |_EN_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |_PL_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
     LARITHMOS:  ARITHMOS            { $<arithmos>$ = yylval.arithmos;           printf(a_c_y"|->αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
 
     LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               printf(a_c_y"|->σημείο στίξης είναι: %d\n"a_c_re,(yylval.stiksi)); }
+
+    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |EPITHETO           { $$ = yylval.epitheto;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |RIMA               { $$ = yylval.rima;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |EPIRIMA            { $$ = yylval.epirima;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |ANTONUMIA          { $$ = yylval.antonumia;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |ARTHRO             { $$ = yylval.arthro;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |PROTHESI           { $$ = yylval.prothesi;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |SUDESMOS           { $$ = yylval.sundesmos;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |EPIFONIMA          { $$ = yylval.epifonima;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
 
 %%
 

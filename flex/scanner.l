@@ -450,7 +450,7 @@
 							arthroBefore = NULL;
 							yylval.leksi = strdup(yytext); 
 							printf(a_c_c"Η λέξη από τον lex είναι: %s\n"a_c_re, yytext); 
-							return LEKSI; 
+							return OUSIASTIKO; 
 						}
 [a-zA-Z][a-zA-Z]* 	{
 							printf(a_c_c"Τα εγγλέζικα σου \"%s\", να τα πεις αλλού !\n"a_c_re, yytext); 
