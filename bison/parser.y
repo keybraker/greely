@@ -93,9 +93,9 @@
     char*   sundesmos;
     char*   epifonima;
 
-    int     stiksi;
-
     double  arithmos;
+
+    int     stiksi;
 
 }
 

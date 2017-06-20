@@ -214,6 +214,7 @@
 	char* checktype(char* name){
 
 		return "CUCURUCU";
+
 	}
 
 	char* ousiastikoExists(char* name, char* type){ 
@@ -323,7 +324,6 @@
 							yylval.stiksi = 7; 	
 							return STIKSI; 
 						}
-
 "["						{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 							yylval.stiksi = 8; 	
 							return STIKSI; 
@@ -360,7 +360,6 @@
 							yylval.stiksi = 16; 
 							return STIKSI; 
 						}
-
 "\n"					{ 	
 							arthroBefore = NULL; 
 							printf(a_c_c"Το σημείο στίξης από τον lex είναι: \\n\n");
