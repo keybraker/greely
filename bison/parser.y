@@ -123,7 +123,7 @@
 
 %%
 
-    PROTASI:    LEKSEIS             { printf(a_c_g"|----->Η ολοκληρωμένη πρόταση είναι: ");
+    PROTASI:    LEKSEIS             { printf(a_c_g"    ➥ Η ολοκληρωμένη πρόταση είναι: ");
                                       printf(a_c_m"%s\n\n\n"a_c_re,$<leksi>1); 
                                     }
                                     ;
@@ -141,42 +141,42 @@
 
                                         }
                                         
-                                        printf(a_c_y"|---->λέξεις μέρος του λόγου: %s\n\n"a_c_re,$$);
+                                        printf(a_c_y"   ➥ λέξεις μέρος του λόγου: %s\n\n"a_c_re,$$);
 
                                     }
                 |                   { $$ = NULL; }
                 ;
 
-    MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;                    printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
-                |LARTHRO            { $<leksi>$ = $<arthro>1;                   printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
+    MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;                    printf(a_c_y"  ➥ Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
+                |LARTHRO            { $<leksi>$ = $<arthro>1;                   printf(a_c_y"  ➥ Το μέρος του λόγου είναι: %s\n"a_c_re,($$)); }
                 |LARITHMOS          { $<leksi>$ = calloc(1, sizeof(char*));     sprintf($<leksi>$, "%f", $1); }
-                |LSTIKSI            { $<leksi>$ = strdup(getPunctuation($1));   printf(a_c_y"|--->Το μέρος του λόγου είναι: %s\n"a_c_re,($$));/*switch case*/}
+                |LSTIKSI            { $<leksi>$ = strdup(getPunctuation($1));   printf(a_c_y"  ➥ Το μέρος του λόγου είναι: %s\n"a_c_re,($$));/*switch case*/}
 
-    LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το αρσενικό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το αρσενικό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+    LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf(a_c_y"➥ το αρσενικό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"➥ το αρσενικό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
-                |THY_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το θηλυκό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |THY_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το θηλυκό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |THY_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"➥ το θηλυκό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |THY_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"➥ το θηλυκό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
-                |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το ουδέτερο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το ουδέτερο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"➥ το ουδέτερο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"➥ το ουδέτερο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
-                |_EN_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |_PL_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"|-> το άγνωστο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |_EN_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"➥ το άγνωστο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |_PL_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"➥ το άγνωστο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
 
-    LARITHMOS:  ARITHMOS            { $<arithmos>$ = yylval.arithmos;           printf(a_c_y"|->αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
+    LARITHMOS:  ARITHMOS            { $<arithmos>$ = yylval.arithmos;           printf(a_c_y"➥ αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
 
-    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               printf(a_c_y"|->σημείο στίξης είναι: %d\n"a_c_re,(yylval.stiksi)); }
+    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               printf(a_c_y"➥ σημείο στίξης είναι: %d\n"a_c_re,(yylval.stiksi)); }
 
-    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-                |EPITHETO           { $$ = yylval.epitheto;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-                |RIMA               { $$ = yylval.rima;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-                |EPIRIMA            { $$ = yylval.epirima;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-                |ANTONUMIA          { $$ = yylval.antonumia;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-                |ARTHRO             { $$ = yylval.arthro;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-                |PROTHESI           { $$ = yylval.prothesi;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-                |SUDESMOS           { $$ = yylval.sundesmos;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
-                |EPIFONIMA          { $$ = yylval.epifonima;                 printf(a_c_y"|-->λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                   printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |EPITHETO           { $$ = yylval.epitheto;                     printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |RIMA               { $$ = yylval.rima;                         printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |EPIRIMA            { $$ = yylval.epirima;                      printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |ANTONUMIA          { $$ = yylval.antonumia;                    printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |ARTHRO             { $$ = yylval.arthro;                       printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |PROTHESI           { $$ = yylval.prothesi;                     printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |SUDESMOS           { $$ = yylval.sundesmos;                    printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+                |EPIFONIMA          { $$ = yylval.epifonima;                    printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
 
 %%
 
