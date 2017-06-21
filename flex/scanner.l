@@ -107,7 +107,8 @@
 	}
 
 	int isName(char* name, char* type){ 
-		printf("%s - %s\n",name, type);
+
+		//printf("%s - %s\n",name, type);
 
 	 	int returner = false;
 
@@ -143,12 +144,14 @@
 
 
 		        if(strcmp(token, name) == 0){ 
-			        stringer = strdup(addInfo(token,type));
+		        	if(type)
+			        	stringer = strdup(addInfo(token,type));
 			       	returner = true;  
 
 			    }
 			    if(strncmp(token, name, strlen(name)-2) == 0){
-					stringer = strdup(addInfo(token,type));
+		        	if(type)
+						stringer = strdup(addInfo(token,type));
 			        returner = true;
 					
 			    }
