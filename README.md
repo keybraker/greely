@@ -1,4 +1,4 @@
-# Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison
+# Lexical and Grammatical Analyzer for Greek with the use of Flex Bison
 
 A new way to interpret and understand natural human language.
 Greek as first language to be worked on.
