@@ -18,9 +18,9 @@ git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-F
 Most distros and Mac OS come preinstalled with all of the following compailers
 but if you find any trouble, these are the links to follow:
 
-gcc - https://gcc.gnu.org
-flex - https://www.gnu.org/software/flex/
-bison - https://www.gnu.org/software/bison/
+* gcc - https://gcc.gnu.org
+* flex - https://www.gnu.org/software/flex/
+* bison - https://www.gnu.org/software/bison/
 
 ### Installing
 
