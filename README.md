@@ -96,5 +96,4 @@ This project is licensed under the UOC License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Anthony Savidis
-* HY340
+* [CypressA](https://github.com/CypressA/GreekLex-2)
