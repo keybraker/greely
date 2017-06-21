@@ -10,7 +10,6 @@ Just clone the project to your computer and run make, it's simple as that !
 
 ```
 git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison.git
-
 ```
 
 ### Prerequisites
