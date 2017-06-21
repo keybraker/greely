@@ -49,8 +49,28 @@ To do so, you need to go to input/input.txt and change the text.
 
 The default input is "Καλημέρα, με λένε Ιωάννη και μαρέσει το ποδόσφαιρο."
 
-from there on you will see 
-...
+If the default text is run, you will get the following outcome:
+
+For example for the word "Καλημέρα" we get
+```
+Η λέξη από τον lex είναι: Καλημέρα
+➥ λέξη είναι: Καλημέρα
+  ➥ Το μέρος του λόγου είναι: Καλημέρα
+   ➥ λέξεις μέρος του λόγου: Καλημέρα
+```
+For example for the word "Ιωάννη" we get
+notice how it can undertand that "Ιωάννη" is a name
+```
+Το Ιωάννη είναι όνομα.
+Η λέξη από τον lex είναι: Ιωάννη
+➥ λέξη είναι: Ιωάννη
+  ➥ Το μέρος του λόγου είναι: Ιωάννη
+   ➥ λέξεις μέρος του λόγου: Καλημέρα , με λένε Ιωάννη
+```
+In the end if your text is correct the sentence will be completed shown bellow as continues line
+```
+    ➥ Η ολοκληρωμένη πρόταση είναι: Καλημέρα , με λένε Ιωάννη και μαρέσει το ποδόσφαιρο .
+```
 
 ## Built With
 
