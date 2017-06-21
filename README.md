@@ -2,7 +2,7 @@
 
 A new way to interpret and understand natural human language.
 Greek as first language to be worked on.
-Ai that understand and learns the human language and you.
+Ai that understands and learns the human language and you.
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-F
 
 ### Prerequisites
 
-Most Linux distros and Mac OS come preinstalled with all of the following compailers
+Most Linux distros and Mac OS come preinstalled with all of the following compilers
 but if you find any trouble, these are the links to follow:
 
 * gcc - https://gcc.gnu.org
