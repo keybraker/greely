@@ -74,7 +74,7 @@ In the end if your text is correct the sentence will be completed shown bellow a
 
 ## Built With
 
-* [c](https://gcc.gnu.org/) - The merging of all the parts and for batabase generation
+* [c](https://gcc.gnu.org/) - The merging of all the parts and for database generation
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
