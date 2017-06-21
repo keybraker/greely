@@ -6,7 +6,12 @@ Ai that understand and learns the human language and you.
 
 ## Getting Started
 
-Just clone the project to your computer and run make, it's that simple !
+Just clone the project to your computer and run make, it's simple as that !
+
+```
+git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison.git
+
+```
 
 ### Prerequisites
 
@@ -20,21 +25,23 @@ bison - https://www.gnu.org/software/bison/
 ### Installing
 
 ```
-git clone the project
-
+git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison.git
 ```
 enter the project folder via terminal
 
 ```
 run command "make"
-
 ```
 to clean all products created by the program run command "make clean"
 
 ## Running the tests
 
-In order to run a test of your own you have to change input. To do so,
-you need to go to input/input.txt and change the text.
+In order to run a test of your own you have to change input.
+To do so, you need to go to input/input.txt and change the text.
+
+```
+"Καλημέρα, με λένε Ιωάννη και μαρέσει το ποδόσφαιρο." ➥ "To something else"
+```
 
 ### Break down into end to end tests
 
