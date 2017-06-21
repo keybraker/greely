@@ -15,7 +15,7 @@ git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-F
 
 ### Prerequisites
 
-Most distros and Mac OS come preinstalled with all of the following compailers
+Most Linux distros and Mac OS come preinstalled with all of the following compailers
 but if you find any trouble, these are the links to follow:
 
 * gcc - https://gcc.gnu.org
