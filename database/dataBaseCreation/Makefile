@@ -11,5 +11,6 @@
 	./checkHeart πεθαίνω
 
 clean:
-	rm  generateDatabases generateVerbs checkHeart ../generatedDatabases/greekRimata.txt ../generatedDatabases/greekRimataCreator.txt ../generatedDatabases/greekYpoloipa.txt
+	rm  generateDatabases generateVerbs checkHeart
+	rm ../generatedDatabases/greekRimata.txt ../generatedDatabases/greekRimataCreator.txt ../generatedDatabases/greekYpoloipa.txt
 

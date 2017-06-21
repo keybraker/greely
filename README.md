@@ -1,40 +1,71 @@
 # Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison
-  DipMaind
 
-A new way to interpret and understand the human language.
+A new way to interpret and understand natural human language.
 Greek as first language to be worked on.
 Ai that understand and learns the human language and you.
 
-DOCUMENTATION
+## Getting Started
 
-1.  ΑΡΘΡΑ / ARTICLES
-2.  ΟΥΣΙΑΣΤΙΚΑ / NOUN
-3.  ΕΠΙΘΕΤΟ / ADJECTIVE
-4.  ΑΝΤΩΝΥΜΙΕΣ / ANTONYMS
+Just clone the project to your computer and run make, it's that simple !
 
-5.  ΡΗΜΑΤΑ / VERBS
+### Prerequisites
 
-⟾ ρήμα/ αριθμός συλλαβών/ συλλαβές/ χρόνος/ φωνή/ πρόσωπο/ αριθμός/ κλίση
+Most distros and Mac OS come preinstalled with all of the following compailers
+but if you find any trouble, these are the links to follow:
 
-➥ Χρόνοι:
-  ✔︎ κωδικός - χρόνος: 0 - Ενεστώτας, 1 - Παρατατίκος, 2 - Αόριστος, 3 - Εξακολουθητικός Μέλλοντας, 4 - Στιγμιαίος Μέλλοντας, 5 - Παρακείμενος, 6 - Υπερσυντέλικος, 7 - Συντεταγμένος
+gcc - https://gcc.gnu.org
+flex - https://www.gnu.org/software/flex/
+bison - https://www.gnu.org/software/bison/
 
-➥ Φωνή:
-  ✔︎ κωδικός - φωνή: 0 - Ενεργητική, 1 - Παθητική
+### Installing
 
-➥ Πρόσωπο:
-  ✔︎ κωδικός - πρόσωπο: 0 - Πρώτο, 1 - Δεύτερο, 2 - Τρίτο
+```
+git clone the project
 
-➥ Αριθμός:
-  ✔︎ κωδικός - αριθμός: 0 - Ενικός, 1 - Πληθυντικός
+```
+enter the project folder via terminal
 
-➥ Κλίση:
-  ✔︎ κωδικός - κλίση: 0 - πρώτη συζιγία, 1 - δεύτερη συζιγία πρώτη ομάδα, 2 - δεύτερη συζιγία δεύτερη ομάδα
-  ✔︎ κωδικός - κλίση: 0 - Οριστική, 1 - Υποτακτική, 2 - Προστακτική
+```
+run command "make"
 
+```
+to clean all products created by the program run command "make clean"
 
-    
-    
-6.  ΠΡΟΘΈΣΕΙΣ / SCOPE
-7.  ΕΠΙΦΩΝΉΜΑΤΑ / INTERJECTION
-8.  ΠΡΌΤΑΣΗ / SENTENCE
+## Running the tests
+
+In order to run a test of your own you have to change input. To do so,
+you need to go to input/input.txt and change the text.
+
+### Break down into end to end tests
+
+The default input is "Καλημέρα, με λένε Ιωάννη και μαρέσει το ποδόσφαιρο."
+
+from there on you will see 
+...
+
+## Built With
+
+* [c](https://gcc.gnu.org/) - The merging of all the parts and for batabase generation
+* [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
+* [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+I use [SemVer](http://semver.org/) for versioning. For the versions available. 
+
+## Authors
+
+* **Ioannis Tsiakkas** - *(Keybraker)* - [Keybraker](https://github.com/keybraker)
+
+## License
+
+This project is licensed under the UOC License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Antonis Savidis
+* HY340
