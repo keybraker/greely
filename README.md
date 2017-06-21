@@ -22,6 +22,8 @@ but if you find any trouble, these are the links to follow:
 * flex - https://www.gnu.org/software/flex/
 * bison - https://www.gnu.org/software/bison/
 
+➽ In the end only gcc will be needed
+
 ### Installing
 
 ```
