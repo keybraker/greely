@@ -12,7 +12,7 @@ int main(int argc, char** argv){
     if(!f3){ printf("ERROR f2"); exit(1); }
 
     char    *len, *syllen;
-    char    *word, *syllabes, *syllabes2, *syllabes3 ,*syl, *sylp;
+    char    *word, *syllabes, *syllabes2, *syllabes3 ,*syl, *sylp, *sylpp;
     char    buffer[255];
     
     while (fgets(buffer,255, f1)!= NULL)    { 
@@ -29,14 +29,27 @@ int main(int argc, char** argv){
         syllabes3 = strdup(syllabes2);
 
         syl = strtok(syllabes3, "-");
+        sylp = syl;
+        sylpp = syl;
         while(syl != NULL){
+            sylpp = sylp;
             sylp = syl;
             syl = strtok(NULL, "-");
-        }          
+        }      
+        printf("word = %s\n", word);    
+        printf("syl = %s\n", syl);
+        printf("sylp = %s\n", sylp);
+        printf("sylpp = %s\n\n", sylpp);
 
-        if(strcmp(sylp, "ω") == 0){
+        if(strcmp(word, "εδώ") == 0){
+            fprintf(f3, "%s|%s|%s|%s|\n", len,word,syllen,syllabes2);
+        }else if(strcmp(sylp, "ω") == 0){
             fprintf(f2, "%s|%s|%s|%s|0|0|0|0|0|\n", len,word,syllen,syllabes2);
         }else if(strcmp(sylp, "ώ") == 0){ 
+            fprintf(f2, "%s|%s|%s|%s|0|0|0|0|0|\n", len,word,syllen,syllabes2);
+        }else if(strcmp(sylp, "στω") == 0){
+            fprintf(f2, "%s|%s|%s|%s|0|0|0|0|0|\n", len,word,syllen,syllabes2);
+        }else if(strcmp(sylp, "στώ") == 0){
             fprintf(f2, "%s|%s|%s|%s|0|0|0|0|0|\n", len,word,syllen,syllabes2);
         }else if(strcmp(sylp, "βω") == 0){
             fprintf(f2, "%s|%s|%s|%s|0|0|0|0|0|\n", len,word,syllen,syllabes2);

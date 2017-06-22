@@ -1,6 +1,6 @@
 1:
 	gcc -o generateDatabases wordsToDatabases.c
-	./generateDatabases πεθαίνω
+	./generateDatabases
 
 2:
 	gcc -o generateVerbs verbsCreator.c
