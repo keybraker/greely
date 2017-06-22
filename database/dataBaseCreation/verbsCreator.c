@@ -189,7 +189,7 @@ int main(int argc, char** argv){
 
         wcreator  = calloc(1.5 * strlen(word),sizeof(char));
         screator  = calloc(1.5 * strlen(syllabes),sizeof(char));
-        sylpcmplt = calloc(10 *strlen(word),sizeof(char));
+        sylpcmplt = calloc(10 * strlen(word),sizeof(char));
 
         syl = strtok(syllabes2, "-");
         sylp = strdup(syl);
