@@ -2,7 +2,7 @@
 
 A new way to interpret and understand natural human language.
 Greek as first language to be worked on.
-Ai that understand and learns the human language and you.
+Ai that understands and learns the human language and you.
 
 ## Getting Started
 
@@ -10,12 +10,11 @@ Just clone the project to your computer and run make, it's simple as that !
 
 ```
 git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison.git
-
 ```
 
 ### Prerequisites
 
-Most Linux distros and Mac OS come preinstalled with all of the following compailers
+Most Linux distros and Mac OS come preinstalled with all of the following compilers
 but if you find any trouble, these are the links to follow:
 
 * gcc - https://gcc.gnu.org
@@ -74,7 +73,7 @@ In the end if your text is correct the sentence will be completed shown bellow a
 
 ## Built With
 
-* [c](https://gcc.gnu.org/) - The merging of all the parts and for batabase generation
+* [c](https://gcc.gnu.org/) - The merging of all the parts and for database generation
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
@@ -92,9 +91,8 @@ I use [SemVer](http://semver.org/) for versioning. For the versions available.
 
 ## License
 
-This project is licensed under the UOC License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Tsiakkas License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Anthony Savidis
-* HY340
+* [CypressA](https://github.com/CypressA/GreekLex-2)
