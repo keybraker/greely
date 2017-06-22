@@ -43,7 +43,17 @@ int main(int argc, char** argv){
 
         if(strcmp(word, "εδώ") == 0){
             fprintf(f3, "%s|%s|%s|%s|\n", len,word,syllen,syllabes2);
-        }else if(strcmp(sylp, "ω") == 0){
+        }else if(strcmp(word, "άνω") == 0){
+            fprintf(f3, "%s|%s|%s|%s|\n", len,word,syllen,syllabes2);
+        }else if(strcmp(word, "άπω") == 0){
+            fprintf(f3, "%s|%s|%s|%s|\n", len,word,syllen,syllabes2);
+        }else if(strcmp(word, "εγώ") == 0){
+            fprintf(f3, "%s|%s|%s|%s|\n", len,word,syllen,syllabes2);
+        }else if(strcmp(word, "έξω") == 0){
+            fprintf(f3, "%s|%s|%s|%s|\n", len,word,syllen,syllabes2);
+        }else if(strcmp(word, "ηχώ") == 0){
+            fprintf(f3, "%s|%s|%s|%s|\n", len,word,syllen,syllabes2);
+        }else if(strcmp(sylp, "ω") == 0){ 
             fprintf(f2, "%s|%s|%s|%s|0|0|0|0|0|\n", len,word,syllen,syllabes2);
         }else if(strcmp(sylp, "ώ") == 0){ 
             fprintf(f2, "%s|%s|%s|%s|0|0|0|0|0|\n", len,word,syllen,syllabes2);

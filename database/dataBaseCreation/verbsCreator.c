@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int toInt(char a[]) {
+int stringToInt(char a[]) {
   int c, sign, offset, n;
  
   if (a[0] == '-') {  // Handle negative integers
@@ -34,6 +34,17 @@ int toInt(char a[]) {
 void createXronous(FILE* f2, char *word, char* syllabes, char *wcreator, char *screator, char *syllen, char* ch, char *cm, int version){ 
 
     char *fwinserter, *fsinserter; 
+
+    if(strcmp(word,"πάω") == 0) {
+        printf("word = %s\n", word);
+        printf("syllabes = %s\n", syllabes);
+        printf("wcreator = %s\n", wcreator);
+        printf("screator = %s\n", screator);
+        printf("syllen = %s\n", syllen);
+        printf("ch = %s\n", ch);
+        printf("cm = %s\n", cm);
+        printf("version = %d\n", version);
+    }
 
     if(version == 0){
         fprintf(f2, "%s|%s|%s|0|0|0|0|0|\n", word,syllen,syllabes);
@@ -99,66 +110,108 @@ void createXronous(FILE* f2, char *word, char* syllabes, char *wcreator, char *s
         //fwinserter = strdup(wcreator);
         fwinserter = calloc(50, sizeof(char));
 
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
-        strcat(fwinserter,"ώ"); 
-        fwinserter = strdup(fwinserter);
-        fprintf(f2, "%s|%s|%s-%sώ|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
+        if(stringToInt(syllen) <= 2) { 
+            
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch);
+            strcat(fwinserter,"ώ"); 
+            fwinserter = strdup(fwinserter);
+            fprintf(f2, "%s|%s|%s-%sώ|0|0|0|0|0|\n",fwinserter,syllen,cm,ch); 
+        }
+        
 
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
+        if(stringToInt(syllen) <= 2) { 
+            strcpy(fwinserter, ch); 
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch); 
+        }
         strcat(fwinserter,"άς"); 
         fwinserter = strdup(fwinserter);
         fprintf(f2, "%s|%s|%s-%sάς|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
 
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
-        strcat(fwinserter,"ά"); 
-        fwinserter = strdup(fwinserter);
-        fprintf(f2, "%s|%s|%s-%sά|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
+        if(stringToInt(syllen) <= 2) { 
+            
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch);
+            strcat(fwinserter,"ά"); 
+            fwinserter = strdup(fwinserter);
+            fprintf(f2, "%s|%s|%s-%sά|0|0|0|0|0|\n",fwinserter,syllen,cm,ch); 
+        }
+        
 
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
+        if(stringToInt(syllen) <= 2) { 
+            strcpy(fwinserter, ch); 
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch); 
+        }
         strcat(fwinserter,"άει"); 
         fwinserter = strdup(fwinserter);
         fprintf(f2, "%s|%s|%s-%sά-ει|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
 
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
+        if(stringToInt(syllen) <= 2) { 
+            strcpy(fwinserter, ch); 
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch); 
+        }
         strcat(fwinserter,"άμε"); 
         fwinserter = strdup(fwinserter);
         fprintf(f2, "%s|%s|%s-%sά-με|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
 
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
+        if(stringToInt(syllen) <= 2) { 
+            strcpy(fwinserter, ch); 
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch); 
+        }
         strcat(fwinserter,"άτε"); 
         fwinserter = strdup(fwinserter);
         fprintf(f2, "%s|%s|%s-%sά-τε|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
         
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
+        if(stringToInt(syllen) <= 2) { 
+            strcpy(fwinserter, ch); 
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch); 
+        }
         strcat(fwinserter,"άν"); 
         fwinserter = strdup(fwinserter);
         fprintf(f2, "%s|%s|%s-%sάν|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
 
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
-        strcat(fwinserter,"ούν"); 
-        fwinserter = strdup(fwinserter);
-        fprintf(f2, "%s|%s|%s-%sούν|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
-
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
+        if(stringToInt(syllen) <= 2) { 
+            
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch);
+            strcat(fwinserter,"ούν"); 
+            fwinserter = strdup(fwinserter);
+            fprintf(f2, "%s|%s|%s-%sούν|0|0|0|0|0|\n",fwinserter,syllen,cm,ch); 
+        }
+        
+        if(stringToInt(syllen) <= 2) { 
+            strcpy(fwinserter, ch); 
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch); 
+        }
         strcat(fwinserter,"άνε"); 
         fwinserter = strdup(fwinserter);
         fprintf(f2, "%s|%s|%s-%sά-νε|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
 
-        strcpy(fwinserter, cm);
-        strcat(fwinserter, ch);
-        strcat(fwinserter,"ούνε"); 
-        fwinserter = strdup(fwinserter);
-        fprintf(f2, "%s|%s|%s-%sού-νε|0|0|0|0|0|\n",fwinserter,syllen,cm,ch);
+        if(stringToInt(syllen) <= 2) { 
 
+        }else{
+            strcpy(fwinserter, cm);
+            strcat(fwinserter, ch);
+            strcat(fwinserter,"ούνε"); 
+            fwinserter = strdup(fwinserter);
+            fprintf(f2, "%s|%s|%s-%sού-νε|0|0|0|0|0|\n",fwinserter,syllen,cm,ch); 
+        }
+        
     }
 
 }
@@ -199,7 +252,7 @@ int main(int argc, char** argv){
         strcpy(wcreator, ""); 
         strcpy(screator, ""); 
 
-        int i,exiter = toInt(syllen);
+        int i,exiter = stringToInt(syllen);
         for(i = 0; i < exiter; i++){
             
             if(i){
@@ -231,9 +284,9 @@ int main(int argc, char** argv){
         strcpy(check1, &sylpp[(strlen(sylpp)/2)]);
         strcpy(check2, &sylpp[(strlen(sylpp)/2)]-1);
 
-        if(strcmp(sylp, "ω") == 0){
+        if(strcmp(sylp, "ω") == 0){ if(strcmp(word,"πάω") == 0) {printf("mpika lel\n");}
        
-            if(strcmp(sylpp,"πά") == 0){ 
+            if(strcmp(sylpp,"πά") == 0){  if(strcmp(word,"πάω") == 0) {printf("mpika lel 2\n");}
                 createXronous(f2, word, syllabes, wcreator, screator, syllen, "π",  sylpcmplt, 1);
             }else if(strcmp(check1,"τά") == 0 || strcmp(check2,"τά") == 0){
                 createXronous(f2, word, syllabes, wcreator, screator, syllen, "τ", sylpcmplt, 1);
