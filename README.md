@@ -80,6 +80,7 @@ In the end if your text is correct the sentence will be completed shown bellow a
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://github.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+➥ https://keybraker.github.io/Lexical-Grammatical-Analyzer-for-Greek/
 
 ## Versioning
 
