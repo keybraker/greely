@@ -2,6 +2,16 @@
 
 void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screator, char *syllen, char* ch, char *cm, int version){ 
 
+    if(strcmp("γαμάω",word) == 0){
+        printf("word = %s\n", word);
+        printf("syllabes = %s\n", syllabes);
+        printf("wcreator = %s\n", wcreator);
+        printf("screator = %s\n", screator);
+        printf("syllen = %s\n", syllen);
+        printf("ch = %s\n", ch);
+        printf("cm = %s\n", cm);
+    }
+
     char *fwinserter, *fsinserter; 
 
     //energitiki foni
@@ -373,3 +383,5 @@ void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screa
         
     }
 }
+
+

@@ -52,15 +52,20 @@ int main(int argc, char** argv){
             syl = strtok(NULL, "-");
 
         }          
+        
+        // if(strcmp("γαμάω",word) == 0){
 
-        // printf("len = %s\n", len);
-        // printf("word = %s\n", word);
-        // printf("syllen = %s\n", syllen);
-        // printf("syllabes = %s\n", syllabes);
-        // printf("sylp = %s\n", sylp);
-        // printf("sylpp = %s\n", sylpp);
-        // printf("wcreator = %s\n", wcreator);
-        // printf("screator = %s\n\n", screator);
+        //     printf("len = %s\n", len);
+        //     printf("word = %s\n", word);
+        //     printf("syllen = %s\n", syllen);
+        //     printf("syllabes = %s\n", syllabes);
+        //     printf("sylp = %s\n", sylp);
+        //     printf("sylpp = %s\n", sylpp);
+        //     printf("wcreator = %s\n", wcreator);
+        //     printf("screator = %s\n", screator);
+        //     printf("sylpcmplt = %s\n\n", sylpcmplt);
+
+        // }
 
         char *check1 = calloc(strlen(sylpp),sizeof(char));
         char *check2 = calloc(strlen(sylpp),sizeof(char));
@@ -87,6 +92,52 @@ int main(int argc, char** argv){
 
             if(strcmp(sylpp,"πά") == 0){  
                 enestotas(f2, word, syllabes, wcreator, screator, syllen, "π",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "", sylpcmplt, 1);
+            }else if(strcmp(sylpp,"βά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "β", sylpcmplt, 1);
+            }else if(strcmp(sylpp,"γά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "γ", sylpcmplt, 1);
+            }else if(strcmp(sylpp,"δά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "δ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ζά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ζ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"θά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "θ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"κά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "κ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"λά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "λ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"μά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "μ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"νά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ν",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ξά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ξ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"πά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "π",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ρά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ρ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"σά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "σ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"τά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "τ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"φά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "φ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"χά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "χ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ψά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ψ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"χλά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "χλ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"στά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "στ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"μπά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "μπ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"πρά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "πρ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ντά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ντ",  sylpcmplt, 1);
             }else if(strcmp(check1,"τά") == 0 || strcmp(check2,"τά") == 0){
                 enestotas(f2, word, syllabes, wcreator, screator, syllen, "τ", sylpcmplt, 1);
             }else if(strcmp(check1,"ρά") == 0 || strcmp(check2,"ρά") == 0){
@@ -99,12 +150,60 @@ int main(int argc, char** argv){
 
         }else if(strcmp(sylp, "ώ") == 0){ 
 
-            if(strcmp(check1,"ά") == 0 || strcmp(check2,"ά") == 0){
-                enestotas(f2, word, syllabes, wcreator, screator, syllen, "",  sylpcmplt, 1);
+            if(strcmp(sylpp,"πά") == 0){  
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "π",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "", sylpcmplt, 1);
+            }else if(strcmp(sylpp,"βά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "β", sylpcmplt, 1);
+            }else if(strcmp(sylpp,"γά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "γ", sylpcmplt, 1);
+            }else if(strcmp(sylpp,"δά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "δ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ζά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ζ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"θά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "θ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"κά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "κ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"λά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "λ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"μά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "μ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"νά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ν",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ξά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ξ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"πά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "π",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ρά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ρ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"σά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "σ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"τά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "τ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"φά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "φ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"χά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "χ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ψά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ψ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"χλά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "χλ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"στά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "στ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"μπά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "μπ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"πρά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "πρ",  sylpcmplt, 1);
+            }else if(strcmp(sylpp,"ντά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "ντ",  sylpcmplt, 1);
             }else if(strcmp(check1,"τά") == 0 || strcmp(check2,"τά") == 0){
                 enestotas(f2, word, syllabes, wcreator, screator, syllen, "τ", sylpcmplt, 1);
             }else if(strcmp(check1,"ρά") == 0 || strcmp(check2,"ρά") == 0){
                 enestotas(f2, word, syllabes, wcreator, screator, syllen, "ρ", sylpcmplt, 1);
+            }else if(strcmp(check1,"ά") == 0 || strcmp(check2,"ά") == 0){
+                enestotas(f2, word, syllabes, wcreator, screator, syllen, "",  sylpcmplt, 1);
             }else{
                 enestotas(f2, word, syllabes, wcreator, screator, syllen, "", sylpcmplt, 0); 
             }
