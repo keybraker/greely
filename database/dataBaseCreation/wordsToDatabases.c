@@ -36,10 +36,11 @@ int main(int argc, char** argv){
             sylp = syl;
             syl = strtok(NULL, "-");
         }      
-        printf("word = %s\n", word);    
-        printf("syl = %s\n", syl);
-        printf("sylp = %s\n", sylp);
-        printf("sylpp = %s\n\n", sylpp);
+        
+        // printf("word = %s\n", word);    
+        // printf("syl = %s\n", syl);
+        // printf("sylp = %s\n", sylp);
+        // printf("sylpp = %s\n\n", sylpp);
 
         if(strcmp(word, "εδώ") == 0){
             fprintf(f3, "%s|%s|%s|%s|\n", len,word,syllen,syllabes2);

@@ -19,7 +19,8 @@
     #define bold      "\e[1m"
     #define bold_re   "\e[0m"
 
-    char* stikser[] = {
+    char *stikser[] = { 
+        
         "comma",
         "teleia",
         "erotimatiko",
@@ -39,10 +40,22 @@
         "equal", 
         "equal",
         "enter"
+
     };
 
+      char *mikra[] = {
+        "α","ά","β","γ","δ","ε","έ","ζ","η","ή","θ",
+        "ι","ί","κ","λ","μ","ν","ξ","ο","ό","π","ρ",
+        "σ","τ","υ","ύ","φ","χ","ψ","ω","ώ"
+    };
 
-    char* getPunctuation(int punc){
+     char *megala[] = {
+        "Α","Ά","Β","Γ","Δ","Ε","Έ","Ζ","Η","Ή","Θ",
+        "Ι","Ι","Κ","Λ","Μ","Ν","Ξ","Ο","Ό","Π","Ρ",
+        "Σ","Τ","Υ","Ύ","Φ","Χ","Ψ","Ω","Ώ"
+    };
+
+    char *getPunctuation(int punc){
 
         switch (punc) {
             case 0:     return ","; break;

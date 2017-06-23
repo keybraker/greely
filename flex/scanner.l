@@ -30,11 +30,11 @@
 		FILE *newer;
 
 		if ( (newer = fopen(new, "r") ) == NULL) { 
-			printf (a_c_r"Couldn't open file nameDatabase %d\n"a_c_re, errno);
+			printf (a_c_r"1Couldn't open file nameDatabase %d\n"a_c_re, errno);
 	        exit(0);
 	    }
 	    if ( (older = fopen(old, "w+") ) == NULL) { 
-			printf (a_c_r"Couldn't open file nameDatabase %d\n"a_c_re, errno);
+			printf (a_c_r"2Couldn't open file nameDatabase %d\n"a_c_re, errno);
 	        exit(0);
 	    }
 
@@ -116,11 +116,11 @@
 		FILE *newNameDatabase;
 
 		if ( (nameDatabase = fopen("database/greekNameDatabase.txt", "r")) == NULL) { 
-			printf (a_c_r"Couldn't open file nameDatabase %d\n"a_c_re, errno);
+			printf (a_c_r"3Couldn't open file nameDatabase %d\n"a_c_re, errno);
 	        exit(0);
 	    }
 	    if ( (newNameDatabase = fopen("database/newGreekNameDatabase.txt", "w+")) == NULL) { 
-			printf (a_c_r"Couldn't open file nameDatabase %d\n"a_c_re, errno);
+			printf (a_c_r"4Couldn't open file nameDatabase %d\n"a_c_re, errno);
 	        exit(0);
 	    }
 
@@ -221,11 +221,12 @@
 	}
 
 	char* ousiastikoExists(char* name, char* type){ 
-
+		
+		//printf("name = %s, type = %s\n\n",name,type);
 		FILE *endingDatabase;
 
-		if ( (endingDatabase = fopen("database/greekEndingDatabase[genos].txt", "r")) == NULL) { 
-			printf (a_c_r"Couldn't open file endingDatabase %d\n"a_c_re, errno);
+		if ( (endingDatabase = fopen("database/apeutheiasmesastokodika greekEndingDatabase[genos].txt", "r")) == NULL) { 
+			printf (a_c_r"5Couldn't open file endingDatabase %d\n"a_c_re, errno);
 	        exit(0);
 	    }
 
@@ -235,7 +236,10 @@
 
 	    while (fgets(buffer,255, endingDatabase)!= NULL)    { 
 
-	    	token = strtok(buffer, "\t");				
+	    	token = strtok(buffer, "\t");		
+
+	    	//printf("token = %s, type = %s\n",token,type);
+		
 	        if(strncmp(token, type, strlen(type)) == 0){  
 				
 				int tokenlen = 0;
@@ -245,7 +249,11 @@
 			   	while( token != NULL ) 
 			   	{
 			   		tokenlen = strlen(token);
-			   		if(token != NULL && strncmp(name+namelen-tokenlen, token, tokenlen) == 0){
+			   					  
+			   		//printf("name = %s, token = %s 	\n",name,token);
+
+			   		//if( strncmp(name+namelen-tokenlen, token, tokenlen) == 0 ){
+			   		if(strcmp(type,token) == 0){
 
 			   			if (strcmp(type,"ARS_EN_AR") == 0){
 			   				fclose (endingDatabase);
@@ -277,6 +285,7 @@
 			   			}
 			   			
 			   		}
+			   		break; //added
 			    	token = strtok(NULL, ",");
 			   	}
 
