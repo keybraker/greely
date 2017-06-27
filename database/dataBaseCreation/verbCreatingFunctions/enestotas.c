@@ -2,15 +2,31 @@
 
 void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screator, char *syllen, char* ch, char *cm, int version){ 
 
-    if(strcmp("γαμάω",word) == 0){
-        printf("word = %s\n", word);
-        printf("syllabes = %s\n", syllabes);
-        printf("wcreator = %s\n", wcreator);
-        printf("screator = %s\n", screator);
-        printf("syllen = %s\n", syllen);
-        printf("ch = %s\n", ch);
-        printf("cm = %s\n", cm);
-    }
+    fprintf(f2, "\n\nENESTOTAS\n");
+
+    char* wcreatorAtono = calloc(1,1024);
+    char* wcreatorTeleutaioTonismeno = calloc(1,1024);
+    char* wcreatorProtoTonismeno = calloc(1,1024);
+
+    wcreatorAtono = atono(wcreator);
+    wcreatorTeleutaioTonismeno = protoTonismeno(wcreatorAtono);
+    wcreatorProtoTonismeno = teleutaioTonismeno(wcreatorAtono);
+
+    // if(strcmp("χωνεύω",word) == 0){
+
+    //     printf("enestots word = %s\n", word);
+    //     printf("syllabes = %s\n", syllabes);
+    //     printf("wcreator = %s\n", wcreator);
+    //     printf("screator = %s\n", screator);
+    //     printf("wcreatorAtono = %s\n", wcreatorAtono);
+    //     printf("wcreatorTeleutaioTonismeno = %s\n", wcreatorTeleutaioTonismeno);
+    //     printf("wcreatorProtoTonismeno = %s\n", wcreatorProtoTonismeno);
+    //     printf("syllen = %s\n", syllen);
+    //     printf("ch = %s\n", ch);
+    //     printf("cm = %s\n\n", cm);
+    //     printf("version = %d\n\n", version);
+
+    // }
 
     char *fwinserter, *fsinserter; 
 
@@ -81,7 +97,7 @@ void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screa
 
         // prostaktiki
 
-        fwinserter = strdup(wcreator);
+        fwinserter = strdup(wcreatorProtoTonismeno);
         strcat(fwinserter,ch); 
         strcat(fwinserter,"ε"); 
         fwinserter = strdup(fwinserter);
@@ -245,7 +261,7 @@ void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screa
         strcat(fsinserter,"ε-ται");
         fprintf(f2, "%s|%s|%s|0|2|0|3|1|\n", fwinserter, syllen, fsinserter);
 
-        fwinserter = strdup(wcreator);
+        fwinserter = strdup(wcreatorAtono);
         strcat(fwinserter,ch);
         strcat(fwinserter,"όμαστε"); // fix τονος
         fwinserter = strdup(fwinserter);
@@ -263,7 +279,7 @@ void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screa
         strcat(fsinserter,"ε-στε");
         fprintf(f2, "%s|%s|%s|0|1|1|3|1|\n", fwinserter, syllen, fsinserter);
 
-        fwinserter = strdup(wcreator);
+        fwinserter = strdup(wcreatorAtono);
         strcat(fwinserter,ch);
         strcat(fwinserter,"όσαστε");//τονος 
         fwinserter = strdup(fwinserter);
@@ -274,11 +290,11 @@ void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screa
 
         fwinserter = strdup(wcreator);
         strcat(fwinserter,ch);
-        strcat(fwinserter,"ονται");
+        strcat(fwinserter,"οντε");
         fwinserter = strdup(fwinserter);
         fsinserter = strdup(screator);
         strcat(fsinserter, ch);
-        strcat(fsinserter,"ο-νται");
+        strcat(fsinserter,"ο-ντε");
         fprintf(f2, "%s|%s|%s|0|2|1|3|1|\n", fwinserter, syllen, fsinserter);
 
         // gia na einai ena rima stin upotaktiki klisi 8a prepei 
@@ -359,9 +375,9 @@ void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screa
             strcpy(fwinserter, cm);
             strcat(fwinserter, ch); 
         }
-        strcat(fwinserter,"ιέσται"); 
+        strcat(fwinserter,"ιέστε"); 
         fwinserter = strdup(fwinserter);
-        fprintf(f2, "%s|%s|%s-%sιέ-σται|0|0|1|3|1|\n",fwinserter,syllen,cm,ch);
+        fprintf(f2, "%s|%s|%s-%sιέ-στε|0|0|1|3|1|\n",fwinserter,syllen,cm,ch);
 
         if(stringToInt(syllen) <= 2) { 
             strcpy(fwinserter, ch); 
@@ -369,9 +385,9 @@ void enestotas(FILE* f2, char *word, char* syllabes, char *wcreator, char *screa
             strcpy(fwinserter, cm);
             strcat(fwinserter, ch); 
         }
-        strcat(fwinserter,"ιούνται"); 
+        strcat(fwinserter,"ιούντε"); 
         fwinserter = strdup(fwinserter);
-        fprintf(f2, "%s|%s|%s-%sιού-νται|0|1|1|3|1|\n",fwinserter,syllen,cm,ch);
+        fprintf(f2, "%s|%s|%s-%sιού-ντε|0|1|1|3|1|\n",fwinserter,syllen,cm,ch);
         
         if(stringToInt(syllen) <= 2) { 
             strcpy(fwinserter, ch); 
