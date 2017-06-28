@@ -2,19 +2,44 @@
 
 int main(int argc, char** argv){
         
-    char* word = calloc(1, 64);
-    word = "λύνω";
+    if(argc != 2){
+        printf("too few arguments\n");
+        exit(0);
+    }
 
-    struct allData *data = calloc (sizeof(struct allData), 1);
+    char* word = calloc(1, 64);
+
+    struct allData *data    = calloc (sizeof(struct allData), 1);
     char* xorisKataklida    = calloc(1, 256);
     char* AxorisKataklida   = calloc(1, 256);
     char* xorisKataklidaLT  = calloc(1, 256);
     char* xorisKataklidaPT  = calloc(1, 256);
+    char* returner          = calloc(1, 256);
+    char* buffer            = calloc(1, 256);
+    char** file             = calloc(1, 256);
+    int i                   = 0;
+    
+    FILE* f1 = fopen ("../generatedDatabases/greekRimata.txt", "r");
+    if(!f1){ printf("ERROR f1"); exit(1); }
 
-    xorisKataklida = deleteKataklida(word);
-    AxorisKataklida = atono(xorisKataklida);
-    xorisKataklidaLT = protoTonismeno(AxorisKataklida);
-    xorisKataklidaPT = teleutaioTonismeno(AxorisKataklida);
+    while (fgets(buffer,255, f1)!= NULL)    { 
+        // oti nanai prosoxi sti calloc kai realloc
+        file = realloc(file, 255*10/*strlen(buffer)+1*/* sizeof(char*));
+        if(file[i] == NULL){
+            file[i] = calloc(2*255/*strlen(buffer)+1*/, sizeof(char));
+            strcpy(file[i], buffer);
+
+        }
+        i++;
+
+    }
+
+
+    word                    = argv[1];
+    xorisKataklida          = deleteKataklida(word);
+    AxorisKataklida         = atono(xorisKataklida);
+    xorisKataklidaLT        = protoTonismeno(AxorisKataklida);
+    xorisKataklidaPT        = teleutaioTonismeno(AxorisKataklida);
 
     data->length            = strlen(word);
     data->word              = word;
@@ -35,10 +60,12 @@ int main(int argc, char** argv){
 
     }
 
-    enestotas(data);
+    if( (returner = enestotas(file, i, data)) != NULL )
+        printf("%s\n", returner); 
     /*
 
     */
-        
+    printf("END REACHED\n");
+    return 0;
 
 }

@@ -1,7 +1,7 @@
 #include "xronoi.h"
 
-void enestotas(struct allData *data){ 
-
+char* enestotas(char** file, int lines, struct allData *data){ 
+    
     char* AxorisKataklida = calloc(1,1024);
     char* xorisKataklidaLT = calloc(1,1024);
     char* xorisKataklidaPT = calloc(1,1024);
@@ -10,8 +10,9 @@ void enestotas(struct allData *data){
     xorisKataklidaLT    = protoTonismeno(AxorisKataklida);
     xorisKataklidaPT    = teleutaioTonismeno(AxorisKataklida);
 
-    if(strcmp("λύνω", data->word) == 0 || strcmp("χωνεύω", data->word) == 0 || strcmp("αντιπροσωπεύω", data->word) == 0){
+    if(strcmp("λύνουμε", data->word) == 0 || strcmp("χωνεύω", data->word) == 0 || strcmp("αντιπροσωπεύω", data->word) == 0){
 
+        printf("lines are = %d\n", lines);
         printf("\nenestots:\n");
         printf("data->length            = %d\n", data->length);
         printf("data->word              = %s\n", data->word);
@@ -22,19 +23,58 @@ void enestotas(struct allData *data){
 
     }
 
-    FILE* f1 = fopen ("../generatedDatabases/greekRimata.txt", "r");
-    if(!f1){ printf("ERROR f1"); exit(1); }
+    char *wordNoEndOrigin = calloc(1, 256);
+    strcpy(wordNoEndOrigin, deleteKataklida(data->word));
+    strcat(wordNoEndOrigin, "ω");
 
+    char *wordwithoutending = calloc (1, 256);
+    char *helper = calloc (1, 256);
     char buffer[255];
-    while (fgets(buffer,255, f1)!= NULL)    { 
+    char *len,*word2,*syllen,*syllabes;
+    int  reader = lines, k = 0, j = 0;
 
+    while(k < reader){
+        
+        len         = strtok(file[k], "|");
+        word2       = strtok(NULL,   "|");
+        syllen      = strtok(NULL,   "|");
+        syllabes    = strtok(NULL,   "|");
+
+        //printf("%d) %s\n",  k, wordNoEndOrigin);
+        printf("%d) %s\n",  k, len);
+        printf("%d) %s\n",  k, word2);
+        printf("%d) %s\n",  k, syllen);
+        printf("%d) %s\n",  k, syllabes);
+        
+        j=1;
+        strcpy(wordwithoutending, "");
+        helper = strtok(syllabes, "-");
+        if(stringToInt(syllen) != 1){
+            while(j < stringToInt(syllen)){
+                strcat(wordwithoutending, helper);
+                helper = strtok(NULL, "-");
+                j++;
+            }
+        }else{
+            strcpy(wordwithoutending, word2);
+        }
+        printf("%d) %s\n",  k, wordwithoutending);
+
+        char* returner = calloc(1, 255);
+        printf("->%s ! %s\n\n", "λυνω", wordwithoutending);
+
+        //strcmp h strstr ?
+        if( strcmp(wordNoEndOrigin, word2) == 0 ){
+
+            sprintf(returner, "Core of \"%s\" is \"%s\"\n", data->word, word2);
+            return returner;
+
+        }   
+
+        k++;
     }
 
-
-
-    // if( strcmp() == 0 ){
-
-    // }
+    return NULL;
 
 }
 

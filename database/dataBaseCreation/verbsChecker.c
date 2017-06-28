@@ -31,7 +31,7 @@ int toInt(char a[]) {
   return n;
 }
 
-
+//fortonei olo to arxeio se ena pinaka kai ton diabazei anapoda 
 //roi kanones gia ta prothemata menontai na ulopoihthoun
 int main(int argc, char** argv){
 
@@ -104,16 +104,13 @@ int main(int argc, char** argv){
         if(strcmp(wcreator, "") == 0)   
             wcreator = strdup(word);
 
-        // printf("len = %s\n", len);
-        // printf("word = %s\n", word);
-        // printf("syllen = %s\n", syllen);
-        // printf("syllabes = %s\n", syllabes);
-        // printf("sylp = %s\n", sylp);
-        // printf("wcreator = %s\n", wcreator);
-        // printf("screator = %s\n\n", screator);
-
-        // if(strcmp(wcreator, "παί") == 0 && strcmp(argc, "έπαίξα") == 0 )
-        //     printf("%s == %s\n", );
+        printf("len = %s\n", len);
+        printf("word = %s\n", word);
+        printf("syllen = %s\n", syllen);
+        printf("syllabes = %s\n", syllabes);
+        printf("sylp = %s\n", sylp);
+        printf("wcreator = %s\n", wcreator);
+        printf("screator = %s\n\n", screator);
 
         if( strstr(argv[1], wcreator) != NULL ){
 

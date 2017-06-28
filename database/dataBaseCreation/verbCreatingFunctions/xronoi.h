@@ -3,7 +3,7 @@
 #include <string.h>
 #include "functionsForXronous.h"
 
-void enestotas(struct allData *data);
+char* enestotas(char** file, int lines, struct allData *data);
 
 void aoristos(FILE* f2, char *word, char* syllabes, char *wcreator, char *screator, char *syllen, char* ch, char *cm, int version);
 void paratatikos(FILE* f2, char *word, char* syllabes, char *wcreator, char *screator, char *syllen, char* ch, char *cm, int version);

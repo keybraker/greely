@@ -107,7 +107,6 @@ int main(int argc, char** argv){
 
     while (fgets(buffer,255, f1)!= NULL)    { 
 
-
         word = strtok(buffer, "|");
 
         strtok(NULL, "|");
