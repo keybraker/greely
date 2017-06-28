@@ -2,6 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct allData{
+
+    int  length;
+    char *word;
+    char *xorisKataklida;
+    char *AxorisKataklida;
+    char *xorisKataklidaLT;
+    char *xorisKataklidaPT;
+
+};
+
+char* deleteKataklida(char* word);
 int stringToInt(char a[]);
 char *afaireshTonou(char *sulabi);
 char *prosthesiTonou(char *sulabi);

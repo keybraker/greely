@@ -1,5 +1,43 @@
 #include "functionsForXronous.h"
 
+char *energEndingArrayOristikiYpotaktiki[] = {
+
+    "ω",
+    "εις",
+    "ει",
+    "ουμε",
+    "ετε",
+    "ουν",
+    "ουνε"
+
+};
+
+char *energEndingArrayProstaktiki[] = {
+
+    "ε",
+    "ετε"
+
+};
+
+char *pathEndingArrayOristikiYpotaktiki[] = {
+
+    "ομαι",
+    "εσαι",
+    "εται",
+    "όμαστε",
+    "εστε",
+    "όσαστε",
+    "ονται"
+
+};
+
+char *pathEndingArrayProstaktiki[] = {
+
+    "ου",
+    "εστε"
+
+};
+
 int stringToInt(char a[]) {
   
   int c, sign, offset, n;
@@ -28,6 +66,71 @@ int stringToInt(char a[]) {
   }
  
   return n;
+}
+
+char* deleteKataklida(char* word){
+
+  char *returner = calloc(1, 64);
+  char *ending = calloc(1, 64);
+
+  int i = 0;
+  for(; i < 7 ; i++){
+    strcpy(ending, energEndingArrayOristikiYpotaktiki[i]);
+    
+    if(strlen(word) < strlen(ending)){
+      returner = NULL;
+
+    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
+      strncpy(returner, word, strlen(word)-strlen(ending));
+      return returner;
+      
+    }
+  }
+
+  i = 0;
+  for(; i < 2 ; i++){
+    strcpy(ending, energEndingArrayProstaktiki[i]);
+    
+    if(strlen(word) < strlen(ending)){ 
+      returner = NULL;
+    
+    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
+      strncpy(returner, word, strlen(word)-strlen(ending));
+      return returner;
+      
+    }
+  }
+
+  i = 0;
+  for(; i < 7 ; i++){
+    strcpy(ending, pathEndingArrayOristikiYpotaktiki[i]);
+    
+    if(strlen(word) < strlen(ending)){ 
+      returner = NULL;
+    
+    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
+      strncpy(returner, word, strlen(word)-strlen(ending));
+      return returner;
+      
+    }
+  }
+
+  i = 0;
+  for(; i < 2 ; i++){
+    strcpy(ending, pathEndingArrayProstaktiki[i]);
+    
+    if(strlen(word) < strlen(ending)){ 
+      returner = NULL;
+    
+    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
+      strncpy(returner, word, strlen(word)-strlen(ending));
+      return returner;
+      
+    }
+  }
+
+  return returner;
+
 }
 
 char* afaireshTonou(char *sulabi){

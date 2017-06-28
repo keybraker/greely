@@ -17,6 +17,7 @@
 #define bold_re   "\e[0m"
 
 int toInt(char a[]) {
+    
   int c, sign, offset, n;
  
   if (a[0] == '-') {  // Handle negative integers
@@ -43,6 +44,7 @@ int toInt(char a[]) {
   }
  
   return n;
+
 }
 
 char *xts[] = {
