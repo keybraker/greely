@@ -117,58 +117,43 @@ char* deleteKataklida(char* word){
   int i = 0;
 
   // παρατατικός
-  
+  printf("ATONO = %s\n", atono(word));
+
   i = 0;
   returnerb = calloc(1, 256);
   returner = calloc(1, 256);
   for(; i < 12 ; i++){
+
     strcpy(ending, pathParatatikosOristiki[i]);
-    printf("word + strlen(word) - strlen(ending) - 2 = '%s', '%s' ending, %lu\n", word + strlen(word) - strlen(ending) - 2, ending, strlen(ending));
+    word = atono(word);
+    ending = atono(ending);
 
-    char* kappa = calloc(1,200);
-    int l = 0;
-    strncpy(kappa, word + strlen(word) - strlen(ending) - 2, 2);
-    while(strcmp(kappa, "\0") != 0){
-      
-      printf("word[%d] = %s\n", l, kappa);
-      strncpy(kappa, word + strlen(word) - strlen(ending) - 2 + l, 2);
-      l+=2;
-
-    }
-    printf("\n");
-    char* kappa2 = calloc(1,200);
-    l = 0;
-    strncpy(kappa2, ending, 2);
-    while(strcmp(kappa2, "\0") != 0){
-      printf("ending[%d] = %s\n", l, kappa2);
-      strncpy(kappa2, ending + l, 2);
-      l+=2;
-
-    }
-   
+    printf("%s, %s, %lu\n", word + strlen(word) - strlen(ending) , ending, strlen(ending));
     if(strlen(word) < strlen(ending)){ 
       returner = NULL;
 
-    }else if( strncmp(word + strlen(word) - strlen(ending) - 2, ending, strlen(ending)) == 0 ){
-      strncpy(returnerb, word, strlen(word) - strlen(ending));
+    }else if( strncmp(word + strlen(word) - strlen(ending) , ending, strlen(ending)) == 0 ){
       printf("PATHITIKI FONI PARATATIKOS\n");
-      strncpy(test, returnerb, 2);
-      
-      return returner;
+      strncpy(returner, word, strlen(word) - strlen(ending));
+
+      return protoTonismeno(returner);
     }
   }
-exit(0);
+  
+  exit(0);
+  
   i = 0;
   returnerb = calloc(1, 256);
   returner = calloc(1, 256);
+
   for(; i < 7 ; i++){
     strcpy(ending, energParatatikosOristiki[i]);
 
-    if(strlen(word) < strlen(ending)){ 
+    if(strlen(atono(word)) < strlen(ending)){ 
       returner = NULL;
     
-    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
-      strncpy(returnerb, word, strlen(word) - strlen(ending));
+    }else if( strncmp(atono(word) + strlen(atono(word)) - strlen(ending), ending, strlen(ending)) == 0 ){
+      strncpy(returnerb, atono(word), strlen(atono(word)) - strlen(ending));
       printf("ENERGITIKI FONI PARATATIKOS\n");
       strncpy(test, returnerb, 2);
       if(strcmp(test,"έ\n")){
@@ -266,7 +251,9 @@ char* afaireshTonou(char *sulabi){
         return "υ";
     }else if( strcmp(sulabi, "ώ") == 0 ){
         return "ω";
-    }else {
+    }else if( strcmp(sulabi, "́") == 0 ){
+        return "";
+    }else{
         return sulabi;
     }
 
