@@ -1,6 +1,6 @@
 #include "verbCreatingFunctions/xronoi.h"
 
-int main(int argc, char** argv){
+int main(int argc, char** argv){ 
         
     if(argc != 2){
         printf("too few arguments\n");
@@ -18,7 +18,7 @@ int main(int argc, char** argv){
     char* buffer            = calloc(1, 256);
     char** file             = calloc(1, 256);
     int i                   = 0;
-    
+
     FILE* f1 = fopen ("../generatedDatabases/greekRimata.txt", "r");
     if(!f1){ printf("ERROR f1"); exit(1); }
 
@@ -34,31 +34,30 @@ int main(int argc, char** argv){
 
     }
 
+    word                    = argv[1]; printf("mpika1\n");
+    xorisKataklida          = deleteKataklida(word); printf("mpika2\n");
+    AxorisKataklida         = atono(xorisKataklida); printf("mpika3\n");
+    xorisKataklidaLT        = protoTonismeno(AxorisKataklida); printf("mpika4\n");
+    xorisKataklidaPT        = teleutaioTonismeno(AxorisKataklida); printf("mpika5\n");
 
-    word                    = argv[1];
-    xorisKataklida          = deleteKataklida(word);
-    AxorisKataklida         = atono(xorisKataklida);
-    xorisKataklidaLT        = protoTonismeno(AxorisKataklida);
-    xorisKataklidaPT        = teleutaioTonismeno(AxorisKataklida);
+    data->length            = strlen(word); printf("mpika6\n");
+    data->word              = word; printf("mpika7\n");
+    data->xorisKataklida    = xorisKataklida; printf("mpika8\n");
+    data->AxorisKataklida   = AxorisKataklida; printf("mpika9\n");
+    data->xorisKataklidaLT  = xorisKataklidaLT; printf("mpika10\n");
+    data->xorisKataklidaPT  = xorisKataklidaPT; printf("mpika11\n");
+ printf("mpika\n");
+    // if(strcmp("λύνω", data->word) == 0 || strcmp("χωνεύω", data->word) == 0 || strcmp("αντιπροσωπεύω", data->word) == 0){
 
-    data->length            = strlen(word);
-    data->word              = word;
-    data->xorisKataklida    = xorisKataklida;
-    data->AxorisKataklida   = AxorisKataklida;
-    data->xorisKataklidaLT  = xorisKataklidaLT;
-    data->xorisKataklidaPT  = xorisKataklidaPT;
+    //     printf("\nekso:\n");
+    //     printf("data->length            = %d\n", data->length);
+    //     printf("data->word              = %s\n", data->word);
+    //     printf("data->xorisKataklida    = %s\n", data->xorisKataklida);
+    //     printf("data->AxorisKataklida   = %s\n", data->AxorisKataklida);
+    //     printf("data->xorisKataklidaLT  = %s\n", data->xorisKataklidaLT);
+    //     printf("data->xorisKataklidaPT  = %s\n", data->xorisKataklidaPT);
 
-    if(strcmp("λύνω", data->word) == 0 || strcmp("χωνεύω", data->word) == 0 || strcmp("αντιπροσωπεύω", data->word) == 0){
-
-        printf("\nekso:\n");
-        printf("data->length            = %d\n", data->length);
-        printf("data->word              = %s\n", data->word);
-        printf("data->xorisKataklida    = %s\n", data->xorisKataklida);
-        printf("data->AxorisKataklida   = %s\n", data->AxorisKataklida);
-        printf("data->xorisKataklidaLT  = %s\n", data->xorisKataklidaLT);
-        printf("data->xorisKataklidaPT  = %s\n", data->xorisKataklidaPT);
-
-    }
+    // }
 
     if( (returner = enestotas(file, i, data)) != NULL )
         printf("%s\n", returner); 
