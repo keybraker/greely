@@ -26,10 +26,10 @@ int main(int argc, char** argv){
     master = bufferKatalixis(master);
 
     while (fgets(buffer,255, f1)!= NULL)    { 
-        // oti nanai prosoxi sti calloc kai realloc
-        file = realloc(file, 255*10/*strlen(buffer)+1*/* sizeof(char*));
+
+        file = realloc(file, 255 * 10 * sizeof(char*));
         if(file[i] == NULL){
-            file[i] = calloc(2*255/*strlen(buffer)+1*/, sizeof(char));
+            file[i] = calloc(2*255, sizeof(char));
             strcpy(file[i], buffer);
 
         }
@@ -37,20 +37,20 @@ int main(int argc, char** argv){
 
     }
 
-    word                    = argv[1]; printf("mpika1\n");
-    xorisKataklida          = deleteKataklida(word); printf("mpika2\n");
-    AxorisKataklida         = atono(xorisKataklida); printf("mpika3\n");
-    xorisKataklidaLT        = protoTonismeno(AxorisKataklida); printf("mpika4\n");
-    xorisKataklidaPT        = teleutaioTonismeno(AxorisKataklida); printf("mpika5\n");
+    word                    = argv[1]; 
+    xorisKataklida          = deleteKataklida(word, master); 
+    AxorisKataklida         = atono(xorisKataklida); 
+    xorisKataklidaLT        = protoTonismeno(AxorisKataklida); 
+    xorisKataklidaPT        = teleutaioTonismeno(AxorisKataklida); 
 
-    data->length            = strlen(word); printf("mpika6\n");
-    data->word              = word; printf("mpika7\n");
-    data->xorisKataklida    = xorisKataklida; printf("mpika8\n");
-    data->AxorisKataklida   = AxorisKataklida; printf("mpika9\n");
-    data->xorisKataklidaLT  = xorisKataklidaLT; printf("mpika10\n");
-    data->xorisKataklidaPT  = xorisKataklidaPT; printf("mpika11\n");
+    data->length            = strlen(word); 
+    data->word              = word; 
+    data->xorisKataklida    = xorisKataklida; 
+    data->AxorisKataklida   = AxorisKataklida; 
+    data->xorisKataklidaLT  = xorisKataklidaLT; 
+    data->xorisKataklidaPT  = xorisKataklidaPT; 
 
-    if( (returner = xronoi(file, i, data)) != NULL )
+    if( (returner = xronoi(file, master, i, data)) != NULL )
         printf("%s\n", returner); 
    
     printf("END REACHED\n");

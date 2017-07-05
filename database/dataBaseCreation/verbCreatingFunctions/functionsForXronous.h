@@ -6,7 +6,7 @@
 struct katalixis* bufferKatalixis(struct katalixis* master);
 struct katalixis* loadKatalixis(struct katalixis* master, char *kata, int xronos, int foni, int klisi);
 
-char* deleteKataklida(char* word);
+char* deleteKataklida(char* word, struct katalixis* master);
 int stringToInt(char a[]);
 char *afaireshTonou(char *sulabi);
 char *prosthesiTonou(char *sulabi);

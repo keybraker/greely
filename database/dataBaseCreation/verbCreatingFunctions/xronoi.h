@@ -3,4 +3,4 @@
 #include <string.h>
 #include "functionsForXronous.h"
 
-char* xronoi(char** file, int lines, struct allData *data);
+char* xronoi(char** file, struct katalixis* master, int lines, struct allData *data);

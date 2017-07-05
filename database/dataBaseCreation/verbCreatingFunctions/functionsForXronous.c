@@ -156,7 +156,7 @@ int stringToInt(char a[]) {
   return n;
 }
 
-char* deleteKataklida(char* word){ 
+char* deleteKataklida(char* word, struct katalixis* master){ 
 
   char *returner = calloc(1, 256);
   char *returnerb = calloc(1, 256);
@@ -164,115 +164,35 @@ char* deleteKataklida(char* word){
   char* test = calloc(1, 256);
   int i = 0;
 
-  // παρατατικός
-  printf("ATONO = %s\n", atono(word));
-
-  i = 0;
   returnerb = calloc(1, 256);
   returner = calloc(1, 256);
-  for(; i < 12 ; i++){
 
-    strcpy(ending, pathParatatikosOristiki[i]);
-    word = atono(word);
-    ending = atono(ending);
+  word = atono(word);
 
+  struct katalixis* reader = master;
+  while(reader){ 
+    
+    ending = atono(reader->katalixi);
     printf("%s, %s, %lu\n", word + strlen(word) - strlen(ending) , ending, strlen(ending));
+
     if(strlen(word) < strlen(ending)){ 
       returner = NULL;
 
     }else if( strncmp(word + strlen(word) - strlen(ending) , ending, strlen(ending)) == 0 ){
-      printf("PATHITIKI FONI PARATATIKOS\n");
       strncpy(returner, word, strlen(word) - strlen(ending));
 
       return protoTonismeno(returner);
     }
-  }
-    
-  i = 6;
-  returnerb = calloc(1, 256);
-  returner = calloc(1, 256);
 
-  for(; i >= 0 ; i--){ printf("i is %d\n", i);
-    strcpy(ending, energParatatikosOristiki[i]);
-
-    if(strlen(atono(word)) < strlen(ending)){ 
-      returner = NULL;
-    
-    }else if( strncmp(atono(word) + strlen(atono(word)) - strlen(ending), ending, strlen(ending)) == 0 ){ 
-      strncpy(returnerb, atono(word), strlen(atono(word)) - strlen(ending));
-      returner = protoTonismeno(returnerb);
-      printf("ENERGITIKI FONI PARATATIKOS with %s\n", ending);
-
-      //πρεπει να βρω τροπο να βλεπω οτι το προτο γραμμα ειναι το ε  
-      return returner;
-      
-    }
+    reader = reader->next;
   }
 
-  //ενεστώτας
-
-  i = 0;
-  for(; i < 7 ; i++){
-    strcpy(ending, energEndingArrayOristikiYpotaktiki[i]);
-
-    if(strlen(word) < strlen(ending)){
-      returner = NULL;
-
-    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
-      strncpy(returner, word, strlen(word) - strlen(ending));
-      printf("ENERGITIKI FONI ENESTOTAS ORISTIKIS\n");
-      return returner;
-      
-    }
-  }
-
-  i = 0;
-  for(; i < 2 ; i++){
-    strcpy(ending, energEndingArrayProstaktiki[i]);
     
-    if(strlen(word) < strlen(ending)){ 
-      returner = NULL;
-    
-    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
-      strncpy(returner, word, strlen(word) - strlen(ending));
-      printf("word(%s) = ending(%s)\n",word,ending);
-      printf("ENERGITIKI FONI ENESTOTAS PROSTAKTIKIS\n");
-      return returner;
-      
-    }
-  }
 
-  i = 0;
-  for(; i < 7 ; i++){
-    strcpy(ending, pathEndingArrayOristikiYpotaktiki[i]);
     
-    if(strlen(word) < strlen(ending)){ 
-      returner = NULL;
-    
-    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
-      strncpy(returner, word, strlen(word) - strlen(ending));
-      printf("PATHITIKI FONI ENESTOTAS YPOTAKTIKIS\n");
-      return returner;
-      
-    }
-  }
+  
 
-  i = 0;
-  for(; i < 2 ; i++){
-    strcpy(ending, pathEndingArrayProstaktiki[i]);
-    
-    if(strlen(word) < strlen(ending)){ 
-      returner = NULL;
-    
-    }else if( strncmp(word + strlen(word) - strlen(ending), ending, strlen(ending)) == 0 ){
-      strncpy(returner, word, strlen(word) - strlen(ending));
-      printf("PATHITIKI FONI ENESTOTAS PROSTAKTIKI\n");
-      return returner;
-      
-    }
-  }
-
-  return returner;
+  return "NOTHING";
 
 }
 

@@ -1,6 +1,6 @@
 #include "xronoi.h"
 
-char* xronoi(char** file, int lines, struct allData *data){ 
+char* xronoi(char** file, struct katalixis* master, int lines, struct allData *data){ 
 
     printf("IN XRONOI\n");
     
@@ -13,10 +13,9 @@ char* xronoi(char** file, int lines, struct allData *data){
     xorisKataklidaPT    = teleutaioTonismeno(AxorisKataklida);
 
     char *wordNoEndOrigin = calloc(1, 256);
-    strcpy(wordNoEndOrigin, deleteKataklida(data->word));
-    printf("deleteKataklida(data->word)) = %s\n", deleteKataklida(data->word));
+    strcpy(wordNoEndOrigin, deleteKataklida(data->word, master));
     strcat(wordNoEndOrigin, "ω");
-    printf("\n\nwordNoEndOrigin = %s\n", wordNoEndOrigin);
+    
 
     char *wordwithoutending = calloc (1, 256);
     char *helper = calloc (1, 256);
