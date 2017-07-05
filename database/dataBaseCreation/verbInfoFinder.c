@@ -22,6 +22,9 @@ int main(int argc, char** argv){
     FILE* f1 = fopen ("../generatedDatabases/greekRimata.txt", "r");
     if(!f1){ printf("ERROR f1"); exit(1); }
 
+    struct katalixis* master = NULL;
+    master = bufferKatalixis(master);
+
     while (fgets(buffer,255, f1)!= NULL)    { 
         // oti nanai prosoxi sti calloc kai realloc
         file = realloc(file, 255*10/*strlen(buffer)+1*/* sizeof(char*));
@@ -46,27 +49,10 @@ int main(int argc, char** argv){
     data->AxorisKataklida   = AxorisKataklida; printf("mpika9\n");
     data->xorisKataklidaLT  = xorisKataklidaLT; printf("mpika10\n");
     data->xorisKataklidaPT  = xorisKataklidaPT; printf("mpika11\n");
-    printf("mpika\n");
-    // if(strcmp("λύνω", data->word) == 0 || strcmp("χωνεύω", data->word) == 0 || strcmp("αντιπροσωπεύω", data->word) == 0){
 
-    //     printf("\nekso:\n");
-    //     printf("data->length            = %d\n", data->length);
-    //     printf("data->word              = %s\n", data->word);
-    //     printf("data->xorisKataklida    = %s\n", data->xorisKataklida);
-    //     printf("data->AxorisKataklida   = %s\n", data->AxorisKataklida);
-    //     printf("data->xorisKataklidaLT  = %s\n", data->xorisKataklidaLT);
-    //     printf("data->xorisKataklidaPT  = %s\n", data->xorisKataklidaPT);
-
-    // }
-
-    returner = enestotas(file, i, data);
-    printf("kaparoSSSSS\n");
-    
-    // if( returner != NULL )
-    //     printf("%s\n", returner); 
-    /*
-
-    */
+    if( (returner = xronoi(file, i, data)) != NULL )
+        printf("%s\n", returner); 
+   
     printf("END REACHED\n");
     return 0;
 

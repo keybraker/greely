@@ -50,8 +50,6 @@ char *energParatatikosOristiki[] = {
 
 };
 
-
-
 char *pathParatatikosOristiki[] = {
 
     "όμουν","όμουνα",
@@ -63,8 +61,58 @@ char *pathParatatikosOristiki[] = {
 
 };
 
+struct katalixis* bufferKatalixis(struct katalixis* master){ 
 
+  master = loadKatalixis(master, "ω",0,0,0);
+  master = loadKatalixis(master, "εις",0,0,0);
+  master = loadKatalixis(master, "ει",0,0,0);
+  master = loadKatalixis(master, "ουμε",0,0,0);
+  master = loadKatalixis(master, "ετε",0,0,0);
+  master = loadKatalixis(master, "ουν",0,0,0);
+  master = loadKatalixis(master, "ουνε",0,0,0);
 
+  return master;
+
+}
+
+struct katalixis* loadKatalixis(struct katalixis* master, char *kata, int xronos, int foni, int klisi){ 
+  
+
+  if(!master){ 
+    
+    master = calloc (sizeof(struct katalixis), 1);
+    master->katalixi = calloc (sizeof(char), strlen(kata));
+
+    strcpy(master->katalixi, kata);
+    master->xronos = xronos;
+    master->foni = foni;
+    master->klisi = klisi;
+    master->next = NULL;
+
+  }else{ 
+    
+    struct katalixis* reader = master;
+
+    while(reader->next){ 
+      reader = reader->next;
+    }
+
+    struct katalixis* new = calloc (sizeof(struct katalixis), 1);
+    new->katalixi = calloc (sizeof(char), strlen(kata));
+
+    strcpy(new->katalixi, kata);
+    new->xronos = xronos;
+    new->foni = foni;
+    new->klisi = klisi;
+    new->next = NULL;
+
+    reader->next = new;
+
+  }
+
+  return master;
+
+}
 
 
 
@@ -150,18 +198,13 @@ char* deleteKataklida(char* word){
     if(strlen(atono(word)) < strlen(ending)){ 
       returner = NULL;
     
-    }else if( strncmp(atono(word) + strlen(atono(word)) - strlen(ending), ending, strlen(ending)) == 0 ){
+    }else if( strncmp(atono(word) + strlen(atono(word)) - strlen(ending), ending, strlen(ending)) == 0 ){ 
       strncpy(returnerb, atono(word), strlen(atono(word)) - strlen(ending));
+      returner = protoTonismeno(returnerb);
       printf("ENERGITIKI FONI PARATATIKOS with %s\n", ending);
-      strncpy(test, returnerb, 2);
-      if(strcmp(test,"έ\n")){
-        strncpy(returner, &returnerb[2], strlen(returnerb) - 2);
-        
-        return protoTonismeno(returner);
-      }else{
-        
-        return returner;
-      }
+
+      //πρεπει να βρω τροπο να βλεπω οτι το προτο γραμμα ειναι το ε  
+      return returner;
       
     }
   }

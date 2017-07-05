@@ -1,17 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "structerino.h"
 
-struct allData{
-
-    int  length;
-    char *word;
-    char *xorisKataklida;
-    char *AxorisKataklida;
-    char *xorisKataklidaLT;
-    char *xorisKataklidaPT;
-
-};
+struct katalixis* bufferKatalixis(struct katalixis* master);
+struct katalixis* loadKatalixis(struct katalixis* master, char *kata, int xronos, int foni, int klisi);
 
 char* deleteKataklida(char* word);
 int stringToInt(char a[]);
