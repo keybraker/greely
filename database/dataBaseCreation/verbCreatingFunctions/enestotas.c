@@ -10,21 +10,6 @@ char* enestotas(char** file, int lines, struct allData *data){ printf("kappa\n")
     xorisKataklidaLT    = protoTonismeno(AxorisKataklida);
     xorisKataklidaPT    = teleutaioTonismeno(AxorisKataklida);
 
-    // if(strcmp("λύνουμε", data->word) == 0 || strcmp("χωνεύω", data->word) == 0 || strcmp("αντιπροσωπεύω", data->word) == 0){
-
-    //     printf("lines are = %d\n", lines);
-    //     printf("\nenestots:\n");
-    //     printf("data->length            = %d\n", data->length);
-    //     printf("data->word              = %s\n", data->word);
-    //     printf("data->xorisKataklida    = %s\n", data->xorisKataklida);
-    //     printf("data->AxorisKataklida   = %s\n", data->AxorisKataklida);
-    //     printf("data->xorisKataklidaLT  = %s\n", data->xorisKataklidaLT);
-    //     printf("data->xorisKataklidaPT  = %s\n", data->xorisKataklidaPT);
-
-    // }
-
-    //printf("data->word = ");printf("%s\n", data->word);
-
     char *wordNoEndOrigin = calloc(1, 256);
     strcpy(wordNoEndOrigin, deleteKataklida(data->word));
     strcat(wordNoEndOrigin, "ω");
@@ -34,7 +19,7 @@ char* enestotas(char** file, int lines, struct allData *data){ printf("kappa\n")
     char buffer[255];
     char *len,*word2,*syllen,*syllabes;
     int  reader = lines, k = 0, j = 0;
-
+    printf("hjhjhj = %s\n", wordNoEndOrigin);
     while(k < reader){
         
         len         = strtok(file[k], "|");
@@ -42,7 +27,7 @@ char* enestotas(char** file, int lines, struct allData *data){ printf("kappa\n")
         syllen      = strtok(   NULL, "|");
         syllabes    = strtok(   NULL, "|");
 
-        printf("%d) %s\n",  k, wordNoEndOrigin);
+        // printf("%d) %s\n",  k, wordNoEndOrigin);
         // printf("%d) %s\n",  k, len);
         // printf("%d) %s\n",  k, word2);
         // printf("%d) %s\n",  k, syllen);
@@ -60,12 +45,9 @@ char* enestotas(char** file, int lines, struct allData *data){ printf("kappa\n")
         }else{
             strcpy(wordwithoutending, word2);
         }
-        //printf("%d) %s\n",  k, wordwithoutending);
 
         char* returner = calloc(1, 255);
-        // printf("->%s ! %s\n\n", "λυνω", wordwithoutending);
 
-        //strcmp h strstr ?
         if( strcmp(wordNoEndOrigin, word2) == 0 ){
 
             sprintf(returner, "Core of \"%s\" is \"%s\"\n", data->word, word2);

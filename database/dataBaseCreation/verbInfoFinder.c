@@ -46,7 +46,7 @@ int main(int argc, char** argv){
     data->AxorisKataklida   = AxorisKataklida; printf("mpika9\n");
     data->xorisKataklidaLT  = xorisKataklidaLT; printf("mpika10\n");
     data->xorisKataklidaPT  = xorisKataklidaPT; printf("mpika11\n");
- printf("mpika\n");
+    printf("mpika\n");
     // if(strcmp("λύνω", data->word) == 0 || strcmp("χωνεύω", data->word) == 0 || strcmp("αντιπροσωπεύω", data->word) == 0){
 
     //     printf("\nekso:\n");
@@ -59,8 +59,11 @@ int main(int argc, char** argv){
 
     // }
 
-    if( (returner = enestotas(file, i, data)) != NULL )
-        printf("%s\n", returner); 
+    returner = enestotas(file, i, data);
+    printf("kaparoSSSSS\n");
+    
+    // if( returner != NULL )
+    //     printf("%s\n", returner); 
     /*
 
     */

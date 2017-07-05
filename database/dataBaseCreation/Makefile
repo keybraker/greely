@@ -4,7 +4,7 @@
 
 2:
 	gcc -o generateVerbs verbInfoFinder.c verbCreatingFunctions/functionsForXronous.c verbCreatingFunctions/enestotas.c verbCreatingFunctions/paratatikos.c verbCreatingFunctions/aoristos.c verbCreatingFunctions/eksakolouthitikos_mellontas.c verbCreatingFunctions/stigmiaios_mellontas.c verbCreatingFunctions/suntelesmenos_mellontas.c verbCreatingFunctions/sunoptikos_mellontas.c verbCreatingFunctions/parakeimenos.c verbCreatingFunctions/upersuntelikos.c 
-	./generateVerbs λυνόσασταν
+	./generateVerbs λύνανε
 
 3:
 	gcc -o checkHeart verbsChecker.c

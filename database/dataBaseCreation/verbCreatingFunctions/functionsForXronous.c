@@ -139,14 +139,12 @@ char* deleteKataklida(char* word){
       return protoTonismeno(returner);
     }
   }
-  
-  exit(0);
-  
-  i = 0;
+    
+  i = 6;
   returnerb = calloc(1, 256);
   returner = calloc(1, 256);
 
-  for(; i < 7 ; i++){
+  for(; i >= 0 ; i--){ printf("i is %d\n", i);
     strcpy(ending, energParatatikosOristiki[i]);
 
     if(strlen(atono(word)) < strlen(ending)){ 
@@ -154,7 +152,7 @@ char* deleteKataklida(char* word){
     
     }else if( strncmp(atono(word) + strlen(atono(word)) - strlen(ending), ending, strlen(ending)) == 0 ){
       strncpy(returnerb, atono(word), strlen(atono(word)) - strlen(ending));
-      printf("ENERGITIKI FONI PARATATIKOS\n");
+      printf("ENERGITIKI FONI PARATATIKOS with %s\n", ending);
       strncpy(test, returnerb, 2);
       if(strcmp(test,"έ\n")){
         strncpy(returner, &returnerb[2], strlen(returnerb) - 2);
