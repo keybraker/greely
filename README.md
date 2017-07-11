@@ -1,4 +1,4 @@
-![alt text](https://github.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/blob/master/haive.jpg)
+![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/greely%20logo.png)
 
 # Lexical and Grammatical Analyzer for Greek with the use of Flex Bison
 
