@@ -63,6 +63,8 @@ char *pathParatatikosOristiki[] = {
 
 struct katalixis* bufferKatalixis(struct katalixis* master){ 
 
+  // ΕΝΕΣΤΩΤΑΣ
+  // ΕΝΕΡΓΗΤΙΚΗ
   master = loadKatalixis(master, "ω",0,0,0);
   master = loadKatalixis(master, "εις",0,0,0);
   master = loadKatalixis(master, "ει",0,0,0);
@@ -70,6 +72,21 @@ struct katalixis* bufferKatalixis(struct katalixis* master){
   master = loadKatalixis(master, "ετε",0,0,0);
   master = loadKatalixis(master, "ουν",0,0,0);
   master = loadKatalixis(master, "ουνε",0,0,0);
+
+  master = loadKatalixis(master, "ε",0,0,0);
+  master = loadKatalixis(master, "ετε",0,0,0);
+  
+  // ΠΑΘΗΤΙΚΗ
+  master = loadKatalixis(master, "ομαι",0,0,0);
+  master = loadKatalixis(master, "εσαι",0,0,0);
+  master = loadKatalixis(master, "εται",0,0,0);
+  master = loadKatalixis(master, "όμαστε",0,0,0);
+  master = loadKatalixis(master, "εστε",0,0,0);
+  master = loadKatalixis(master, "όσαστε",0,0,0);
+  master = loadKatalixis(master, "ονται",0,0,0);
+
+  master = loadKatalixis(master, "ου",0,0,0);
+  master = loadKatalixis(master, "εστε",0,0,0);
 
   return master;
 
