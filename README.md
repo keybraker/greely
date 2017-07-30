@@ -1,3 +1,5 @@
+#### Disclaimer: This is a very early stage in the process of greely, key functions don't work, just the shell of the program is running, production will continue in Q3-17.
+
 ![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/greely%20logo.png)
 
 # Lexical and Grammatical Analyzer for Greek with the use of Flex Bison
