@@ -1,19 +1,15 @@
-1:
+1: # THIS IS TO CREATE WORDS FILE
 	gcc -o generateDatabases wordsToDatabases.c
 	./generateDatabases
 
 2:
 	gcc -o generateVerbs verbInfoFinder.c verbCreatingFunctions/functionsForXronous.c verbCreatingFunctions/xronoi.c
 	clear
-	./generateVerbs λύνουμε
+	./generateVerbs ζηλεύουμε
 
 3:
 	gcc -o checkHeart verbsChecker.c
 	./checkHeart ζηλεύουμε
-
-4:
-	gcc -o verbId verbsIdentifier.c
-	./verbId ζηλεύουμε
 
 clean:
 	rm  generateDatabases generateVerbs checkHeart verbId

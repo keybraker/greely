@@ -33,7 +33,7 @@ int main(int argc, char** argv){
         sylpp = syl;
         while(syl != NULL){
             sylpp = sylp;
-            sylp = syl;
+            sylp = syl; 
             syl = strtok(NULL, "-");
         }      
         
