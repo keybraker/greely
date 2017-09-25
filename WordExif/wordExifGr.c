@@ -11,18 +11,13 @@
 *
 */
 
+#include "includerino.h"
 #include "wordExifFunc.h"
 
 //fortonei olo to arxeio se ena pinaka kai ton diabazei anapoda 
 //roi kanones gia ta prothemata menontai na ulopoihthoun
-int main(int argc, char** argv){
-
-    if(argc != 2){
-        printf("too few arguments\n");
-        exit(0);
-    }
-
-    FILE* f1 = fopen ("wordSyllabusGr2.txt", "r");
+int WordExifFunctioner(char* wordInput){
+    FILE* f1 = fopen ("wordExif/wordSyllabusGr2.txt", "r");
     if(!f1){ printf("ERROR f1"); exit(1); }
 
     int     type;
@@ -62,7 +57,7 @@ int main(int argc, char** argv){
       syllabes    = strtok(NULL,      "|");
       type        = toInt(strtok(NULL,      "|"));
 
-      if( strcmp(word, argv[1]) == 0 ){
+      if( strcmp(word, wordInput) == 0 ){
         printf("\n[");
         printf(UNDER "database" DEUNDER);
         printf("]: ");
@@ -90,8 +85,6 @@ int main(int argc, char** argv){
         syllen      = strtok(NULL,      "|");
         syllabes    = strtok(NULL,      "|");
         type        = toInt(strtok(NULL,      "|"));
-        
-        
 
         syllabesEditable = calloc(strlen(syllabes),sizeof(char));     strcpy(syllabesEditable, syllabes);  
         wordWithoutEnding = calloc(255 * strlen(word),sizeof(char));
@@ -109,9 +102,9 @@ int main(int argc, char** argv){
         // printf("wordWithoutEnding = %s\n", wordWithoutEnding);
         // printf("syllabesEditable = %s\n", syllabesEditable);
 
-        if( strncmp(wordWithoutEnding, argv[1], strlen(wordWithoutEnding)) == 0 ){
+        if( strncmp(wordWithoutEnding, wordInput, strlen(wordWithoutEnding)) == 0 ){
             printf("\nΗ λέξη ");
-            printf(UNDER "%s" DEUNDER, argv[1]);
+            printf(UNDER "%s" DEUNDER, wordInput);
             printf(" δεν βρέθηκε στη βάση,\nαλλά ο πυρήνας της είναι ");
             printf(UNDER "%s" DEUNDER, wordWithoutEnding);
             printf(".\n");
@@ -124,7 +117,7 @@ int main(int argc, char** argv){
 
     }
 
-    printf("No core for word \"%s\" was found in Database.\n", argv[1]);
+    printf("No core for word \"%s\" was found in Database.\n", wordInput);
     return 0;
 
 }

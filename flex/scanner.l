@@ -115,11 +115,11 @@ int isName(char* name, char* type){
 	FILE *nameDatabase;
 	FILE *newNameDatabase;
 
-	if ( (nameDatabase = fopen("database/greekNameDatabase.txt", "r")) == NULL) { 
+	if ( (nameDatabase = fopen("database [obsolete]/greekNameDatabase.txt", "r")) == NULL) { 
 		printf (a_c_r"3Couldn't open file nameDatabase %d\n"a_c_re, errno);
         exit(0);
     }
-    if ( (newNameDatabase = fopen("database/newGreekNameDatabase.txt", "w+")) == NULL) { 
+    if ( (newNameDatabase = fopen("database [obsolete]/newGreekNameDatabase.txt", "w+")) == NULL) { 
 		printf (a_c_r"4Couldn't open file nameDatabase %d\n"a_c_re, errno);
         exit(0);
     }
@@ -208,7 +208,7 @@ int isName(char* name, char* type){
     fclose (newNameDatabase);
 	fclose (nameDatabase);
 
-		copyNewToOldFile("database/greekNameDatabase.txt","database/newGreekNameDatabase.txt");
+		copyNewToOldFile("database [obsolete]/greekNameDatabase.txt","database [obsolete]/newGreekNameDatabase.txt");
 	
 	return returner;
 
@@ -225,7 +225,7 @@ char* ousiastikoExists(char* name, char* type){
 	//printf("name = %s, type = %s\n\n",name,type);
 	FILE *endingDatabase;
 
-	if ( (endingDatabase = fopen("database/apeutheiasmesastokodika greekEndingDatabase[genos].txt", "r")) == NULL) { 
+	if ( (endingDatabase = fopen("database [obsolete]/apeutheiasmesastokodika greekEndingDatabase[genos].txt", "r")) == NULL) { 
 		printf (a_c_r"5Couldn't open file endingDatabase %d\n"a_c_re, errno);
         exit(0);
     }

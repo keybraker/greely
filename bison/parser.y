@@ -4,6 +4,7 @@
     #include <stdlib.h>
     #include <string.h>
     #include <assert.h>
+    #include "../WordExif/includerino.h"
 
     #define a_c_r     "\x1b[31m"
     #define a_c_g     "\x1b[32m"
@@ -181,7 +182,7 @@
 
     LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               printf(a_c_y"➥ σημείο στίξης είναι: %d\n"a_c_re,(yylval.stiksi)); }
 
-    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                   printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
+    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                   printf(a_c_y"➥ λέξη είναι: %d\n"a_c_re, WordExifFunctioner(yylval.leksi)); }
                 |EPITHETO           { $$ = yylval.epitheto;                     printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
                 |RIMA               { $$ = yylval.rima;                         printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
                 |EPIRIMA            { $$ = yylval.epirima;                      printf(a_c_y"➥ λέξη είναι: %s\n"a_c_re,(yylval.leksi)); }
@@ -195,7 +196,7 @@
 
 
 int yyerror (char* yaccProvidedMessage){
-   
+
    printf("%s\n", yaccProvidedMessage);
    return 0;
 
