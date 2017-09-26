@@ -20,37 +20,36 @@
     #define bold      "\e[1m"
     #define bold_re   "\e[0m"
 
-    char *stikser[] = { 
+    char *stiksiToString[18] = { 
         
-        "comma",
-        "teleia",
-        "erotimatiko",
-        "anokatoteleia",
-        "thaumastiko",
-        "kato paula",
-        "openpar",
-        "closepar", 
-        "openblock",
-        "closeclock", 
-        "openbracket",
-        "closebracket", 
-        "plus", 
-        "minus",
-        "mul", 
-        "div",
-        "equal", 
-        "equal",
-        "enter"
+        "κόμμα",
+        "τελεία",
+        "ερωτηματικό",
+        "ανώ και κάτω τελεία",
+        "θαυμαστικό",
+        "κάτω παύλα",
+        "άνοιγμα παρένθεσης",
+        "κλείσιμο παρένθεσης", 
+        "άνοιγμα μπλόκ",
+        "κλείσιμο μπλόκ", 
+        "άνοιγμα αγκύλης",
+        "κλείσιμο αγκύλης",
+        "πρόσθεση", 
+        "μείων",
+        "επί", 
+        "διά",
+        "ίσον", 
+        "έντερ"
 
     };
 
-      char *mikra[] = {
+      char *mikra[31] = {
         "α","ά","β","γ","δ","ε","έ","ζ","η","ή","θ",
         "ι","ί","κ","λ","μ","ν","ξ","ο","ό","π","ρ",
         "σ","τ","υ","ύ","φ","χ","ψ","ω","ώ"
     };
 
-     char *megala[] = {
+     char *megala[31] = {
         "Α","Ά","Β","Γ","Δ","Ε","Έ","Ζ","Η","Ή","Θ",
         "Ι","Ι","Κ","Λ","Μ","Ν","Ξ","Ο","Ό","Π","Ρ",
         "Σ","Τ","Υ","Ύ","Φ","Χ","Ψ","Ω","Ώ"
@@ -168,24 +167,24 @@
                 |LARITHMOS          { $<leksi>$ = calloc(1, sizeof(char*));     sprintf($<leksi>$, "%f", $1); }
                 |LSTIKSI            { $<leksi>$ = strdup(getPunctuation($1));   }//printf(a_c_y"  ➥ Το μέρος του λόγου είναι: %s\n"a_c_re,($$));/*switch case*/}
 
-    LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το αρσενικό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το αρσενικό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+    LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το αρσενικό άρθρο ενικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+                |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το αρσενικό άρθρο πληθυντικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
 
-                |THY_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το θηλυκό άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |THY_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το θηλυκό άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |THY_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το θηλυκό άρθρο ενικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+                |THY_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το θηλυκό άρθρο πληθυντικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
 
-                |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το ουδέτερο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το ουδέτερο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το ουδέτερο άρθρο ενικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+                |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το ουδέτερο άρθρο πληθυντικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
 
-                |_EN_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το άγνωστο άρθρο ενικού είναι: %s\n"a_c_re,(yylval.arthro)); }
-                |_PL_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το άγνωστο άρθρο πληθυντικού είναι: %s\n"a_c_re,(yylval.arthro)); }
+                |_EN_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το άγνωστο άρθρο ενικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+                |_PL_AR             { $<arthro>$ = yylval.arthro;               printf(a_c_y"Το άγνωστο άρθρο πληθυντικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
 
     LARITHMOS:  ARITHMOS            { $<arithmos>$ = yylval.arithmos;           printf(a_c_y"Ο αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
 
-    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               printf(a_c_y"Το σημείο στίξης είναι: %d\n"a_c_re,(yylval.stiksi)); }
+    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               printf(a_c_y"Το %s είναι σημείο στίξης\n\n"a_c_re, stiksiToString[yylval.stiksi]); }
 
     LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                   printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
-                |ONOMATA            { $$ = yylval.onomata;                                                                                          }
+                |ONOMATA            { $$ = yylval.onomata;                                                                                           }
                 |EPITHETO           { $$ = yylval.epitheto;                     printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
                 |RIMA               { $$ = yylval.rima;                         printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
                 |EPIRIMA            { $$ = yylval.epirima;                      printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }

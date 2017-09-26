@@ -57,7 +57,7 @@ char* ptosi[4] = {
   "κλητική"
 };
 
-char* epirima[7] = { 
+char* epirimata[7] = { 
   "τοπικό",
   "χρονικό",
   "τροπικό",

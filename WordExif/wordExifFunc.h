@@ -60,7 +60,7 @@ void printRima(char* rima){
 
   printf("Η λέξη ");
   printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης.\n", prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
+  printf(" είναι ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης.\n\n", prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
 
 }
 
@@ -82,7 +82,7 @@ void printEpitheto(char* epitheto){
 
   printf("Η λέξη ");
   printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι επίθετο, %s αριθμου , γένος %s , %s πτώση.\n", arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+  printf(" είναι επίθετο, %s αριθμου , γένος %s , %s πτώση.\n\n", arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
 
 }
 
@@ -104,7 +104,7 @@ void printOusiastiko(char* ousiastiko){
 
   printf("Η λέξη ");
   printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι ουσιαστικό, %s αριθμου , γένος %s , %s πτώση.\n", arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+  printf(" είναι ουσιαστικό, %s αριθμου , γένος %s , %s πτώση.\n\n", arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
 
 }
 
@@ -116,7 +116,7 @@ void printMetoxi(char* metoxi){
 
   printf("Η λέξη ");
   printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι μετοχή.\n");
+  printf(" είναι μετοχή.\n\n");
 
 }
 
@@ -133,7 +133,7 @@ void printArithmitika(char* arithmitika){
 
   printf("Η λέξη ");
   printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι αριθμητικό, με πραματική τιμή: %d.\n", actualNum);
+  printf(" είναι αριθμητικό, με πραματική τιμή: %d.\n\n", actualNum);
 
 }
 
@@ -153,7 +153,7 @@ void printEpirima(char* epirima){
 
   printf("Η λέξη ");
   printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι %c επίρρημα.\n", epirima[Katigoria]); // trollarei i c koita to c -> s
+  printf(" είναι %s επίρρημα.\n\n", epirimata[Katigoria]); // trollarei i c koita to c -> s
 
 }
 
@@ -173,7 +173,7 @@ void printSundesmo(char* sundesmo){
 
   printf("Η λέξη ");
   printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι %s σύνδεσμος.\n", sundesmos[Katigoria]); // trollarei i c koita to c -> s
+  printf(" είναι %s σύνδεσμος.\n\n", sundesmos[Katigoria]); // trollarei i c koita to c -> s
 
 }
 
@@ -185,7 +185,7 @@ void printAntonimia(char* antonimia){
 
   printf("Η λέξη ");
   printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι αντωνυμία.\n");
+  printf(" είναι αντωνυμία.\n\n");
 
 }
 
