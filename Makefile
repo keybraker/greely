@@ -4,7 +4,7 @@ all:
 	flex --outfile=output/scanner.c flex/scanner.l
 	gcc -o output/greekLex output/scanner.c output/parser.c wordExif/wordExifGr.c
 	./output/greekLex input/input.txt
-	rm database [obsolete]/newGreekNameDatabase.txt
+	#rm database [obsolete]/newGreekNameDatabase.txt
 
 clean:
 	rm output/parser.c output/scanner.c output/parser.output output/parser.h output/greekLex 

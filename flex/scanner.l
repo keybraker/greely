@@ -304,182 +304,184 @@ char* ousiastikoExists(char* name, char* type){
 
 %%
 
-","					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+","					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 0; 	
 						return STIKSI; 
 					}
-"."					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"."					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 1; 	
 						return STIKSI; 
 					}
-";"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+";"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 2; 	
 						return STIKSI; 
 					}
-":"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+":"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 3; 	
 						return STIKSI; 
 					}
-"!"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"!"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 4; 	
 						return STIKSI; 
 					}
-"_"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"_"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 5; 	
 						return STIKSI; 
 					}
-"("					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"("					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 6; 	
 						return STIKSI; 
 					}
-")"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+")"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 7; 	
 						return STIKSI; 
 					}
-"["					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"["					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 8; 	
 						return STIKSI; 
 					}
-"]"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"]"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 9;	
 						return STIKSI; 
 					}
-"{"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"{"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 10; 
 						return STIKSI; 
 					}
-"}"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"}"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 11; 
 						return STIKSI; 
 					}
-"+"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"+"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 12; 
 						return STIKSI; 
 					}
-"-"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"-"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 13; 
 						return STIKSI; 
 					}
-"*"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"*"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 14; 
 						return STIKSI; 
 					}
-"/"					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"/"					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 15; 
 						return STIKSI; 
 					}
-"="					{ 	printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
+"="					{ 	// printf(a_c_c"Το σημείο στίξης από τον lex είναι: %s\n", yytext);
 						yylval.stiksi = 16; 
 						return STIKSI; 
 					}
 "\n"				{ 	
 						arthroBefore = NULL; 
-						printf(a_c_c"Το σημείο στίξης από τον lex είναι: \\n\n");
+						// printf(a_c_c"Το σημείο στίξης από τον lex είναι: \\n\n");
 						yylval.stiksi = 17;
 						return STIKSI; 
 					}
 
 [0-9]+\.[0-9]*		{ 
 						double arithmos ; sscanf(yytext,"%lf",&arithmos);
-						printf(a_c_c"Ο αριθμός από τον lex είναι: %s\n", yytext); 
+						// printf(a_c_c"Ο αριθμός από τον lex είναι: %s\n", yytext); 
 						yylval.arithmos = arithmos; 
 						arthroBefore = NULL;
 						return ARITHMOS; 
 					}
 [0-9]+				{ 
 						int arithmos ; sscanf(yytext,"%d",&arithmos);
-					  	printf(a_c_c"Ο αριθμός από τον lex είναι: %s\n"a_c_re, yytext); 
+					  	// printf(a_c_c"Ο αριθμός από τον lex είναι: %s\n"a_c_re, yytext); 
 					  	yylval.arithmos = arithmos;
 					  	arthroBefore = NULL;
 					  	return ARITHMOS; 
 					}
 ο|Ο 				{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το οριστικό άρθρο, ενικού ονομαστικής, αρσενικού από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το οριστικό άρθρο, ενικού ονομαστικής, αρσενικού από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; 
 					}
 η|Η 				{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το οριστικό άρθρο, ενικού ονομαστικής, θηλύκου από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το οριστικό άρθρο, ενικού ονομαστικής, θηλύκου από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "THY_EN_AR";
 						return THY_EN_AR; 
 					}
 το|Το|ΤΟ 			{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το οριστικό άρθρο, ενικού ονομαστικής/αιτιατικής, ουδετέρου ή  αιτιατικής,αρσενικό από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το οριστικό άρθρο, ενικού ονομαστικής/αιτιατικής, ουδετέρου ή  αιτιατικής,αρσενικό από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "OUD_EN_AR";
 						return OUD_EN_AR; 
 					}
 Τον|τον|ΤΟΝ  		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το οριστικό άρθρο, ενικού αιτιατικής, αρσενικού από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το οριστικό άρθρο, ενικού αιτιατικής, αρσενικού από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; 
 					}
 τη|Τη|ΤΗ 			{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το οριστικό άρθρο, ενικού αιτιατικής, θηλύκου από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το οριστικό άρθρο, ενικού αιτιατικής, θηλύκου από τον lex είναι: %s\n"a_c_re, yytext); 
 						//lookahead gia to an einai sumfono
 						arthroBefore = "THY_EN_AR";
 						return THY_EN_AR; 
 					}
 Την|την|ΤΗΝ 		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το οριστικό άρθρο, ενικού αιτιατικής, θηλύκου από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το οριστικό άρθρο, ενικού αιτιατικής, θηλύκου από τον lex είναι: %s\n"a_c_re, yytext); 
 						//lookahead gia to an einai fonien
 						arthroBefore = "THY_EN_AR";
 						return THY_EN_AR; 
 					}
 του|Του|ΤΟΥ 		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το οριστικό άρθρο, ενικού γενικής, αρσενικού ή ουδετέρου από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το οριστικό άρθρο, ενικού γενικής, αρσενικού ή ουδετέρου από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "_EN_AR";
 						return _EN_AR; //lookahead
 					}
 της|Της|ΤΗΣ 		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το οριστικό άρθρο, ενικού γενικής, θηλύκου από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το οριστικό άρθρο, ενικού γενικής, θηλύκου από τον lex είναι: %s\n"a_c_re, yytext); 
 						//lookahead gia to an einai sumfono
 						arthroBefore = "THY_EN_AR";
 						return THY_EN_AR; 
 					}
 
 
+
+
 οι|Οι|ΟΙ 			{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "_PL_AR";
 						return _PL_AR; //lookahead
 					}
 τους|Τους|ΤΟΥΣ 		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; //lookahead
 					}
 τις|Τις|ΤΙΣ 		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "THY_PL_AR";
 						return THY_PL_AR; 
 					}
 τα|Τα|ΤΑ 			 {
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "OUD_PL_AR";
 						return OUD_PL_AR; 
 					}
 Των|των|ΤΩΝ 		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "_PL_AR";
 						return _PL_AR; //lookahead
 					}
 					
 Στον|στον|ΣΤΟΝ		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; 
 					}						
@@ -489,80 +491,63 @@ char* ousiastikoExists(char* name, char* type){
 
 Ένας|ένας|ΈΝΑΣ|ΕΝΑΣ	{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; 
 					}
 Έναν|έναν|ΈΝΑΝ|ΕΝΑΝ	{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; 
 					}
 Ένα|ένα|ΈΝΑ|ΕΝΑ		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "OUD_EN_AR";
 						return OUD_EN_AR; 
 					}
 Ενός|ενός|ΕΝΌΣ|ΕΝΟΣ	{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; 
 					}
-με|Με|ΜΕ 			{
-						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι '%s' και δηλώνει:\n", yytext); 
-						printf("* συνοδεία, συντροφιά, παρέα\n");
-						printf("* συνύπαρξη\n");
-						printf("* τρόπο\n");
-						printf("* μέσο ή όργανο\n");
-						printf("* σχέση ή αναφορά\n");
-						printf("* ισότητα, ομοιότητα, συμφωνία, φιλική ή εχθρική επικοινωνία\n");
-						printf("* καιρικές συνθήκες\n");
-						printf("* ψυχική κατάσταση\n");
-						printf("* ιδιοκτησία, κυριότητα, κατοχή\n");
-						printf("* χαρακτηριστικό, ιδιότητα, περιεχόμενο\n");
-						printf("* χρόνο ή χρονικό όριο\n");
-						printf("* ποσό, αντάλλαγμα\n");
-						printf("* αντίθεση, εναντίωση (ισοδυναμεί με το παρά)\n"a_c_re);
-						arthroBefore = "THY_EN_AR";
-						return THY_EN_AR; 
-					}
 μια|Μια|ΜΙΑ 		{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "THY_EN_AR";
 						return THY_EN_AR; 
 					}
 μιας|Μιας|ΜΙΑΣ  	{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "THY_EN_AR";
 						return THY_EN_AR; 
 					}
 μιαν|Μιαν|ΜΙΑΝ  	{
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Το άρθρο από τον lex είναι: %s\n"a_c_re, yytext); 
 						arthroBefore = "THY_EN_AR";
 						return THY_EN_AR; 
-					}
+					} 
 
 [Α-ψ-ρ-π-ω-Ϋ]* 		{ 
-						if(isName(yytext, arthroBefore)) 
+						if(isName(yytext, arthroBefore)) {
 							printf(a_c_c"Το %s είναι όνομα.\n"a_c_re,yytext);
-						char* type;
-						if(arthroBefore && (type = ousiastikoExists(yytext,arthroBefore))) 
-							printf(a_c_c"%s %s\n"a_c_re,yytext,type); 
+							return ONOMATA; 
+						}
+						// char* type;
+						// if(arthroBefore && (type = ousiastikoExists(yytext,arthroBefore))) 
+						// 	printf(a_c_c"%s %s\n"a_c_re,yytext,type); 
 
 						arthroBefore = NULL;
 						yylval.leksi = strdup(yytext); 
-						printf(a_c_c"Η λέξη από τον lex είναι: %s\n"a_c_re, yytext); 
+						// printf(a_c_c"Η λέξη από τον lex είναι: %s\n"a_c_re, yytext); 
 						return OUSIASTIKO; 
 					}
 [a-zA-Z]* 			{
-						printf(a_c_c"Τα εγγλέζικα σου \"%s\", να τα πεις αλλού !\n"a_c_re, yytext); 
+						// printf(a_c_c"Τα εγγλέζικα σου \"%s\", να τα πεις αλλού !\n"a_c_re, yytext); 
 						arthroBefore = NULL;
 					}	
 " "*				{
@@ -570,7 +555,7 @@ char* ousiastikoExists(char* name, char* type){
 					}
 .					{
 						arthroBefore = NULL;
-						printf(a_c_c"Δεν υπάρχει είσοδος.\n"a_c_re); 
+						// printf(a_c_c"Δεν υπάρχει είσοδος.\n"a_c_re); 
 					}
 
 %%

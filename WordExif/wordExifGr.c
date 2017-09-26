@@ -17,8 +17,12 @@
 //fortonei olo to arxeio se ena pinaka kai ton diabazei anapoda 
 //roi kanones gia ta prothemata menontai na ulopoihthoun
 int WordExifFunctioner(char* wordInput){
+
     FILE* f1 = fopen ("wordExif/wordSyllabusGr2.txt", "r");
     if(!f1){ printf("ERROR f1"); exit(1); }
+
+    FILE* f2 = fopen ("database [obsolete]/apeutheiasmesastokodika greekTransform.txt", "r");
+    if(!f2){ printf("ERROR f1"); exit(1); }
 
     int     type;
     char    *len, *syllen;
@@ -29,6 +33,7 @@ int WordExifFunctioner(char* wordInput){
     
     int jk = 0;
     wholeFile = calloc(255*33636,sizeof(char));
+
 
     while (fgets(buffer,255, f1)!= NULL)    { 
         if(wholeFile[jk] == NULL){
@@ -49,28 +54,44 @@ int WordExifFunctioner(char* wordInput){
 
     while (reader > 0)    {
 
-      strcpy(buffer, wholeFile[reader]);
+        strcpy(buffer, wholeFile[reader]);
 
-      len         = strtok(buffer,    "|");
-      word        = strtok(NULL,      "|");
-      syllen      = strtok(NULL,      "|");
-      syllabes    = strtok(NULL,      "|");
-      type        = toInt(strtok(NULL,      "|"));
+        len         = strtok(buffer,    "|");
+        word        = strtok(NULL,      "|");
+        syllen      = strtok(NULL,      "|");
+        syllabes    = strtok(NULL,      "|");
+        type        = toInt(strtok(NULL,      "|"));
 
-      if( strcmp(word, wordInput) == 0 ){
-        printf("\n[");
-        printf(UNDER "database" DEUNDER);
-        printf("]: ");
-        // goes to array finds type
-        // calls the type defined
-        // function and executes it
-        functionPrinter[type](wholeFile[reader]);
+/////////////////
+        char* oldWordInput = calloc(16,sizeof(char));
+        char* kluks = calloc(255*33636,sizeof(char));
+        while (fgets(kluks,255, f2)!= NULL)    { 
 
-        return 0;
+            char* one = strtok(kluks,    "|");
+            char* two = strtok(NULL,      "|");
+            strtok(one, "\n"); // delete trailing \n
+            strtok(two, "\n"); // delete trailing \n
+            if(strncmp(two, wordInput, strlen(two)) == 0){
+                strcpy(oldWordInput, wordInput);
+                strcpy(wordInput, one);
+                strncat(wordInput, oldWordInput + 2, strlen(oldWordInput)+1 - 1);
+                break;
+            }
+            
 
-      } 
+        };
+/////////////////
+        if( strcmp(word, wordInput) == 0 ){
+            // goes to array finds type
+            // calls the type defined
+            // function and executes it
+            functionPrinter[type](wholeFile[reader]);
 
-      reader--;
+            return 0;
+
+        } 
+
+        reader--;
 
     }
 
@@ -107,7 +128,7 @@ int WordExifFunctioner(char* wordInput){
             printf(UNDER "%s" DEUNDER, wordInput);
             printf(" δεν βρέθηκε στη βάση,\nαλλά ο πυρήνας της είναι ");
             printf(UNDER "%s" DEUNDER, wordWithoutEnding);
-            printf(".\n");
+            printf(".\n\n");
 
             return 0;
 
@@ -117,6 +138,7 @@ int WordExifFunctioner(char* wordInput){
 
     }
 
+    fclose(f2);
     printf("No core for word \"%s\" was found in Database.\n", wordInput);
     return 0;
 

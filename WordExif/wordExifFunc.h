@@ -6,6 +6,11 @@
 #define UNDER  "\033[4m"
 #define DEUNDER "\033[0m"
 
+char *deleteSlashN(char* withSlashN){
+  strtok(withSlashN, "\n");
+  return withSlashN;
+}
+
 int toInt(char a[]) {
   int c, sign, offset, n;
  
