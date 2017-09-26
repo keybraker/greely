@@ -3,8 +3,21 @@
 #include <string.h>
 #include "wordExifStruct.h"
 
-#define UNDER  "\033[4m"
-#define DEUNDER "\033[0m"
+#define UNDER     "\033[4m"
+#define DEUNDER   "\033[0m"
+#define a_c_r     "\x1b[31m"
+#define a_c_g     "\x1b[32m"
+#define a_c_y     "\x1b[33m"
+#define a_c_b     "\x1b[34m"
+#define a_c_m     "\x1b[35m"
+#define a_c_c     "\x1b[36m"
+#define a_c_re    "\x1b[0m"
+#define under     "\e[4m"
+#define under_re  "\e[0m"
+#define italic    "\e[3m"
+#define italic_re "\e[0m"
+#define bold      "\e[1m"
+#define bold_re   "\e[0m"
 
 char *deleteSlashN(char* withSlashN){
   strtok(withSlashN, "\n");
@@ -58,9 +71,9 @@ void printRima(char* rima){
   Klisi   = toInt(strtok(NULL, "|"));
   Foni    = toInt(strtok(NULL, "|"));
 
-  printf("Η λέξη ");
-  printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης.\n\n", prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
+  printf("%s (" , word);
+  printf(italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
+  printf(") ");
 
 }
 
@@ -80,10 +93,9 @@ void printEpitheto(char* epitheto){
   Arithmos  = toInt(strtok(NULL, "|"));
   Ptosi   = toInt(strtok(NULL, "|"));
 
-  printf("Η λέξη ");
-  printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι επίθετο, %s αριθμου , γένος %s , %s πτώση.\n\n", arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
-
+  printf("%s (" , word);
+  printf(italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+  printf(") ");
 }
 
 // #2
@@ -102,9 +114,9 @@ void printOusiastiko(char* ousiastiko){
   Arithmos  = toInt(strtok(NULL, "|"));
   Ptosi     = toInt(strtok(NULL, "|"));
 
-  printf("Η λέξη ");
-  printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι ουσιαστικό, %s αριθμου , γένος %s , %s πτώση.\n\n", arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+  printf("%s (" , word);
+  printf(italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+  printf(") ");
 
 }
 
@@ -114,10 +126,9 @@ void printMetoxi(char* metoxi){
   strtok(metoxi, "|");
   char *word  = strtok(NULL, "|");
 
-  printf("Η λέξη ");
-  printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι μετοχή.\n\n");
-
+  printf("%s (" , word);
+  printf(italic bold "μετοχή" DEUNDER);
+  printf(") ");
 }
 
 // #4
@@ -131,9 +142,9 @@ void printArithmitika(char* arithmitika){
 
   int actualNum = toInt(strtok(NULL, "|"));
 
-  printf("Η λέξη ");
-  printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι αριθμητικό, με πραματική τιμή: %d.\n\n", actualNum);
+  printf("%s (", word);
+  printf(italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
+  printf(") ");
 
 }
 
@@ -151,9 +162,9 @@ void printEpirima(char* epirima){
 
   Katigoria = toInt(strtok(NULL, "|"));
 
-  printf("Η λέξη ");
-  printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι %s επίρρημα.\n\n", epirimata[Katigoria]); // trollarei i c koita to c -> s
+  printf("%s (", word);
+  printf(italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
+  printf(") ");
 
 }
 
@@ -171,10 +182,9 @@ void printSundesmo(char* sundesmo){
 
   Katigoria = toInt(strtok(NULL, "|"));
 
-  printf("Η λέξη ");
-  printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι %s σύνδεσμος.\n\n", sundesmos[Katigoria]); // trollarei i c koita to c -> s
-
+  printf("%s (", word);
+  printf(italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
+  printf(") ");
 }
 
 // #7
@@ -183,10 +193,9 @@ void printAntonimia(char* antonimia){
   strtok(antonimia, "|");
   char *word  = strtok(NULL, "|");
 
-  printf("Η λέξη ");
-  printf(UNDER "%s" DEUNDER, word);
-  printf(" είναι αντωνυμία.\n\n");
-
+  printf("%s (", word);
+  printf(italic bold "αντωνυμία"DEUNDER);
+  printf(") ");
 }
 
 // a k r a i o 

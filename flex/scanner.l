@@ -534,7 +534,6 @@ char* ousiastikoExists(char* name, char* type){
 
 [Α-ψ-ρ-π-ω-Ϋ]* 		{ 
 						if(isName(yytext, arthroBefore)) {
-							printf( "Το %s είναι όνομα.\n\n" ,yytext);
 							yylval.leksi = strdup(yytext); 
 							return ONOMATA; 
 						}

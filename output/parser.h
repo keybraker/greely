@@ -88,7 +88,7 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 95 "bison/parser.y"
+#line 94 "bison/parser.y"
 {
     
     char*   leksi;

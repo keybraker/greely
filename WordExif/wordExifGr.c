@@ -124,12 +124,9 @@ int WordExifFunctioner(char* wordInput){
         // printf("syllabesEditable = %s\n", syllabesEditable);
 
         if( strncmp(wordWithoutEnding, wordInput, strlen(wordWithoutEnding)) == 0 ){
-            printf("Η λέξη ");
-            printf(UNDER "%s" DEUNDER, wordInput);
-            printf(" δεν βρέθηκε στη βάση,\nαλλά ο πυρήνας της είναι ");
-            printf(UNDER "%s" DEUNDER, wordWithoutEnding);
-            printf(".\n\n");
-
+            printf("%s [" , wordInput);
+            printf(italic bold "%s"italic_re, wordWithoutEnding);
+            printf("] ");
             return 0;
 
         }   
@@ -139,7 +136,8 @@ int WordExifFunctioner(char* wordInput){
     }
 
     fclose(f2);
-    printf("No core for word \"%s\" was found in Database.\n\n", wordInput);
-    return 0;
+    printf("%s [" , wordInput);
+    printf(italic bold "_"italic_re);
+    printf("] ");
 
 }

@@ -137,7 +137,7 @@
     #define bold      "\e[1m"
     #define bold_re   "\e[0m"
 
-    char *stiksiToString[18] = { 
+    char *stiksiToString[17] = { 
         
         "κόμμα",
         "τελεία",
@@ -156,7 +156,6 @@
         "επί", 
         "διά",
         "ίσον", 
-        "έντερ"
 
     };
 
@@ -229,7 +228,7 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 95 "bison/parser.y"
+#line 94 "bison/parser.y"
 {
     
     char*   leksi;
@@ -251,7 +250,7 @@ typedef union YYSTYPE
 
 }
 /* Line 193 of yacc.c.  */
-#line 255 "output/parser.c"
+#line 254 "output/parser.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -264,7 +263,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 268 "output/parser.c"
+#line 267 "output/parser.c"
 
 #ifdef short
 # undef short
@@ -554,7 +553,7 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   141,   141,   146,   162,   165,   166,   167,   168,   170,
+       0,   140,   140,   146,   162,   165,   166,   167,   168,   170,
      171,   173,   174,   176,   177,   179,   180,   182,   184,   186,
      187,   188,   189,   190,   191,   192,   193,   194,   195
 };
@@ -1473,9 +1472,10 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 141 "bison/parser.y"
-    { printf(a_c_g"\nΗ ολοκληρωμένη πρόταση είναι: ");
-                                      printf(a_c_m"%s\n\n\n"a_c_re,(yyvsp[(1) - (1)].leksi)); 
+#line 140 "bison/parser.y"
+    { 
+                                        //printf(a_c_g"\nΗ ολοκληρωμένη πρόταση είναι: ");
+                                        //printf(a_c_m"%s\n\n\n",$<leksi>1); 
                                     }
     break;
 
@@ -1494,7 +1494,7 @@ yyreduce:
 
                                         }
                                         
-                                        //printf(a_c_y"    ➥ λέξεις μέρος του λόγου: %s\n\n"a_c_re,$$);
+                                        //printf("    ➥ λέξεις μέρος του λόγου: %s\n\n",$$);
 
                                     }
     break;
@@ -1526,102 +1526,102 @@ yyreduce:
 
   case 9:
 #line 170 "bison/parser.y"
-    { (yyval.arthro) = yylval.arthro;               printf(a_c_y"Το αρσενικό άρθρο ενικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+    { (yyval.arthro) = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"αρσσενικό άρθρο ενικού" italic_re);       printf(") "); }
     break;
 
   case 10:
 #line 171 "bison/parser.y"
-    { (yyval.arthro) = yylval.arthro;               printf(a_c_y"Το αρσενικό άρθρο πληθυντικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+    { (yyval.arthro) = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"αρσσενικό άρθρο πληθυντικού" italic_re);  printf(") "); }
     break;
 
   case 11:
 #line 173 "bison/parser.y"
-    { (yyval.arthro) = yylval.arthro;               printf(a_c_y"Το θηλυκό άρθρο ενικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+    { (yyval.arthro) = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"θηλυκό άρθρο ενικού" italic_re);          printf(") "); }
     break;
 
   case 12:
 #line 174 "bison/parser.y"
-    { (yyval.arthro) = yylval.arthro;               printf(a_c_y"Το θηλυκό άρθρο πληθυντικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+    { (yyval.arthro) = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"θηλυκό άρθρο πληθυντικού" italic_re);     printf(") "); }
     break;
 
   case 13:
 #line 176 "bison/parser.y"
-    { (yyval.arthro) = yylval.arthro;               printf(a_c_y"Το ουδέτερο άρθρο ενικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+    { (yyval.arthro) = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"ουδέτερο άρθρο ενικού" italic_re);        printf(") "); }
     break;
 
   case 14:
 #line 177 "bison/parser.y"
-    { (yyval.arthro) = yylval.arthro;               printf(a_c_y"Το ουδέτερο άρθρο πληθυντικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+    { (yyval.arthro) = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"ουδέτερο άρθρο πληθυντικού" italic_re);   printf(") "); }
     break;
 
   case 15:
 #line 179 "bison/parser.y"
-    { (yyval.arthro) = yylval.arthro;               printf(a_c_y"Το άγνωστο άρθρο ενικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+    { (yyval.arthro) = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"άγνωστο άρθρο ενικού" italic_re);         printf(") "); }
     break;
 
   case 16:
 #line 180 "bison/parser.y"
-    { (yyval.arthro) = yylval.arthro;               printf(a_c_y"Το άγνωστο άρθρο πληθυντικού είναι: %s\n\n"a_c_re,(yylval.arthro)); }
+    { (yyval.arthro) = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"άγνωστο άρθρο πληθυντικού" italic_re);    printf(") "); }
     break;
 
   case 17:
 #line 182 "bison/parser.y"
-    { (yyval.arithmos) = yylval.arithmos;           printf(a_c_y"Ο αριθμός είναι: %f\n"a_c_re,(yylval.arithmos)); }
+    { (yyval.arithmos) = yylval.arithmos;           printf(a_c_r"%f (αριθμός) ", (yylval.arithmos)); }
     break;
 
   case 18:
 #line 184 "bison/parser.y"
-    { (yyval.stiksi) = yylval.stiksi;               printf(a_c_y"Το %s είναι σημείο στίξης\n\n"a_c_re, stiksiToString[yylval.stiksi]); }
+    { (yyval.stiksi) = yylval.stiksi;               if(yylval.stiksi == 17){printf("\n");}else{printf("%s (σημείο στίξης) ", stiksiToString[yylval.stiksi]);} }
     break;
 
   case 19:
 #line 186 "bison/parser.y"
-    { (yyval.leksi) = yylval.ousiastiko;                   printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.ousiastiko;                   printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
   case 20:
 #line 187 "bison/parser.y"
-    { (yyval.leksi) = yylval.onomata;                                                                                           }
+    { (yyval.leksi) = yylval.onomata;                      printf("%s (όνομα)", yylval.leksi); }
     break;
 
   case 21:
 #line 188 "bison/parser.y"
-    { (yyval.leksi) = yylval.epitheto;                     printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.epitheto;                     printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
   case 22:
 #line 189 "bison/parser.y"
-    { (yyval.leksi) = yylval.rima;                         printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.rima;                         printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
   case 23:
 #line 190 "bison/parser.y"
-    { (yyval.leksi) = yylval.epirima;                      printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.epirima;                      printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
   case 24:
 #line 191 "bison/parser.y"
-    { (yyval.leksi) = yylval.antonumia;                    printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.antonumia;                    printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
   case 25:
 #line 192 "bison/parser.y"
-    { (yyval.leksi) = yylval.arthro;                       printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.arthro;                       printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
   case 26:
 #line 193 "bison/parser.y"
-    { (yyval.leksi) = yylval.prothesi;                     printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.prothesi;                     printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
   case 27:
 #line 194 "bison/parser.y"
-    { (yyval.leksi) = yylval.sundesmos;                    printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.sundesmos;                    printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
   case 28:
 #line 195 "bison/parser.y"
-    { (yyval.leksi) = yylval.epifonima;                    printf(a_c_y""); WordExifFunctioner(yylval.leksi); printf(a_c_re""); }
+    { (yyval.leksi) = yylval.epifonima;                    printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
     break;
 
 

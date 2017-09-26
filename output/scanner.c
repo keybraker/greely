@@ -1548,7 +1548,6 @@ YY_RULE_SETUP
 #line 535 "flex/scanner.l"
 { 
 						if(isName(yytext, arthroBefore)) {
-							printf( "Το %s είναι όνομα.\n\n" ,yytext);
 							yylval.leksi = strdup(yytext); 
 							return ONOMATA; 
 						}
@@ -1564,7 +1563,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 550 "flex/scanner.l"
+#line 549 "flex/scanner.l"
 {
 						// printf(a_c_c"Τα εγγλέζικα σου \"%s\", να τα πεις αλλού !\n"a_c_re, yytext); 
 						arthroBefore = NULL;
@@ -1572,14 +1571,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 554 "flex/scanner.l"
+#line 553 "flex/scanner.l"
 {
 
 					}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 557 "flex/scanner.l"
+#line 556 "flex/scanner.l"
 {
 						arthroBefore = NULL;
 						// printf(a_c_c"Δεν υπάρχει είσοδος.\n"a_c_re); 
@@ -1587,10 +1586,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 562 "flex/scanner.l"
+#line 561 "flex/scanner.l"
 ECHO;
 	YY_BREAK
-#line 1594 "output/scanner.c"
+#line 1593 "output/scanner.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2599,7 +2598,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 562 "flex/scanner.l"
+#line 561 "flex/scanner.l"
 
 
 
