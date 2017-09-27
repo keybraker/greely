@@ -1,4 +1,4 @@
-#rm database [obsolete]/newGreekNameDatabase.txt
+# ko rm database [obsolete]/newGreekNameDatabase.txt
 all:
 	clear
 	bison --yacc --defines --verbose --output=output/parser.c bison/parser.y 
