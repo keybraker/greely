@@ -13,7 +13,7 @@ Ai that understands and learns the human language and you.
 Just clone the project to your computer and run make, it's simple as that !
 
 ```
-git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison.git
+git clone https://github.com/keybraker/greek-Ai-Bot.git
 ```
 
 ### Prerequisites
