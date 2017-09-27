@@ -26,15 +26,15 @@ int WordExifFunctioner(char* wordInput){
     char    *len, *syllen, *isCap;
     char    *word, *syllabes, *syllabesEditable;
     char    *wordWithoutEnding, *wordInputSmall, *wordInputCap;
-    char    *buffer = calloc(255*33636,sizeof(char*));
-    char    **wholeFile = calloc(255*33636,sizeof(char));
+    char    *buffer = calloc(255, sizeof(char));
+    char    **wholeFile = calloc(255*8912, sizeof(char*));
 
     /*---------------------------------------------------------------------- READING FILES ----------------------------------------------------------------------*/
     //THIS MUST HAPPEN ONLY ONCE YOU LAUNCH THE PROGRAM NOT EVERY TIME
-    while (fgets(buffer,255, f1)!= NULL)    { 
+    while (fgets(buffer, 255, f1)!= NULL)    { 
 
         if(wholeFile[jk] == NULL){
-            wholeFile[jk] = calloc(255 * strlen(buffer)+1, sizeof(char));
+            wholeFile[jk] = calloc(strlen(buffer)*255, sizeof(char));
             strcpy(wholeFile[jk], buffer);
         }else{
           printf("error\n");
@@ -111,7 +111,7 @@ int WordExifFunctioner(char* wordInput){
         // printf("syllabesEditable = %s\n", syllabesEditable);
 
         if( strncmp(wordWithoutEnding, wordInputSmall, strlen(wordWithoutEnding)) == 0 ){
-            printf("%s [" , wordInputSmall);
+            printf("%s-[" , wordInputSmall);
             printf(italic bold "%s"italic_re, wordWithoutEnding);
             printf("] ");
             return 0;
@@ -122,7 +122,7 @@ int WordExifFunctioner(char* wordInput){
 
     }
 
-    printf("%s [" , wordInputSmall);
+    printf("%s-[" , wordInputSmall);
     printf(italic bold "_"italic_re);
     printf("] ");
 

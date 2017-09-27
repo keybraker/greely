@@ -107,11 +107,11 @@ void printRima(char* rima, char* isCap){
 
   if(isCap){
     printf("%s (" , isCap);
-    printf(italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
+    printf(a_c_c italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
     printf(") ");
   }else{
     printf("%s (" , word);
-    printf(italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
+    printf(a_c_c italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
     printf(") ");
   }
 
@@ -135,11 +135,11 @@ void printEpitheto(char* epitheto, char* isCap){
 
   if(isCap){
     printf("%s (" , isCap);
-    printf(italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(a_c_c italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }else{
     printf("%s (" , word);
-    printf(italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(a_c_c italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }
 
@@ -163,11 +163,11 @@ void printOusiastiko(char* ousiastiko, char* isCap){
   
   if(isCap){
     printf("%s (" , isCap);
-    printf(italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(a_c_c italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }else{
     printf("%s (" , word);
-    printf(italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(a_c_c italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }
 
@@ -181,11 +181,11 @@ void printMetoxi(char* metoxi, char* isCap){
 
   if(isCap){
     printf("%s (" , isCap);
-    printf(italic bold "μετοχή" DEUNDER);
+    printf(a_c_c italic bold "μετοχή" DEUNDER);
     printf(") ");
   }else{
     printf("%s (" , word);
-    printf(italic bold "μετοχή" DEUNDER);
+    printf(a_c_c italic bold "μετοχή" DEUNDER);
     printf(") ");
   } 
 
@@ -204,11 +204,11 @@ void printArithmitika(char* arithmitika, char* isCap){
 
   if(isCap){
     printf("%s (", isCap);
-    printf(italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
+    printf(a_c_c italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
     printf(") ");
   }else{
     printf("%s (", word);
-    printf(italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
+    printf(a_c_c italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
     printf(") ");
   }
 
@@ -230,11 +230,11 @@ void printEpirima(char* epirima, char* isCap){
 
   if(isCap){
     printf("%s (", isCap);
-    printf(italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
+    printf(a_c_c italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
     printf(") ");
   }else{
     printf("%s (", word);
-    printf(italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
+    printf(a_c_c italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
     printf(") ");
   }
 
@@ -256,11 +256,11 @@ void printSundesmo(char* sundesmo, char* isCap){
 
   if(isCap){
     printf("%s (", isCap);
-    printf(italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
+    printf(a_c_c italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
     printf(") ");
   }else{  
     printf("%s (", word);
-    printf(italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
+    printf(a_c_c italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
     printf(") ");
   }
 
@@ -274,11 +274,11 @@ void printAntonimia(char* antonimia, char* isCap){
   
   if(isCap){
     printf("%s (", isCap);
-    printf(italic bold "αντωνυμία"DEUNDER);
+    printf(a_c_c italic bold "αντωνυμία"DEUNDER);
     printf(") ");
   }else{  
     printf("%s (", word);
-    printf(italic bold "αντωνυμία"DEUNDER);
+    printf(a_c_c italic bold "αντωνυμία"DEUNDER);
     printf(") ");
   }
 
