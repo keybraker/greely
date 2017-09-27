@@ -521,7 +521,7 @@ char* ousiastikoExists(char* name, char* type){
 						// This is for updating ouastika database with the knowledge obtained
 						// by the arthra infront of the ousiastika !
 						if(arthroBefore && (type = ousiastikoExists(yytext, arthroBefore)))
-							printf(a_c_c"%s %s\n"a_c_re,yytext,type);
+							// printf(a_c_c"%s %s "a_c_re,yytext,type);
 
 						arthroBefore = NULL;
 						yylval.leksi = strdup(yytext);
