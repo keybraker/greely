@@ -22,9 +22,6 @@ int WordExifFunctioner(char* wordInput){
     FILE* f1 = fopen ("wordExif/wordSyllabusGr2.txt", "r");
     if(!f1){ printf("ERROR f1"); exit(1); }
 
-    FILE* f2 = fopen ("database [obsolete]/apeutheiasmesastokodika greekTransform.txt", "r");
-    if(!f2){ printf("ERROR f1"); exit(1); }
-
     int     type, jk = 0;
     char    *len, *syllen;
     char    *word, *syllabes, *syllabesEditable;
@@ -50,8 +47,9 @@ int WordExifFunctioner(char* wordInput){
 
     jk--;
     int reader = jk;
+    wordInput = CapToSmall(wordInput);
 
-    /*---------------------------------------------------------------------- STIKSEIS ----------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------- LEKSEIS APO WORDEXIFGR ----------------------------------------------------------------------*/
     while (reader > 0)    {
 
         strcpy(buffer, wholeFile[reader]);
@@ -61,25 +59,6 @@ int WordExifFunctioner(char* wordInput){
         syllen      = strtok(NULL,      "|");
         syllabes    = strtok(NULL,      "|");
         type        = toInt(strtok(NULL,      "|"));
-
-        // KANEI TO PROTO GRAMMA MIKRO GIATI I VASI EINAI ME MIKRA
-        char* oldWordInput = calloc(16,sizeof(char));
-        char* kluks = calloc(255*33636,sizeof(char));
-        while (fgets(kluks,255, f2)!= NULL)    { 
-
-            char* one = strtok(kluks,    "|");
-            char* two = strtok(NULL,      "|");
-            strtok(one, "\n"); // delete trailing \n
-            strtok(two, "\n"); // delete trailing \n
-            if(strncmp(two, wordInput, strlen(two)) == 0){
-                strcpy(oldWordInput, wordInput);
-                strcpy(wordInput, one);
-                strncat(wordInput, oldWordInput + 2, strlen(oldWordInput)+1 - 1);
-                break;
-            }
-            
-        };
-        /////////////////
 
         if( strcmp(word, wordInput) == 0 ){
             // goes to array finds type
@@ -96,19 +75,20 @@ int WordExifFunctioner(char* wordInput){
 
     reader = jk;
 
+    /*----------------------------------------------------- AN DEN BRETHEI STI BASH PSAXNOUME TI RIZA THS LEKSEIS GIA EDIT META ------------------------------------------*/
     while (reader > 0)    { 
 
         strcpy(buffer, wholeFile[reader]);
 
-        len         = strtok(buffer,    "|");
-        word        = strtok(NULL,      "|");
-        syllen      = strtok(NULL,      "|");
-        syllabes    = strtok(NULL,      "|");
-        type        = toInt(strtok(NULL,      "|"));
+        len         = strtok(buffer, "|");
+        word        = strtok(NULL, "|");
+        syllen      = strtok(NULL, "|");
+        syllabes    = strtok(NULL, "|");
+        type        = toInt(strtok(NULL, "|"));
 
-        syllabesEditable = calloc(strlen(syllabes),sizeof(char));     
+        syllabesEditable = calloc(strlen(syllabes), sizeof(char));     
         strcpy(syllabesEditable, syllabes);  
-        wordWithoutEnding = calloc(255 * strlen(word),sizeof(char));
+        wordWithoutEnding = calloc(255 * strlen(word), sizeof(char));
         strcpy(wordWithoutEnding, strtok(syllabesEditable, "-")); 
   
         for(int i = 2; i < toInt(syllen); i++){ // kano int = 2 etsi oste h teleutaia sullabi na min antigrafei
@@ -135,7 +115,6 @@ int WordExifFunctioner(char* wordInput){
 
     }
 
-    fclose(f2);
     printf("%s [" , wordInput);
     printf(italic bold "_"italic_re);
     printf("] ");

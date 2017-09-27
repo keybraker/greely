@@ -115,11 +115,11 @@ int isName(char* name, char* type){
 	FILE *nameDatabase;
 	FILE *newNameDatabase;
 
-	if ( (nameDatabase = fopen("database [obsolete]/greekNameDatabase.txt", "r")) == NULL) { 
+	if ( (nameDatabase = fopen("database [obsolete]/greekNameDatabase.txt", "r")) == NULL ) { 
 		printf (a_c_r"3Couldn't open file nameDatabase %d\n"a_c_re, errno);
         exit(0);
     }
-    if ( (newNameDatabase = fopen("database [obsolete]/newGreekNameDatabase.txt", "w+")) == NULL) { 
+    if ( (newNameDatabase = fopen("database [obsolete]/newGreekNameDatabase.txt", "w+")) == NULL ) { 
 		printf (a_c_r"4Couldn't open file nameDatabase %d\n"a_c_re, errno);
         exit(0);
     }

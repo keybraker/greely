@@ -53,6 +53,39 @@ int toInt(char a[]) {
   return n;
 }
 
+/*
+* Κάνει το πρώτο κεφαλαίο γράμμα
+* σε μικρό, διότι η λέξεις τις 
+* βάσεις είναι σε μικρά
+*/
+char* CapToSmall(char* wordInput){
+
+    FILE* f2 = fopen ("wordExif/capToSmall.txt", "r");
+    if(!f2){ printf("ERROR f1"); exit(1); }
+
+    char* oldWordInput = calloc(16,sizeof(char));
+    char* kluks = calloc(255*33636,sizeof(char));
+
+    while (fgets(kluks,255, f2) != NULL)    { 
+
+        char* one = strtok(kluks,    "|");
+        char* two = strtok(NULL,      "|");
+        strtok(one, "\n"); // delete trailing \n
+        strtok(two, "\n"); // delete trailing \n
+        if(strncmp(two, wordInput, strlen(two)) == 0){
+            strcpy(oldWordInput, wordInput);
+            strcpy(wordInput, one);
+            strncat(wordInput, oldWordInput + 2, strlen(oldWordInput)+1 - 1);
+            break;
+        }
+        
+    };
+
+    fclose(f2);
+    return wordInput;
+
+}
+
 // #0
 void printRima(char* rima){
 
