@@ -58,7 +58,7 @@ int toInt(char a[]) {
 * σε μικρό, διότι η λέξεις τις 
 * βάσεις είναι σε μικρά
 */
-char* CapToSmall(char* wordInput){
+char* capToSmall(char* wordInput){
 
     FILE* f2 = fopen ("wordExif/capToSmall.txt", "r");
     if(!f2){ printf("ERROR f1"); exit(1); }
@@ -86,8 +86,9 @@ char* CapToSmall(char* wordInput){
 
 }
 
+
 // #0
-void printRima(char* rima){
+void printRima(char* rima, char* isCap){
 
   int  Xronos, Prosopos, Arithmos, Klisi, Foni;
   char *word;
@@ -104,14 +105,20 @@ void printRima(char* rima){
   Klisi   = toInt(strtok(NULL, "|"));
   Foni    = toInt(strtok(NULL, "|"));
 
-  printf("%s (" , word);
-  printf(italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
-  printf(") ");
+  if(isCap){
+    printf("%s (" , isCap);
+    printf(italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
+    printf(") ");
+  }else{
+    printf("%s (" , word);
+    printf(italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
+    printf(") ");
+  }
 
 }
 
 // #1
-void printEpitheto(char* epitheto){
+void printEpitheto(char* epitheto, char* isCap){
 
   int  Genos, Arithmos, Ptosi;
   char *word;
@@ -126,13 +133,20 @@ void printEpitheto(char* epitheto){
   Arithmos  = toInt(strtok(NULL, "|"));
   Ptosi   = toInt(strtok(NULL, "|"));
 
-  printf("%s (" , word);
-  printf(italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
-  printf(") ");
+  if(isCap){
+    printf("%s (" , isCap);
+    printf(italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(") ");
+  }else{
+    printf("%s (" , word);
+    printf(italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(") ");
+  }
+
 }
 
 // #2
-void printOusiastiko(char* ousiastiko){
+void printOusiastiko(char* ousiastiko, char* isCap){
 
   int  Genos, Arithmos, Ptosi;
   char *word;
@@ -146,26 +160,39 @@ void printOusiastiko(char* ousiastiko){
   Genos     = toInt(strtok(NULL, "|"));
   Arithmos  = toInt(strtok(NULL, "|"));
   Ptosi     = toInt(strtok(NULL, "|"));
-
-  printf("%s (" , word);
-  printf(italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
-  printf(") ");
+  
+  if(isCap){
+    printf("%s (" , isCap);
+    printf(italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(") ");
+  }else{
+    printf("%s (" , word);
+    printf(italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(") ");
+  }
 
 }
 
 // #3
-void printMetoxi(char* metoxi){
+void printMetoxi(char* metoxi, char* isCap){
 
   strtok(metoxi, "|");
   char *word  = strtok(NULL, "|");
 
-  printf("%s (" , word);
-  printf(italic bold "μετοχή" DEUNDER);
-  printf(") ");
+  if(isCap){
+    printf("%s (" , isCap);
+    printf(italic bold "μετοχή" DEUNDER);
+    printf(") ");
+  }else{
+    printf("%s (" , word);
+    printf(italic bold "μετοχή" DEUNDER);
+    printf(") ");
+  } 
+
 }
 
 // #4
-void printArithmitika(char* arithmitika){
+void printArithmitika(char* arithmitika, char* isCap){
 
   strtok(arithmitika, "|");
   char *word  = strtok(NULL, "|");
@@ -175,14 +202,20 @@ void printArithmitika(char* arithmitika){
 
   int actualNum = toInt(strtok(NULL, "|"));
 
-  printf("%s (", word);
-  printf(italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
-  printf(") ");
+  if(isCap){
+    printf("%s (", isCap);
+    printf(italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
+    printf(") ");
+  }else{
+    printf("%s (", word);
+    printf(italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
+    printf(") ");
+  }
 
 }
 
 // #5
-void printEpirima(char* epirima){
+void printEpirima(char* epirima, char* isCap){
 
   int  Katigoria;
   char *word;
@@ -195,14 +228,20 @@ void printEpirima(char* epirima){
 
   Katigoria = toInt(strtok(NULL, "|"));
 
-  printf("%s (", word);
-  printf(italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
-  printf(") ");
+  if(isCap){
+    printf("%s (", isCap);
+    printf(italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
+    printf(") ");
+  }else{
+    printf("%s (", word);
+    printf(italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
+    printf(") ");
+  }
 
 }
 
 // #6
-void printSundesmo(char* sundesmo){
+void printSundesmo(char* sundesmo, char* isCap){
 
   int  Katigoria;
   char *word;
@@ -215,24 +254,38 @@ void printSundesmo(char* sundesmo){
 
   Katigoria = toInt(strtok(NULL, "|"));
 
-  printf("%s (", word);
-  printf(italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
-  printf(") ");
+  if(isCap){
+    printf("%s (", isCap);
+    printf(italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
+    printf(") ");
+  }else{  
+    printf("%s (", word);
+    printf(italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
+    printf(") ");
+  }
+
 }
 
 // #7
-void printAntonimia(char* antonimia){
+void printAntonimia(char* antonimia, char* isCap){
 
   strtok(antonimia, "|");
   char *word  = strtok(NULL, "|");
+  
+  if(isCap){
+    printf("%s (", isCap);
+    printf(italic bold "αντωνυμία"DEUNDER);
+    printf(") ");
+  }else{  
+    printf("%s (", word);
+    printf(italic bold "αντωνυμία"DEUNDER);
+    printf(") ");
+  }
 
-  printf("%s (", word);
-  printf(italic bold "αντωνυμία"DEUNDER);
-  printf(") ");
 }
 
 // a k r a i o 
-typedef void (*f)(char*); 
+typedef void (*f)(char*, char*); 
 f functionPrinter[8] = {
   &printRima,
   &printEpitheto,

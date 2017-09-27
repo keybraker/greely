@@ -23,15 +23,16 @@ int WordExifFunctioner(char* wordInput){
     if(!f1){ printf("ERROR f1"); exit(1); }
 
     int     type, jk = 0;
-    char    *len, *syllen;
+    char    *len, *syllen, *isCap;
     char    *word, *syllabes, *syllabesEditable;
-    char    *wordWithoutEnding;
+    char    *wordWithoutEnding, *wordInputSmall, *wordInputCap;
     char    *buffer = calloc(255*33636,sizeof(char*));
     char    **wholeFile = calloc(255*33636,sizeof(char));
 
     /*---------------------------------------------------------------------- READING FILES ----------------------------------------------------------------------*/
     //THIS MUST HAPPEN ONLY ONCE YOU LAUNCH THE PROGRAM NOT EVERY TIME
     while (fgets(buffer,255, f1)!= NULL)    { 
+
         if(wholeFile[jk] == NULL){
             wholeFile[jk] = calloc(255 * strlen(buffer)+1, sizeof(char));
             strcpy(wholeFile[jk], buffer);
@@ -42,12 +43,18 @@ int WordExifFunctioner(char* wordInput){
         jk++;
 
     };
-
+    jk--;
     fclose(f1);
 
-    jk--;
+    wordInputCap = strdup(wordInput);
+    wordInputSmall = capToSmall(wordInput);
+    wordInput = strdup(wordInputCap);
+
+    isCap = NULL;
+    if(strcmp(wordInputCap, wordInputSmall) != 0)
+        isCap = wordInputCap;
+
     int reader = jk;
-    wordInput = CapToSmall(wordInput);
 
     /*---------------------------------------------------------------------- LEKSEIS APO WORDEXIFGR ----------------------------------------------------------------------*/
     while (reader > 0)    {
@@ -60,11 +67,11 @@ int WordExifFunctioner(char* wordInput){
         syllabes    = strtok(NULL,      "|");
         type        = toInt(strtok(NULL,      "|"));
 
-        if( strcmp(word, wordInput) == 0 ){
+        if( strcmp(word, wordInputSmall) == 0 ){
             // goes to array finds type
             // calls the type defined
             // function and executes it
-            functionPrinter[type](wholeFile[reader]);
+            functionPrinter[type](wholeFile[reader], isCap);
             return 0;
 
         } 
@@ -103,8 +110,8 @@ int WordExifFunctioner(char* wordInput){
         // printf("wordWithoutEnding = %s\n", wordWithoutEnding);
         // printf("syllabesEditable = %s\n", syllabesEditable);
 
-        if( strncmp(wordWithoutEnding, wordInput, strlen(wordWithoutEnding)) == 0 ){
-            printf("%s [" , wordInput);
+        if( strncmp(wordWithoutEnding, wordInputSmall, strlen(wordWithoutEnding)) == 0 ){
+            printf("%s [" , wordInputSmall);
             printf(italic bold "%s"italic_re, wordWithoutEnding);
             printf("] ");
             return 0;
@@ -115,7 +122,7 @@ int WordExifFunctioner(char* wordInput){
 
     }
 
-    printf("%s [" , wordInput);
+    printf("%s [" , wordInputSmall);
     printf(italic bold "_"italic_re);
     printf("] ");
 
