@@ -39,16 +39,15 @@
         "επί", 
         "διά",
         "ίσον", 
-
     };
 
-      char *mikra[31] = {
+    char *mikra[31] = {
         "α","ά","β","γ","δ","ε","έ","ζ","η","ή","θ",
         "ι","ί","κ","λ","μ","ν","ξ","ο","ό","π","ρ",
         "σ","τ","υ","ύ","φ","χ","ψ","ω","ώ"
     };
 
-     char *megala[31] = {
+    char *megala[31] = {
         "Α","Ά","Β","Γ","Δ","Ε","Έ","Ζ","Η","Ή","Θ",
         "Ι","Ι","Κ","Λ","Μ","Ν","Ξ","Ο","Ό","Π","Ρ",
         "Σ","Τ","Υ","Ύ","Φ","Χ","Ψ","Ω","Ώ"
@@ -78,7 +77,6 @@
 
             default:    exit(0);
         }
-
     }
 
     int yylex       (void);
@@ -109,7 +107,6 @@
     double  arithmos;
 
     int     stiksi;
-
 }
 
 %start              PROTASI
@@ -133,13 +130,14 @@
 %token<epifonima>   EPIFONIMA 
 
 %token<stiksi>      STIKSI
-%token<arithmos>    ARITHMOS 
+%token<arithmos>    ARITHMOSFLOAT ARITHMOSINT 
 
 %%
 
     PROTASI:    LEKSEIS             { 
                                         //printf(a_c_g"\nΗ ολοκληρωμένη πρόταση είναι: ");
                                         //printf(a_c_m"%s\n\n\n",$<leksi>1); 
+                                        printf("\n");
                                     }
                                     ;
 
@@ -161,30 +159,31 @@
                                     }
                 |                   { $$ = NULL; }
                 ;
+                                    // TO $$ krataei ti pliroforia
+    MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;                                                    }
+                |LARTHRO            { $<leksi>$ = $<arthro>1;                                                   }
+                |LARITHMOS          { $<leksi>$ = calloc(1, sizeof(char*));     sprintf($<leksi>$, "%f", $1);   }
+                |LSTIKSI            { $<leksi>$ = strdup(getPunctuation($1));                                   }
 
-    MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;                    }//printf("  ➥ Το μέρος του λόγου είναι: %s\n",($$)); }
-                |LARTHRO            { $<leksi>$ = $<arthro>1;                   }//printf("  ➥ Το μέρος του λόγου είναι: %s\n",($$)); }
-                |LARITHMOS          { $<leksi>$ = calloc(1, sizeof(char*));     sprintf($<leksi>$, "%f", $1); }
-                |LSTIKSI            { $<leksi>$ = strdup(getPunctuation($1));   }//printf("  ➥ Το μέρος του λόγου είναι: %s\n",($$));/*switch case*/}
+    LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"οριστικό άρθρο γένους αρσσενικό, ενικού" italic_re);       printf(") "); }
+                |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"οριστικό άρθρο γένους αρσσενικό, πληθυντικού" italic_re);  printf(") "); }
 
-    LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"αρσσενικό άρθρο ενικού" italic_re);       printf(") "); }
-                |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"αρσσενικό άρθρο πληθυντικού" italic_re);  printf(") "); }
+                |THY_EN_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"οριστικό άρθρο γένους θηλυκό, ενικού" italic_re);          printf(") "); }
+                |THY_PL_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"οριστικό άρθρο γένους θηλυκό, πληθυντικού" italic_re);     printf(") "); }
 
-                |THY_EN_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"θηλυκό άρθρο ενικού" italic_re);          printf(") "); }
-                |THY_PL_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"θηλυκό άρθρο πληθυντικού" italic_re);     printf(") "); }
+                |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"οριστικό άρθρο γένους ουδέτερο ενικού" italic_re);        printf(") "); }
+                |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"οριστικό άρθρο γένους ουδέτερο πληθυντικού" italic_re);   printf(") "); }
 
-                |OUD_EN_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"ουδέτερο άρθρο ενικού" italic_re);        printf(") "); }
-                |OUD_PL_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"ουδέτερο άρθρο πληθυντικού" italic_re);   printf(") "); }
+                |_EN_AR             { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"οριστικό άρθρο γένους αγνώστου ενικού" italic_re);         printf(") "); }
+                |_PL_AR             { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"οριστικό άρθρο γένους αγνώστου πληθυντικού" italic_re);    printf(") "); }
 
-                |_EN_AR             { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"άγνωστο άρθρο ενικού" italic_re);         printf(") "); }
-                |_PL_AR             { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(italic bold"άγνωστο άρθρο πληθυντικού" italic_re);    printf(") "); }
+    LARITHMOS:  ARITHMOSFLOAT       { $<arithmos>$ = yylval.arithmos;           printf(a_c_r"%f (float αριθμός) ", (yylval.arithmos)); }
+                |ARITHMOSINT        { $<arithmos>$ = yylval.arithmos;           printf(a_c_r"%d (int αριθμός) ", (int)(yylval.arithmos)); }
 
-    LARITHMOS:  ARITHMOS            { $<arithmos>$ = yylval.arithmos;           printf(a_c_r"%f (αριθμός) ", (yylval.arithmos)); }
-
-    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               if(yylval.stiksi == 17){printf("\n");}else{printf("%s (σημείο στίξης) ", stiksiToString[yylval.stiksi]);} }
+    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               if(yylval.stiksi == 17){printf("\n");}else{printf("%s (", stiksiToString[yylval.stiksi]); printf(italic bold"σημείο στίξης" italic_re); printf(") ");} }
 
     LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                   printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |ONOMATA            { $$ = yylval.onomata;                      printf("%s (όνομα)", yylval.leksi); }                                                                   
+                |ONOMATA            { $$ = yylval.onomata;                      printf("%s (", yylval.leksi); printf(italic bold"όνομα" italic_re); printf(") ");}                                                                   
                 |EPITHETO           { $$ = yylval.epitheto;                     printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
                 |RIMA               { $$ = yylval.rima;                         printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
                 |EPIRIMA            { $$ = yylval.epirima;                      printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
