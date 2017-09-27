@@ -37,42 +37,18 @@ enter the project folder via terminal
 ```
 run command "make"
 ```
-to clean all products created by the program run command "make clean"
-
-## Running the tests
-
-In order to run a test of your own you have to change input.
-To do so, you need to go to input/input.txt and change the text.
-
+to clean all products created by the program run command 
 ```
-"Καλημέρα, με λένε Ιωάννη και μαρέσει το ποδόσφαιρο." ➥ "To something else"
+make clean
 ```
 
 ### Break down into end to end tests
 
 The default input is "Καλημέρα, με λένε Ιωάννη και μαρέσει το ποδόσφαιρο."
-
 If the default text is run, you will get the following outcome:
 
-For example for the word "Καλημέρα" we get
 ```
-Η λέξη από τον lex είναι: Καλημέρα
-➥ λέξη είναι: Καλημέρα
-  ➥ Το μέρος του λόγου είναι: Καλημέρα
-   ➥ λέξεις μέρος του λόγου: Καλημέρα
-```
-For example for the word "Ιωάννη" we get
-notice how it can undertand that "Ιωάννη" is a name
-```
-Το Ιωάννη είναι όνομα.
-Η λέξη από τον lex είναι: Ιωάννη
-➥ λέξη είναι: Ιωάννη
-  ➥ Το μέρος του λόγου είναι: Ιωάννη
-   ➥ λέξεις μέρος του λόγου: Καλημέρα , με λένε Ιωάννη
-```
-In the end if your text is correct the sentence will be completed shown bellow as continues line
-```
-    ➥ Η ολοκληρωμένη πρόταση είναι: Καλημέρα , με λένε Ιωάννη και μαρέσει το ποδόσφαιρο .
+Kαλημέρα (ουσιαστικό, ενικού αριθμου , γένος θηλύκο , ονομαστική πτώση) κόμμα (σημείο στίξης) με (επεξηγηματικός σύνδεσμος) λένε [λέ] Ιωάννη (όνομα) και (συμπλεκτικός σύνδεσμος) μαρέσει [μα] το (οριστικό άρθρο γένους ουδέτερο ενικού) ποδόσφαιρο (ουσιαστικό, ενικού αριθμου , γένος ουδέτερο , ονομαστική πτώση) τελεία (σημείο στίξης) 
 ```
 
 ## Built With
