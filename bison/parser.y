@@ -183,7 +183,7 @@
     LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               if(yylval.stiksi == 17){printf("\n");}else{printf("%s (", stiksiToString[yylval.stiksi]); printf(italic bold"σημείο στίξης" italic_re); printf(") ");} }
 
     LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                   printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |ONOMATA            { $$ = yylval.onomata;                      printf("'%s' (", yylval.leksi); printf(a_c_y italic bold"όνομα" italic_re); printf(") ");}                                                                   
+                |ONOMATA            { $$ = yylval.onomata;                      }                                                                   
                 |EPITHETO           { $$ = yylval.epitheto;                     printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
                 |RIMA               { $$ = yylval.rima;                         printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
                 |EPIRIMA            { $$ = yylval.epirima;                      printf(""); WordExifFunctioner(yylval.leksi); printf(""); }

@@ -106,111 +106,41 @@ char* addInfo(char* token, char* type){
 
 }
 
-int isName(char* name, char* type){ 
+/*
+* A function or checking if a noun is a 
+* name and printing it.
+* Lookup the complete database 
+* Has to get bitmapped and linked for pooling.
+*/
+int nameCheck(char* name){ 
 
-	//printf("%s - %s\n",name, type);
+	FILE* f1 = fopen ("WordExif/nameGr.txt", "r");
+    if(!f1){ printf("ERROR f1"); exit(1); }
 
- 	int returner = false;
-
-	FILE *nameDatabase;
-	FILE *newNameDatabase;
-
-	if ( (nameDatabase = fopen("database [obsolete]/greekNameDatabase.txt", "r")) == NULL ) { 
-		printf (a_c_r"3Couldn't open file nameDatabase %d\n"a_c_re, errno);
-        exit(0);
-    }
-    if ( (newNameDatabase = fopen("database [obsolete]/newGreekNameDatabase.txt", "w+")) == NULL ) { 
-		printf (a_c_r"4Couldn't open file nameDatabase %d\n"a_c_re, errno);
-        exit(0);
-    }
-
-    char buffer[255];
-    char *token, *token_prev, *stringer = NULL;
-
-    while (fgets(buffer,255, nameDatabase)!= NULL)    { 
-		
-		stringer = NULL;
-
-        token = strtok(buffer, "|");
-
-        if(strcmp(token,"N") == 0) { 
-	        
-		   	while( token != NULL ) 
-		   	{
-		    	token_prev = token;
-		    	token = strtok(NULL, " ");
-		   	}
-			token = strtok(token_prev, "|");
-
-
-	        if(strcmp(token, name) == 0){ 
-	        	if(type)
-		        	stringer = strdup(addInfo(token,type));
-		       	returner = true;  
-
-		    }
-		    if(strncmp(token, name, strlen(name)-2) == 0){
-	        	if(type)
-					stringer = strdup(addInfo(token,type));
-		        returner = true;
-				
-		    }
-			
-
-		    if(stringer != NULL){ 
-		    	fprintf(newNameDatabase, "%s", stringer);
-
-		    }else{
-				stringer = calloc(sizeof(buffer)+sizeof(token)+2, sizeof(char));
-		 		strcpy(stringer, "N|");
-		 		strcat(stringer, token);
-		 		strcat(stringer, "|\n");
-		    	fprintf(newNameDatabase, "%s", stringer);
-
-		    }
-
-		}else{
-
-			while( token != NULL ) 
-		   	{
-		    	token_prev = token;
-		    	token = strtok(NULL, " ");
-		   	}
-			token = strtok(token_prev, "|");
-
-			stringer = calloc(sizeof("Y||0|0|\n")+sizeof(token)+2, sizeof(char));
-		 	strcpy(stringer, "Y|");
-		 	strcat(stringer, token);
-		 	strcat(stringer, "|");
-			while( token != NULL ) 
-		   	{
-		    	token_prev = token;
-		    	token = strtok(NULL, " ");
-		   	}
-			token = strtok(token_prev, "|");
-			strcat(stringer, token);
-			strcat(stringer, "|");
-			while( token != NULL ) 
-		   	{
-		    	token_prev = token;
-		    	token = strtok(NULL, " ");
-		   	}
-			token = strtok(token_prev, "|"); 
-			strcat(stringer, token);
-			strcat(stringer, "|\n");
-
-		    fprintf(newNameDatabase, "%s", stringer);
-
-		}
-
+    char    *word = calloc (255, sizeof(char)) ;
+    char    *type = calloc (255, sizeof(char)) ;
+    char    buffer[255];
+    
+    // 0 for men
+    // 1 for women
+    while (fgets(buffer,255, f1)!= NULL){
+        word = strtok(buffer,"|"); 
+        type = strtok(NULL,"|"); 
+        if(strncmp(name, word, strlen(name)) == 0 && ( strlen(name)+2 == strlen(word) || strlen(name) == strlen(word) ) ){
+        	if(strcmp("0", type) == 0){
+        		printf("'%s' (", name); printf(a_c_y italic bold"όνομα αρσενικό" italic_re); printf(") ");
+        	}else{
+        		printf("'%s' (", name); printf(a_c_y italic bold"όνομα θηλυκό" italic_re); printf(") ");
+        	}
+        	
+        	return 1;
+        }
+       
+        
     }
 
-    fclose (newNameDatabase);
-	fclose (nameDatabase);
-
-		copyNewToOldFile("database [obsolete]/greekNameDatabase.txt","database [obsolete]/newGreekNameDatabase.txt");
-	
-	return returner;
+    fclose(f1);
+    return 0;
 
 }
 
@@ -513,7 +443,7 @@ char* ousiastikoExists(char* name, char* type){
 					} 
 
 [Α-ψ-ρ-π-ω-Ϋ]* 		{   /*---------------------------------------------------------------------- LEKSEIS ----------------------------------------------------------------------*/
-						if(isName(yytext, arthroBefore)) {
+						if(nameCheck(yytext)) {
 							yylval.leksi = strdup(yytext); 
 							return ONOMATA; 
 						}
