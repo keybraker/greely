@@ -1,27 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "wordExifStruct.h"
 
-#define UNDER     "\033[4m"
-#define DEUNDER   "\033[0m"
-#define a_c_r     "\x1b[31m"
-#define a_c_g     "\x1b[32m"
-#define a_c_y     "\x1b[33m"
-#define a_c_b     "\x1b[34m"
-#define a_c_m     "\x1b[35m"
-#define a_c_c     "\x1b[36m"
-#define a_c_re    "\x1b[0m"
-#define under     "\e[4m"
-#define under_re  "\e[0m"
-#define italic    "\e[3m"
-#define italic_re "\e[0m"
-#define bold      "\e[1m"
-#define bold_re   "\e[0m"
+#include "wordExifStruct.h"
 
 char *deleteSlashN(char* withSlashN){
   strtok(withSlashN, "\n");
   return withSlashN;
+
 }
 
 int toInt(char a[]) {
@@ -51,6 +34,7 @@ int toInt(char a[]) {
   }
  
   return n;
+
 }
 
 /*
@@ -60,28 +44,20 @@ int toInt(char a[]) {
 */
 char* capToSmall(char* wordInput){
 
-    FILE* f2 = fopen ("wordExif/capToSmall.txt", "r");
-    if(!f2){ printf("ERROR f1"); exit(1); }
-
     char* oldWordInput = calloc(16,sizeof(char));
     char* kluks = calloc(255*33636,sizeof(char));
 
-    while (fgets(kluks,255, f2) != NULL)    { 
+    for(int i = 0; i < 31; i++){
 
-        char* one = strtok(kluks,    "|");
-        char* two = strtok(NULL,      "|");
-        strtok(one, "\n"); // delete trailing \n
-        strtok(two, "\n"); // delete trailing \n
-        if(strncmp(two, wordInput, strlen(two)) == 0){
+        if(strncmp(megala[i], wordInput, strlen(megala[i])) == 0){
             strcpy(oldWordInput, wordInput);
-            strcpy(wordInput, one);
+            strcpy(wordInput, mikra[i]);
             strncat(wordInput, oldWordInput + 2, strlen(oldWordInput)+1 - 1);
             break;
         }
         
     };
 
-    fclose(f2);
     return wordInput;
 
 }

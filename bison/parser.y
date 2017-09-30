@@ -1,27 +1,32 @@
 %{
 
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include <assert.h>
+    
     #include "../WordExif/includerino.h"
 
-    #define a_c_r     "\x1b[31m"
-    #define a_c_g     "\x1b[32m"
-    #define a_c_y     "\x1b[33m"
-    #define a_c_b     "\x1b[34m"
-    #define a_c_m     "\x1b[35m"
-    #define a_c_c     "\x1b[36m"
-    #define a_c_re    "\x1b[0m"
-    #define under     "\e[4m"
-    #define under_re  "\e[0m"
-    #define italic    "\e[3m"
-    #define italic_re "\e[0m"
-    #define bold      "\e[1m"
-    #define bold_re   "\e[0m"
+    char* stiksiToString[18] = {
 
-    char *stiksiToString[17] = { 
-        
+        ",",
+        ".",
+        ";",
+        ":",
+        "!",
+        "_",
+        "(",
+        ")",
+        "[",
+        "]",
+        "{",
+        "}",
+        "+",
+        "-",
+        "*",
+        "/",
+        "=",
+        "~"
+        };
+
+    char *stiksiToStringName[18] = { 
+
         "κόμμα",
         "τελεία",
         "ερωτηματικό",
@@ -38,46 +43,10 @@
         "μείων",
         "επί", 
         "διά",
-        "ίσον", 
+        "ίσον",
+        "περίπου"
+
     };
-
-    char *mikra[31] = {
-        "α","ά","β","γ","δ","ε","έ","ζ","η","ή","θ",
-        "ι","ί","κ","λ","μ","ν","ξ","ο","ό","π","ρ",
-        "σ","τ","υ","ύ","φ","χ","ψ","ω","ώ"
-    };
-
-    char *megala[31] = {
-        "Α","Ά","Β","Γ","Δ","Ε","Έ","Ζ","Η","Ή","Θ",
-        "Ι","Ι","Κ","Λ","Μ","Ν","Ξ","Ο","Ό","Π","Ρ",
-        "Σ","Τ","Υ","Ύ","Φ","Χ","Ψ","Ω","Ώ"
-    };
-
-    char *getPunctuation(int punc){
-
-        switch (punc) {
-            case 0:     return ","; break;
-            case 1:     return "."; break;
-            case 2:     return ";"; break; 
-            case 3:     return ":"; break;
-            case 4:     return "!"; break; 
-            case 5:     return "_"; break;
-            case 6:     return "("; break; 
-            case 7:     return ")"; break;
-            case 8:     return "["; break; 
-            case 9:     return "]"; break;
-            case 10:    return "{"; break; 
-            case 11:    return "}"; break;
-            case 12:    return "+"; break; 
-            case 13:    return "-"; break;
-            case 14:    return "*"; break; 
-            case 15:    return "/"; break;
-            case 16:    return "="; break; 
-            case 17:    return "~"; break;
-
-            default:    exit(0);
-        }
-    }
 
     int yylex       (void);
     int yyerror     (char* yaccProvidedMessage);
@@ -163,7 +132,7 @@
     MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;                                                    }
                 |LARTHRO            { $<leksi>$ = $<arthro>1;                                                   }
                 |LARITHMOS          { $<leksi>$ = calloc(1, sizeof(char*));     sprintf($<leksi>$, "%f", $1);   }
-                |LSTIKSI            { $<leksi>$ = strdup(getPunctuation($1));                                   }
+                |LSTIKSI            { $<leksi>$ = strdup(stiksiToStringName[$1]);                               }
 
     LARTHRO:    ARS_EN_AR           { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(a_c_m italic bold"οριστικό άρθρο γένους αρσσενικό, ενικού" italic_re);       printf(") "); }
                 |ARS_PL_AR          { $<arthro>$ = yylval.arthro;               printf("%s (", yylval.arthro); printf(a_c_m italic bold"οριστικό άρθρο γένους αρσσενικό, πληθυντικού" italic_re);  printf(") "); }
@@ -180,7 +149,7 @@
     LARITHMOS:  ARITHMOSFLOAT       { $<arithmos>$ = yylval.arithmos;           printf("%f (", yylval.arithmos); printf(a_c_r italic bold"float αριθμός" italic_re);                         printf(") "); }
                 |ARITHMOSINT        { $<arithmos>$ = yylval.arithmos;           printf("%d (", (int) yylval.arithmos); printf(a_c_r italic bold"int αριθμός" italic_re);                     printf(") "); }
 
-    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               if(yylval.stiksi == 17){printf("\n");}else{printf("%s (", stiksiToString[yylval.stiksi]); printf(italic bold"σημείο στίξης" italic_re); printf(") ");} }
+    LSTIKSI:    STIKSI              { $<stiksi>$ = yylval.stiksi;               if(yylval.stiksi == 17){printf("\n");}else{printf("%s %s (", stiksiToString[yylval.stiksi], stiksiToStringName[yylval.stiksi]); printf(italic bold"σημείο στίξης" italic_re); printf(") ");} }
 
     LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                   printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
                 |ONOMATA            { $$ = yylval.onomata;                      }                                                                   
