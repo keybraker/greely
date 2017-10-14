@@ -63,7 +63,7 @@ Kαλημέρα (ουσιαστικό, ενικού αριθμου , γένος 
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://github.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-➥ https://keybraker.github.io/Lexical-Grammatical-Analyzer-for-Greek/
+➥ https://github.com/keybraker/greek-Ai-Bot
 
 ## Versioning
 
@@ -75,7 +75,7 @@ I use [SemVer](http://semver.org/) for versioning. For the versions available.
 
 ## License
 
-This project is licensed under the [GNU LICENSE]()
+This project is licensed under the [GNU LICENSE](https://github.com/keybraker/greek-Ai-Bot/blob/master/LICENSE)
 
 ## Acknowledgments
 
