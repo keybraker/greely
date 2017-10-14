@@ -60,10 +60,7 @@ Kαλημέρα (ουσιαστικό, ενικού αριθμου , γένος 
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://github.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-➥ https://github.com/keybraker/greek-Ai-Bot
+## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/CONTRIBUTING.md)
 
 ## Versioning
 
