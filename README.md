@@ -60,8 +60,6 @@ Kαλημέρα (ουσιαστικό, ενικού αριθμου , γένος 
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
-## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/CONTRIBUTING.md)
-
 ## Versioning
 
 I use [SemVer](http://semver.org/) for versioning. For the versions available. 
@@ -70,9 +68,9 @@ I use [SemVer](http://semver.org/) for versioning. For the versions available.
 
 * **Ioannis Tsiakkas** - *(Keybraker)* - [Keybraker](https://github.com/keybraker)
 
-## License
+## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/CONTRIBUTING.md)
 
-This project is licensed under the [GNU LICENSE](https://github.com/keybraker/greek-Ai-Bot/blob/master/LICENSE)
+## [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/LICENSE)
 
 ## Acknowledgments
 
