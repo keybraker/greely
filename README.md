@@ -60,11 +60,6 @@ Kαλημέρα (ουσιαστικό, ενικού αριθμου , γένος 
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
-## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/CONTRIBUTING.md)
-
-## [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/LICENSE)
-
-## [Versioning](http://semver.org/)
 
 ## Authors
 
@@ -73,3 +68,9 @@ Kαλημέρα (ουσιαστικό, ενικού αριθμου , γένος 
 ## Acknowledgments
 
 * [CypressA](https://github.com/CypressA/GreekLex-2)
+
+## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/CONTRIBUTING.md)
+
+## [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/LICENSE)
+
+## [Versioning](http://semver.org/)
