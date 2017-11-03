@@ -60,23 +60,17 @@ Kαλημέρα (ουσιαστικό, ενικού αριθμου , γένος 
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://github.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-➥ https://keybraker.github.io/Lexical-Grammatical-Analyzer-for-Greek/
-
-## Versioning
-
-I use [SemVer](http://semver.org/) for versioning. For the versions available. 
 
 ## Authors
 
 * **Ioannis Tsiakkas** - *(Keybraker)* - [Keybraker](https://github.com/keybraker)
 
-## License
-
-This project is licensed under the Tsiakkas License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * [CypressA](https://github.com/CypressA/GreekLex-2)
+
+## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/CONTRIBUTING.md)
+
+## [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/LICENSE)
+
+## [Versioning](http://semver.org/)
