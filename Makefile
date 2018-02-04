@@ -1,9 +1,8 @@
-# ko rm database [obsolete]/newGreekNameDatabase.txt
 all:
 	clear
-	bison --yacc --defines --verbose --output=output/parser.c bison/parser.y 
-	flex --outfile=output/scanner.c flex/scanner.l
-	gcc -o output/greekLex output/scanner.c output/parser.c wordExif/wordExifGr.c
+	bison --yacc --defines --verbose --output=output/parser.c bison_flex/bison/parser.y 
+	flex --outfile=output/scanner.c bison_flex/flex/scanner.l
+	gcc -o output/greekLex output/scanner.c output/parser.c bison_flex/analyzer_funcs/word_exif_gr.c
 	./output/greekLex input/input.txt
 	
 clean:
