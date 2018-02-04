@@ -53,10 +53,12 @@ but if you find any trouble, these are the links to follow:
 ### Downloading
 
 Clone the project to your computer and run make, it's simple as that !
-
 ```
 git clone https://github.com/keybraker/greek-Ai-Bot.git
 ```
+
+### Running
+
 enter the project folder via terminal and run command
 ```
 make
@@ -66,7 +68,7 @@ to clean all products created by the program run command
 make clean
 ```
 
-### Break down into end to end tests
+### Example
 
 This example is a sentence in natural greek language:
 "Καλημέρα, με λένε Ιωάννη και μου αρέσει το ποδόσφαιρο.", 

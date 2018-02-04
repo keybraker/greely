@@ -93,6 +93,8 @@ binary_search(char **file_to_mem, int l, int r, int x)
         return binary_search(file_to_mem, mid+1, r, x);
     }
 
+    return -1;
+    
 }
 
 /*
