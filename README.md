@@ -1,4 +1,4 @@
-#### Disclaimer: This is a very early stage in the process of greely, key functions don't work, just the shell of the program is running, production will continue in Q3-17.
+#### Disclaimer: This is a very early stage in the process of greely, key functions don't work, just the shell of the program is running, production will continue in Q2-18. Some adjustments will be made to make it run on UNIX based operating systems, and some minor functionallity will be added.
 
 ![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/greely%20logo.png)
 
@@ -7,6 +7,36 @@
 A new way to interpret and understand natural human language.
 Greek as first language to be worked on.
 Ai that understands and learns the human language and you.
+
+
+## Structure for interprentation 
+
+```text
+│ 
+├── bison_flex
+|   ├── analyzer_funcs
+|   |   └── * databases // current database
+|   ├── bison
+|   |   └── parser.y    // grammatical analyzer
+|   └── flex
+|       └── scanner.l   // lexical analyzer
+|
+├── database_generator
+|   ├── realDatabase.c  // learning in proggress
+|   └── * databases     // source database
+|
+├── input
+|   └── input.txt       // current input
+│ 
+├── output
+|   └── blank           // compiled files
+|
+├── Makefile
+├── LICENSE
+├── CONTRIBUTING.md
+└── README.md
+```
+
 
 ## Getting Started
 
