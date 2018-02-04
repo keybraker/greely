@@ -61,7 +61,6 @@ char* capToSmall(char* wordInput){
 
 }
 
-
 // #0
 void printRima(char* rima, char* isCap){
 

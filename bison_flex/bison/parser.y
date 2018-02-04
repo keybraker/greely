@@ -1,6 +1,6 @@
  %{
     
-    #include "../bison_flex/analyzer_funcs/master_header.h"
+    #include "../bison_flex/analyzer_funcs/data_to_mem_and_free/word_exif_data_to_mem.h"
 
     char* stiksiToString[18] = {
 
@@ -22,6 +22,7 @@
         "/",
         "=",
         "~"
+
     };
 
     char *stiksiToStringName[18] = { 
@@ -235,7 +236,7 @@
     			{ 
     				$$ = yylval.ousiastiko;                   
     				printf(" "); 
-    				WordExifFunctioner(yylval.leksi); 
+    				word_exif_func(yylval.leksi); 
     				printf(" "); 
     			}
                 |ONOMATA            
@@ -246,56 +247,56 @@
                 { 
                 	$$ = yylval.epitheto;                     
                 	printf(" ");
-					WordExifFunctioner(yylval.leksi); 
+					word_exif_func(yylval.leksi); 
 					printf(" "); 
                 }
                 |RIMA               
                 { 
                 	$$ = yylval.rima;                         
                 	printf(" "); 
-                	WordExifFunctioner(yylval.leksi); 
+                	word_exif_func(yylval.leksi); 
                 	printf(" "); 
                 }
                 |EPIRIMA            
                 { 
                 	$$ = yylval.epirima;                      
                 	printf(" "); 
-                	WordExifFunctioner(yylval.leksi); 
+                	word_exif_func(yylval.leksi); 
                 	printf(" "); 
                 }
                 |ANTONUMIA          
                 { 
                 	$$ = yylval.antonumia;                    
                 	printf(" "); 
-                	WordExifFunctioner(yylval.leksi); 
+                	word_exif_func(yylval.leksi); 
                 	printf(" "); 
                 }
                 |ARTHRO             
                 { 
                 	$$ = yylval.arthro;                       
                 	printf(" "); 
-                	WordExifFunctioner(yylval.leksi); 
+                	word_exif_func(yylval.leksi); 
                 	printf(" "); 
                 }
                 |PROTHESI           
                 { 
                 	$$ = yylval.prothesi;                     
                 	printf(" "); 
-                	WordExifFunctioner(yylval.leksi); 
+                	word_exif_func(yylval.leksi); 
                 	printf(" "); 
                 }
                 |SUDESMOS           
                 { 
                 	$$ = yylval.sundesmos;                    
                 	printf(" "); 
-                	WordExifFunctioner(yylval.leksi); 
+                	word_exif_func(yylval.leksi); 
                 	printf(" "); 
                 }
                 |EPIFONIMA          
                 { 
                 	$$ = yylval.epifonima;                    
                 	printf(" "); 
-                	WordExifFunctioner(yylval.leksi); 
+                	word_exif_func(yylval.leksi); 
                 	printf(" "); 
                 }
 

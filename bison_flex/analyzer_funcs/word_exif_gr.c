@@ -1,17 +1,4 @@
-/*
-* IF ABSOLUTE MATCH IS NOT FOUND, CORE IS SEARCHED USING THIS
-* FUNCTION
-*
-*
-*
-*
-*
-*
-*
-*
-*/
-
-#include "master_header.h"
+#include "word_exif_gr.h"
 #include "word_type_print.h"
 
 //fortonei olo to arxeio se ena pinaka kai ton diabazei anapoda 
@@ -27,6 +14,7 @@ int WordExifFunctioner(char* wordInput){
     char    *word, *syllabes, *syllabesEditable;
     char    *wordWithoutEnding, *wordInputSmall, *wordInputCap;
     char    *buffer = calloc(255, sizeof(char));
+    
     char    **wholeFile = calloc(255*8912, sizeof(char*));
 
     /*---------------------------------------------------------------------- READING FILES ----------------------------------------------------------------------*/
@@ -82,7 +70,7 @@ int WordExifFunctioner(char* wordInput){
 
     reader = jk;
 
-    /*------------------------------------------------ AN DEN BRETHEI STI BASH PSAXNOUME TI RIZA THS LEKSEIS GIA EDIT META -------------------------------------*/
+    /* AN DEN BRETHEI STI BASH PSAXNOUME TI RIZA THS LEKSEIS GIA EDIT META -------------------------------------*/
     while (reader > 0)    { 
 
         strcpy(buffer, wholeFile[reader]);
