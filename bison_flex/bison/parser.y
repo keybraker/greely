@@ -128,10 +128,23 @@
                 |                   { $$ = NULL; }
                 ;
                                     // TO $$ krataei ti pliroforia
-    MEROSLOGOU: LLEKSI              { $<leksi>$ = $<leksi>1;                                                    }
-                |LARTHRO            { $<leksi>$ = $<arthro>1;                                                   }
-                |LARITHMOS          { $<leksi>$ = calloc(1, sizeof(char*));     sprintf($<leksi>$, "%f", $1);   }
-                |LSTIKSI            { $<leksi>$ = strdup(stiksiToStringName[$1]);                               }
+    MEROSLOGOU: LLEKSI              
+    			{ 
+    				$<leksi>$ = $<leksi>1;                                                    
+    			}
+                |LARTHRO            
+                { 
+                	$<leksi>$ = $<arthro>1;                                                   
+                }
+                |LARITHMOS          
+                { 
+                	$<leksi>$ = calloc(1, sizeof(char*));     
+                	sprintf($<leksi>$, "%f", $1);   
+                }
+                |LSTIKSI            
+                { 
+                	$<leksi>$ = strdup(stiksiToStringName[$1]);                               
+                }
 
     LARTHRO:    ARS_EN_AR           
                 { 
@@ -218,16 +231,73 @@
                     }
                 }
 
-    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;                   printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |ONOMATA            { $$ = yylval.onomata;                                                                                }                                                                   
-                |EPITHETO           { $$ = yylval.epitheto;                     printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |RIMA               { $$ = yylval.rima;                         printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |EPIRIMA            { $$ = yylval.epirima;                      printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |ANTONUMIA          { $$ = yylval.antonumia;                    printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |ARTHRO             { $$ = yylval.arthro;                       printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |PROTHESI           { $$ = yylval.prothesi;                     printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |SUDESMOS           { $$ = yylval.sundesmos;                    printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
-                |EPIFONIMA          { $$ = yylval.epifonima;                    printf(""); WordExifFunctioner(yylval.leksi); printf(""); }
+    LLEKSI:     OUSIASTIKO          
+    			{ 
+    				$$ = yylval.ousiastiko;                   
+    				printf(" "); 
+    				WordExifFunctioner(yylval.leksi); 
+    				printf(" "); 
+    			}
+                |ONOMATA            
+                { 
+                	$$ = yylval.onomata;                        
+                }                                                                   
+                |EPITHETO           
+                { 
+                	$$ = yylval.epitheto;                     
+                	printf(" ");
+					WordExifFunctioner(yylval.leksi); 
+					printf(" "); 
+                }
+                |RIMA               
+                { 
+                	$$ = yylval.rima;                         
+                	printf(" "); 
+                	WordExifFunctioner(yylval.leksi); 
+                	printf(" "); 
+                }
+                |EPIRIMA            
+                { 
+                	$$ = yylval.epirima;                      
+                	printf(" "); 
+                	WordExifFunctioner(yylval.leksi); 
+                	printf(" "); 
+                }
+                |ANTONUMIA          
+                { 
+                	$$ = yylval.antonumia;                    
+                	printf(" "); 
+                	WordExifFunctioner(yylval.leksi); 
+                	printf(" "); 
+                }
+                |ARTHRO             
+                { 
+                	$$ = yylval.arthro;                       
+                	printf(" "); 
+                	WordExifFunctioner(yylval.leksi); 
+                	printf(" "); 
+                }
+                |PROTHESI           
+                { 
+                	$$ = yylval.prothesi;                     
+                	printf(" "); 
+                	WordExifFunctioner(yylval.leksi); 
+                	printf(" "); 
+                }
+                |SUDESMOS           
+                { 
+                	$$ = yylval.sundesmos;                    
+                	printf(" "); 
+                	WordExifFunctioner(yylval.leksi); 
+                	printf(" "); 
+                }
+                |EPIFONIMA          
+                { 
+                	$$ = yylval.epifonima;                    
+                	printf(" "); 
+                	WordExifFunctioner(yylval.leksi); 
+                	printf(" "); 
+                }
 
 %%
 
