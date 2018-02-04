@@ -106,6 +106,7 @@
     PROTASI:    LEKSEIS             { 
                                         //printf(a_c_g"\nΗ ολοκληρωμένη πρόταση είναι: ");
                                         //printf(a_c_m"%s\n\n\n",$<leksi>1); 
+                                        word_exif_func(NULL);
                                         printf("\n");
                                     }
                                     ;
@@ -235,9 +236,9 @@
     LLEKSI:     OUSIASTIKO          
     			{ 
     				$$ = yylval.ousiastiko;                   
-    				printf(" "); 
+    				// printf(" "); 
     				word_exif_func(yylval.leksi); 
-    				printf(" "); 
+    				// printf(" "); 
     			}
                 |ONOMATA            
                 { 
@@ -248,56 +249,56 @@
                 	$$ = yylval.epitheto;                     
                 	printf(" ");
 					word_exif_func(yylval.leksi); 
-					printf(" "); 
+					// printf(" "); 
                 }
                 |RIMA               
                 { 
                 	$$ = yylval.rima;                         
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
                 |EPIRIMA            
                 { 
                 	$$ = yylval.epirima;                      
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
                 |ANTONUMIA          
                 { 
                 	$$ = yylval.antonumia;                    
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
                 |ARTHRO             
                 { 
                 	$$ = yylval.arthro;                       
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
                 |PROTHESI           
                 { 
                 	$$ = yylval.prothesi;                     
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
                 |SUDESMOS           
                 { 
                 	$$ = yylval.sundesmos;                    
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
                 |EPIFONIMA          
                 { 
                 	$$ = yylval.epifonima;                    
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
 
 %%

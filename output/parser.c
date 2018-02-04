@@ -544,9 +544,9 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   106,   106,   113,   129,   132,   136,   140,   145,   150,
-     157,   164,   171,   179,   186,   194,   201,   209,   215,   222,
-     235,   242,   246,   253,   260,   267,   274,   281,   288,   295
+       0,   106,   106,   114,   130,   133,   137,   141,   146,   151,
+     158,   165,   172,   180,   187,   195,   202,   210,   216,   223,
+     236,   243,   247,   254,   261,   268,   275,   282,   289,   296
 };
 #endif
 
@@ -1336,13 +1336,14 @@ yyreduce:
     { 
                                         //printf(a_c_g"\nΗ ολοκληρωμένη πρόταση είναι: ");
                                         //printf(a_c_m"%s\n\n\n",$<leksi>1); 
+                                        word_exif_func(NULL);
                                         printf("\n");
                                     }
-#line 1342 "output/parser.c" /* yacc.c:1646  */
+#line 1343 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 113 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 114 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     {    
 
                                         if((yyvsp[-1].leksi) == NULL && (yyvsp[0].leksi) != NULL){ 
@@ -1359,158 +1360,158 @@ yyreduce:
                                         //printf("    ➥ λέξεις μέρος του λόγου: %s\n\n",$$);
 
                                     }
-#line 1363 "output/parser.c" /* yacc.c:1646  */
+#line 1364 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 129 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 130 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { (yyval.leksi) = NULL; }
-#line 1369 "output/parser.c" /* yacc.c:1646  */
+#line 1370 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 133 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 134 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
     				(yyval.leksi) = (yyvsp[0].leksi);                                                    
     			}
-#line 1377 "output/parser.c" /* yacc.c:1646  */
+#line 1378 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 137 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 138 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = (yyvsp[0].arthro);                                                   
                 }
-#line 1385 "output/parser.c" /* yacc.c:1646  */
+#line 1386 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 141 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 142 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = calloc(1, sizeof(char*));     
                 	sprintf((yyval.leksi), "%f", (yyvsp[0].arithmos));   
                 }
-#line 1394 "output/parser.c" /* yacc.c:1646  */
+#line 1395 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 146 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 147 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = strdup(stiksiToStringName[(yyvsp[0].stiksi)]);                               
                 }
-#line 1402 "output/parser.c" /* yacc.c:1646  */
+#line 1403 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 151 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 152 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arthro) = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
                     printf(a_c_m italic bold"οριστικό άρθρο γένους αρσσενικό, ενικού" italic_re);       
                     printf(") "); 
                 }
-#line 1413 "output/parser.c" /* yacc.c:1646  */
+#line 1414 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 158 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 159 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     {
                     (yyval.arthro) = yylval.arthro;
                     printf("%s (", yylval.arthro);
                     printf(a_c_m italic bold"οριστικό άρθρο γένους αρσσενικό, πληθυντικού" italic_re);
                     printf(") "); 
                 }
-#line 1424 "output/parser.c" /* yacc.c:1646  */
+#line 1425 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 165 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 166 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arthro) = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
                     printf(a_c_m italic bold"οριστικό άρθρο γένους θηλυκό, ενικού" italic_re);          
                     printf(") ");
                  }
-#line 1435 "output/parser.c" /* yacc.c:1646  */
+#line 1436 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 172 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 173 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arthro) = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
                     printf(a_c_m italic bold"οριστικό άρθρο γένους θηλυκό, πληθυντικού" italic_re);     
                     printf(") "); 
                 }
-#line 1446 "output/parser.c" /* yacc.c:1646  */
+#line 1447 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 180 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 181 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arthro) = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
                     printf(a_c_m italic bold"οριστικό άρθρο γένους ουδέτερο ενικού" italic_re);        
                     printf(") "); 
                 }
-#line 1457 "output/parser.c" /* yacc.c:1646  */
+#line 1458 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 187 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 188 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arthro) = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
                     printf(a_c_m italic bold"οριστικό άρθρο γένους ουδέτερο πληθυντικού" italic_re);   
                     printf(") "); 
                 }
-#line 1468 "output/parser.c" /* yacc.c:1646  */
+#line 1469 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 195 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 196 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arthro) = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
                     printf(a_c_m italic bold"οριστικό άρθρο γένους αγνώστου ενικού" italic_re);         
                     printf(") "); 
                 }
-#line 1479 "output/parser.c" /* yacc.c:1646  */
+#line 1480 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 202 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 203 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arthro) = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
                     printf(a_c_m italic bold"οριστικό άρθρο γένους αγνώστου πληθυντικού" italic_re);    
                     printf(") "); 
                 }
-#line 1490 "output/parser.c" /* yacc.c:1646  */
+#line 1491 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 210 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 211 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arithmos) = yylval.arithmos;           
                     printf("%f (", yylval.arithmos); printf(a_c_r italic bold"float αριθμός" italic_re);                         
                     printf(") "); 
                 }
-#line 1500 "output/parser.c" /* yacc.c:1646  */
+#line 1501 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 216 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 217 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.arithmos) = yylval.arithmos;           
                     printf("%d (", (int) yylval.arithmos); printf(a_c_r italic bold"int αριθμός" italic_re);                     
                     printf(") "); 
                 }
-#line 1510 "output/parser.c" /* yacc.c:1646  */
+#line 1511 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 223 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 224 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                     (yyval.stiksi) = yylval.stiksi;               
                     if(yylval.stiksi == 17){
@@ -1522,118 +1523,118 @@ yyreduce:
                         printf(") ");
                     }
                 }
-#line 1526 "output/parser.c" /* yacc.c:1646  */
+#line 1527 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 236 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 237 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
     				(yyval.leksi) = yylval.ousiastiko;                   
-    				printf(" "); 
+    				// printf(" "); 
     				word_exif_func(yylval.leksi); 
-    				printf(" "); 
+    				// printf(" "); 
     			}
-#line 1537 "output/parser.c" /* yacc.c:1646  */
+#line 1538 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 243 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 244 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.onomata;                        
                 }
-#line 1545 "output/parser.c" /* yacc.c:1646  */
+#line 1546 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 247 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 248 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.epitheto;                     
                 	printf(" ");
 					word_exif_func(yylval.leksi); 
-					printf(" "); 
+					// printf(" "); 
                 }
-#line 1556 "output/parser.c" /* yacc.c:1646  */
+#line 1557 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 254 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 255 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.rima;                         
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
-#line 1567 "output/parser.c" /* yacc.c:1646  */
+#line 1568 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 261 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 262 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.epirima;                      
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
-#line 1578 "output/parser.c" /* yacc.c:1646  */
+#line 1579 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 268 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 269 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.antonumia;                    
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
-#line 1589 "output/parser.c" /* yacc.c:1646  */
+#line 1590 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 275 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 276 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.arthro;                       
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
-#line 1600 "output/parser.c" /* yacc.c:1646  */
+#line 1601 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 282 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 283 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.prothesi;                     
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
-#line 1611 "output/parser.c" /* yacc.c:1646  */
+#line 1612 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 289 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 290 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.sundesmos;                    
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
-#line 1622 "output/parser.c" /* yacc.c:1646  */
+#line 1623 "output/parser.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 296 "bison_flex/bison/parser.y" /* yacc.c:1646  */
+#line 297 "bison_flex/bison/parser.y" /* yacc.c:1646  */
     { 
                 	(yyval.leksi) = yylval.epifonima;                    
-                	printf(" "); 
+                	// printf(" "); 
                 	word_exif_func(yylval.leksi); 
-                	printf(" "); 
+                	// printf(" "); 
                 }
-#line 1633 "output/parser.c" /* yacc.c:1646  */
+#line 1634 "output/parser.c" /* yacc.c:1646  */
     break;
 
 
-#line 1637 "output/parser.c" /* yacc.c:1646  */
+#line 1638 "output/parser.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1861,7 +1862,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 303 "bison_flex/bison/parser.y" /* yacc.c:1906  */
+#line 304 "bison_flex/bison/parser.y" /* yacc.c:1906  */
 
 
 
