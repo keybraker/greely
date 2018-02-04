@@ -5,7 +5,6 @@
 * finish execution
 */
 
-#include "word_exif_gr.h"
 #include "word_type_print.h"
 #include "word_exif_data_to_mem.h"
 

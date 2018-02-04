@@ -14,28 +14,31 @@ Ai that understands and learns the human language and you.
 │ 
 ├── bison_flex
 |   ├── analyzer_funcs
-|   |   └── * databases // current database
+|   |   ├── word_exif_data_to_mem.c		// funcs for print
+|   |   ├── word_exif_data_to_mem.h		
+|   |   ├── word_syllab_arrays.h		// arrays for print
+|   |   ├── word_type_print.h			// helping funcs for print
+|   |   └── * databases 				// current database
 |   ├── bison
-|   |   └── parser.y    // grammatical analyzer
+|   |   └── parser.y    				// grammatical analyzer
 |   └── flex
-|       └── scanner.l   // lexical analyzer
+|       └── scanner.l   				// lexical analyzer
 |
 ├── database_generator
-|   ├── realDatabase.c  // learning in proggress
-|   └── * databases     // source database
+|   ├── realDatabase.c  				// learning in proggress
+|   └── * databases     				// source database
 |
 ├── input
-|   └── input.txt       // current input
+|   └── input.txt       				// current input
 │ 
 ├── output
-|   └── blank           // compiled files
+|   └── blank           				// compiled files
 |
 ├── Makefile
 ├── LICENSE
 ├── CONTRIBUTING.md
 └── README.md
 ```
-
 
 ## Getting Started
 
