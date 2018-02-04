@@ -1,6 +1,7 @@
 #include "word_syllab_arrays.h"
 
-char *deleteSlashN(char* withSlashN){
+
+char *delete_slash_n(char* withSlashN){
   strtok(withSlashN, "\n");
   return withSlashN;
 

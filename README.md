@@ -1,4 +1,4 @@
-#### Disclaimer: This is a very early stage in the process of greely, key functions don't work, just the shell of the program is running, production will continue in Q2-18. Some adjustments will be made to make it run on UNIX based operating systems, and some minor functionallity will be added.
+#### Disclaimer: This is a very early stage in the development of greely, key functions don't work, just the shell of the program is running, production will continue in Q2-18. Some adjustments have been to execute alot faster and run on UNIX based operating systems. Minor functionallity will be added in upcomming months but steady updates will continue in half a year.
 
 ![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/greely%20logo.png)
 
@@ -7,7 +7,6 @@
 A new way to interpret and understand natural human language.
 Greek as first language to be worked on.
 Ai that understands and learns the human language and you.
-
 
 ## Structure for interprentation 
 
@@ -40,12 +39,6 @@ Ai that understands and learns the human language and you.
 
 ## Getting Started
 
-Just clone the project to your computer and run make, it's simple as that !
-
-```
-git clone https://github.com/keybraker/greek-Ai-Bot.git
-```
-
 ### Prerequisites
 
 Most Linux distros and Mac OS come preinstalled with all of the following compilers
@@ -57,15 +50,16 @@ but if you find any trouble, these are the links to follow:
 
 ➽ In the end only gcc will be needed
 
-### Installing
+### Downloading
+
+Clone the project to your computer and run make, it's simple as that !
 
 ```
-git clone git@github.com:keybraker/Lexical-Grammatical-Analyzer-for-Greek-with-Flex-Bison.git
+git clone https://github.com/keybraker/greek-Ai-Bot.git
 ```
-enter the project folder via terminal
-
+enter the project folder via terminal and run command
 ```
-run command "make"
+make
 ```
 to clean all products created by the program run command 
 ```
@@ -74,8 +68,9 @@ make clean
 
 ### Break down into end to end tests
 
-The default input is "Καλημέρα, με λένε Ιωάννη και μου αρέσει το ποδόσφαιρο."
-If the default text is run, you will get the following outcome:
+This example is a sentence in natural greek language:
+"Καλημέρα, με λένε Ιωάννη και μου αρέσει το ποδόσφαιρο.", 
+if given as input to greekLex you will get the following output: 
 
 ```
 Καλημέρα (ουσιαστικό, ενικού αριθμου , γένος θηλύκο , ονομαστική πτώση)  , κόμμα (σημείο στίξης)  
@@ -90,7 +85,6 @@ If the default text is run, you will get the following outcome:
 * [c](https://gcc.gnu.org/) - The merging of all the parts and for database generation
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
-
 
 ## Authors
 

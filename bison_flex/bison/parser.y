@@ -233,73 +233,16 @@
                     }
                 }
 
-    LLEKSI:     OUSIASTIKO          
-    			{ 
-    				$$ = yylval.ousiastiko;                   
-    				// printf(" "); 
-    				word_exif_func(yylval.leksi); 
-    				// printf(" "); 
-    			}
-                |ONOMATA            
-                { 
-                	$$ = yylval.onomata;                        
-                }                                                                   
-                |EPITHETO           
-                { 
-                	$$ = yylval.epitheto;                     
-                	printf(" ");
-					word_exif_func(yylval.leksi); 
-					// printf(" "); 
-                }
-                |RIMA               
-                { 
-                	$$ = yylval.rima;                         
-                	// printf(" "); 
-                	word_exif_func(yylval.leksi); 
-                	// printf(" "); 
-                }
-                |EPIRIMA            
-                { 
-                	$$ = yylval.epirima;                      
-                	// printf(" "); 
-                	word_exif_func(yylval.leksi); 
-                	// printf(" "); 
-                }
-                |ANTONUMIA          
-                { 
-                	$$ = yylval.antonumia;                    
-                	// printf(" "); 
-                	word_exif_func(yylval.leksi); 
-                	// printf(" "); 
-                }
-                |ARTHRO             
-                { 
-                	$$ = yylval.arthro;                       
-                	// printf(" "); 
-                	word_exif_func(yylval.leksi); 
-                	// printf(" "); 
-                }
-                |PROTHESI           
-                { 
-                	$$ = yylval.prothesi;                     
-                	// printf(" "); 
-                	word_exif_func(yylval.leksi); 
-                	// printf(" "); 
-                }
-                |SUDESMOS           
-                { 
-                	$$ = yylval.sundesmos;                    
-                	// printf(" "); 
-                	word_exif_func(yylval.leksi); 
-                	// printf(" "); 
-                }
-                |EPIFONIMA          
-                { 
-                	$$ = yylval.epifonima;                    
-                	// printf(" "); 
-                	word_exif_func(yylval.leksi); 
-                	// printf(" "); 
-                }
+    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko; word_exif_func(yylval.leksi); }
+                |ONOMATA            { $$ = yylval.onomata; }                                                                   
+                |EPITHETO           { $$ = yylval.epitheto; word_exif_func(yylval.leksi); }
+                |RIMA               { $$ = yylval.rima; word_exif_func(yylval.leksi); }
+                |EPIRIMA            { $$ = yylval.epirima; word_exif_func(yylval.leksi); }
+                |ANTONUMIA          { $$ = yylval.antonumia; word_exif_func(yylval.leksi); }
+                |ARTHRO             { $$ = yylval.arthro; word_exif_func(yylval.leksi); }
+                |PROTHESI           { $$ = yylval.prothesi; word_exif_func(yylval.leksi); }
+                |SUDESMOS           { $$ = yylval.sundesmos; word_exif_func(yylval.leksi); }
+                |EPIFONIMA          { $$ = yylval.epifonima; word_exif_func(yylval.leksi); }
 
 %%
 
