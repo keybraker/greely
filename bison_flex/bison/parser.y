@@ -257,7 +257,7 @@ int yyerror (char* yaccProvidedMessage){
 int main(int argc, char** argv){
     	
     printf("\n");
-
+    
     if(argc > 2){
         if(!(yyin = fopen(argv[1], "r"))){
             fprintf(stderr,"Cannot read file: %s\n",argv[1]);

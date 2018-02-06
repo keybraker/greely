@@ -45,7 +45,6 @@ int toInt(char a[]) {
 char* capToSmall(char* wordInput){
 
     char* oldWordInput = calloc(16,sizeof(char));
-    char* kluks = calloc(255*33636,sizeof(char));
 
     for(int i = 0; i < 31; i++){
 
