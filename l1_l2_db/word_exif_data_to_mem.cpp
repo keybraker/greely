@@ -60,23 +60,34 @@ normal_search(int num_of_words, int num_of_tokens, int word_pos,
 string original_word, string small_word, string database[])
 {
     int  i = 0;
-    size_t pos = 0;
 
     string  buffer_a, buffer_b, words_file[num_of_tokens], delimiter = "|";
 
     while (i < num_of_words && !database[i].empty())
     {
-        pos = 0;
-        stringstream buffer_stream(database[i]);
-        string intermediate;
+        int k = 0;
+        size_t current, previous = 0;
+        buffer_a = database[i];
 
-        for(int j = 0; getline(buffer_stream, intermediate, '|'); j++)
-            words_file[j] = intermediate;
+        current = buffer_a.find('|');
+        while (current != string::npos) {
+            words_file[k] = buffer_a.substr(previous, current - previous);
+            previous = current + 1;
+            current = buffer_a.find('|', previous);
+            //cout << "(" << k << "): " << words_file[k] << endl;
+            k++;
+        }
 
         if(!small_word.empty() && words_file[word_pos].compare(small_word) == 0){
-            for(int i = 0; i < num_of_tokens; i++)
-                cout << "words_file[" << i << "]: " << words_file[i] << endl;
-            cout << endl;
+            
+            // for(int i = 0; i < num_of_tokens; i++)
+            //     cout << "words_file[" << i << "]: " << words_file[i] << endl;
+            // cout << endl;
+
+            print_word_info word_for_print;
+            word_for_print.set_word(5, words_file);
+            word_for_print.cout_word();
+
             return true;
         } 
         i++;
@@ -104,7 +115,6 @@ word_exif_func(string word_to_search)
             free_data_from_mem(huge_to_mem);
         return 0;
     }
-
     /* Opening l0 name database*/
     if(name_to_mem == nullptr)
         name_to_mem = load_data_to_mem(2189, "l0_name.txt");
@@ -124,9 +134,8 @@ word_exif_func(string word_to_search)
     if(!normal_search(2189, 2, 0, original_word, small_word, name_to_mem)) /* l0_name search */
         if(!normal_search(35282, 5, 0, original_word, small_word, word_to_mem)) /* l1_word search*/ 
             if(!normal_search(593070, 1, 0, original_word, small_word, huge_to_mem)) /* l2_word search*/ 
-                return 1;
-
-    return 0;
+                return 0;
+    return 1;
 }
 
 

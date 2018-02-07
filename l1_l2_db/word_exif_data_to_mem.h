@@ -9,10 +9,10 @@
 #include <sys/mman.h>
 #include <assert.h>
 
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 #include <vector>
 #include <cstddef>
-#include<iostream>
+#include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <algorithm>
@@ -37,6 +37,9 @@ using namespace std;
 int 
 word_exif_func(string wordInput);
 
+
+enum Suit { verb, noun, adj, Spades, no_tag, adv, quant, adj_noun, properN, excl, excl_noun, adv_adj_star };  
+
 class print_word_info 
 {
     public:
@@ -60,19 +63,28 @@ class print_word_info
         }
 
         /* functions on data */
-        void cout_word(int data_type){
+        void cout_word(){
 
-          switch(data_type){
-            case 0: print_name();       break;
-            case 1: print_rima();       break;
-        case 2: print_epitheto();     break;
-        case 3: print_ousiastiko();   break;
-        case 4: print_metoxi();     break;
-        case 5: print_arithmitika();  break;
-        case 6: print_epirima();    break;
-        case 7: print_sundesmo();     break;
-        case 8: print_antonimia();    break;
-          }
+          if(_database[4] == "")
+             print_name();        
+          else if(_database[4] == "verb")
+             print_rima();        
+          else if(_database[4] == "noun")
+             print_epitheto();    
+          else if(_database[4] == "adj")
+             print_ousiastiko();  
+          else if(_database[4] == "")
+             print_metoxi();      
+          else if(_database[4] == "")
+             print_arithmitika(); 
+          else if(_database[4] == "")
+             print_epirima();     
+          else if(_database[4] == "")
+             print_sundesmo();    
+          else if(_database[4] == "")
+             print_antonimia();
+          else
+            print_antonimia();
 
         }
 
@@ -98,66 +110,66 @@ class print_word_info
           cout << _database[_num_of_tokens-1] << ") " << endl;
         }
 
-    void
-    print_epitheto()
-    {
-      cout << _database[0] << " (";
-      for(int i = 1; i < _num_of_tokens-1; i++)
-        cout << _database[i] << ", "; 
-      cout << _database[_num_of_tokens-1] << ") " << endl;
-    }
+        void
+        print_epitheto()
+        {
+          cout << _database[0] << " (";
+          for(int i = 1; i < _num_of_tokens-1; i++)
+            cout << _database[i] << ", "; 
+          cout << _database[_num_of_tokens-1] << ") " << endl;
+        }
 
-    void
-    print_ousiastiko()
-    {
-      cout << _database[0] << " (";
-      for(int i = 1; i < _num_of_tokens-1; i++)
-        cout << _database[i] << ", "; 
-      cout << _database[_num_of_tokens-1] << ") " << endl;
-    }
+        void
+        print_ousiastiko()
+        {
+          cout << _database[0] << " (";
+          for(int i = 1; i < _num_of_tokens-1; i++)
+            cout << _database[i] << ", "; 
+          cout << _database[_num_of_tokens-1] << ") " << endl;
+        }
 
-    void
-    print_metoxi()
-    {
-      cout << _database[0] << " (";
-      for(int i = 1; i < _num_of_tokens-1; i++)
-        cout << _database[i] << ", "; 
-      cout << _database[_num_of_tokens-1] << ") " << endl;
-    }
+        void
+        print_metoxi()
+        {
+          cout << _database[0] << " (";
+          for(int i = 1; i < _num_of_tokens-1; i++)
+            cout << _database[i] << ", "; 
+          cout << _database[_num_of_tokens-1] << ") " << endl;
+        }
 
-    void
-    print_arithmitika()
-    {
-      cout << _database[0] << " (";
-      for(int i = 1; i < _num_of_tokens-1; i++)
-        cout << _database[i] << ", "; 
-      cout << _database[_num_of_tokens-1] << ") " << endl;
-    }
+        void
+        print_arithmitika()
+        {
+          cout << _database[0] << " (";
+          for(int i = 1; i < _num_of_tokens-1; i++)
+            cout << _database[i] << ", "; 
+          cout << _database[_num_of_tokens-1] << ") " << endl;
+        }
 
-    void
-    print_epirima()
-    {
-      cout << _database[0] << " (";
-      for(int i = 1; i < _num_of_tokens-1; i++)
-        cout << _database[i] << ", "; 
-      cout << _database[_num_of_tokens-1] << ") " << endl;
-    }
+        void
+        print_epirima()
+        {
+          cout << _database[0] << " (";
+          for(int i = 1; i < _num_of_tokens-1; i++)
+            cout << _database[i] << ", "; 
+          cout << _database[_num_of_tokens-1] << ") " << endl;
+        }
 
-    void
-    print_sundesmo()
-    {
-      cout << _database[0] << " (";
-      for(int i = 1; i < _num_of_tokens-1; i++)
-        cout << _database[i] << ", "; 
-      cout << _database[_num_of_tokens-1] << ") " << endl;
-    }
+        void
+        print_sundesmo()
+        {
+          cout << _database[0] << " (";
+          for(int i = 1; i < _num_of_tokens-1; i++)
+            cout << _database[i] << ", "; 
+          cout << _database[_num_of_tokens-1] << ") " << endl;
+        }
 
-    void
-    print_antonimia()
-    {
-      cout << _database[0] << " (";
-      for(int i = 1; i < _num_of_tokens-1; i++)
-        cout << _database[i] << ", "; 
-      cout << _database[_num_of_tokens-1] << ") " << endl;
-    }
+        void
+        print_antonimia()
+        {
+          cout << _database[0] << " (";
+          for(int i = 1; i < _num_of_tokens-1; i++)
+            cout << _database[i] << ", "; 
+          cout << _database[_num_of_tokens-1] << ") " << endl;
+        }
 };
