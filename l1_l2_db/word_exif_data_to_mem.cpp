@@ -85,7 +85,7 @@ string original_word, string small_word, string database[])
             // cout << endl;
 
             print_word_info word_for_print;
-            word_for_print.set_word(5, words_file);
+            word_for_print.set_word(num_of_tokens, words_file);
             word_for_print.cout_word();
 
             return true;

@@ -65,7 +65,7 @@ class print_word_info
         /* functions on data */
         void cout_word(){
 
-          if(_database[4] == "")
+          if(_num_of_tokens == 2)
              print_name();        
           else if(_database[4] == "verb")
              print_rima();        
