@@ -168,9 +168,10 @@ class print_word_info
         void
         print_antonimia()
         {
-          cout << _database[0] << " (";
-          for(int i = 1; i < _num_of_tokens-1; i++)
-            cout << _database[i] << ", "; 
-          cout << _database[_num_of_tokens-1] << ") " << endl;
+			cout 
+			<< bold << _database[1] << bold_re << a_c_y
+			<< " ~ " << _database[5] << " syll[" << _database[2] << "] {" 
+			<< _database[3] << "} occ[" << _database[4] << "]"
+		 	<< a_c_re << endl;
         }
 };

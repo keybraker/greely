@@ -32,6 +32,34 @@ ends_with(std::string const & value, std::string const & ending)
     return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
 }
 
+/*
+* Greek upper case to 
+* lower case converter
+*/
+string 
+tolower_gr(string origin)
+{
+    string new_word = "";
+    string joker = "";
+
+    for (int i = 0; i < origin.length(); i += 2){
+        joker = origin[i]; joker += origin[i+1];
+        for(int j = 0; j < 32; j++){
+            if(cap_gr[j] == joker){
+                if(j == 22 && i+2 == origin.length())
+                    new_word += low_gr[23];
+                else
+                    new_word += low_gr[j];
+                break;
+            }
+            else if(j == 31){
+                new_word += joker;
+            }
+        }
+    } 
+    return new_word;
+}
+
 /* 
 * loads all database, line by line to 
 * to a mmap on execution start
@@ -67,8 +95,8 @@ load_data_to_mem(int size, string filepath)
 void 
 free_data_from_mem(string *database)
 {
-    delete [] database;  // When done, free memory pointed to by a.
-    database = nullptr;     // Clear a to prevent using invalid memory reference.
+    delete [] database; // When done, free memory pointed to by a.
+    database = nullptr; // Clear a to prevent using invalid memory reference.
     return;
 }
 
@@ -81,7 +109,7 @@ string original_word, string small_word, string database[])
 {
     int  i = 0;
     string  buffer_a, buffer_b, words_file[num_of_tokens], delimiter = "|";
-    
+
     while (i < num_of_words && !database[i].empty())
     {
         int k = 0;
@@ -102,9 +130,7 @@ string original_word, string small_word, string database[])
 
         if(!small_word.empty() && words_file[word_pos].compare(small_word) == 0){
             
-            // for(int i = 0; i < num_of_tokens; i++)
-            //     cout << "words_file[" << i << "]: " << words_file[i] << endl;
-            // cout << endl;
+            words_file[1] = original_word; 
             print_word_info word_for_print;
             word_for_print.set_word(num_of_tokens, words_file);
             word_for_print.cout_word();
@@ -122,7 +148,6 @@ string original_word, string small_word, string database[])
 int
 word_exif_func(string word_to_search)
 {
-  
     static string *name_to_mem = nullptr;
     static string *word_to_mem = nullptr;
 
@@ -140,14 +165,14 @@ word_exif_func(string word_to_search)
 
     /* Opening l1 word database*/
     if(word_to_mem == nullptr)
-        word_to_mem = load_data_to_mem(605284, "l1_database.txt");
+        word_to_mem = load_data_to_mem(595926, "l1_database.txt");
 
     // prepei na perastei mikro giati allios ton pinei
     string original_word = word_to_search;
-    string small_word = word_to_search;
+    string small_word = tolower_gr(word_to_search);
 
     if(!normal_search(2189, 2, 0, original_word, small_word, name_to_mem)){ /* l0_name search */
-        if(!normal_search(605284, 6, 1, original_word, small_word, word_to_mem)){ /* l1_word search*/ 
+        if(!normal_search(595926, 6, 1, original_word, small_word, word_to_mem)){ /* l1_word search*/ 
             cout << "no info for " << small_word << endl;
             return 0;
         }

@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <algorithm>
@@ -9,9 +9,10 @@
 using namespace std;
 
 int main() 
-{
-	word_exif_func("ξαναζητάω");
-	word_exif_func("τη");
+{	
+	word_exif_func("Γερμανία");
+	word_exif_func("Πρωτοπόρος");
+	word_exif_func("πρωτοπόρος");
 	word_exif_func("Στέλλα");
 	word_exif_func("");
     return 0;
