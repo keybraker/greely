@@ -37,8 +37,11 @@ using namespace std;
 int 
 word_exif_func(string wordInput);
 
-
-enum Suit { verb, noun, adj, Spades, no_tag, adv, quant, adj_noun, properN, excl, excl_noun, adv_adj_star };  
+enum Suit { 
+  verb, noun, adj, Spades,  no_tag, 
+  adv, quant, adj_noun, properN, 
+  excl, excl_noun, adv_adj_star 
+};  
 
 class print_word_info 
 {
@@ -73,7 +76,7 @@ class print_word_info
              print_epitheto();    
           else if(_database[4] == "adj")
              print_ousiastiko();  
-          else if(_database[4] == "")
+          else if(_database[4] == "excl")
              print_metoxi();      
           else if(_database[4] == "")
              print_arithmitika(); 
@@ -95,10 +98,8 @@ class print_word_info
         void
         print_name()
         {
-          if(_database[0] == "0")
-            cout << _database[0] << " (αρσενικό όνομα)" << endl;
-          else
-            cout << _database[0] << " (θηλυκό όνομα)" << endl;
+          if(_database[0] == "0") cout << _database[0] << " (αρσενικό όνομα)" << endl;
+          else cout << _database[0] << " (θηλυκό όνομα)" << endl;
         }
 
         void
