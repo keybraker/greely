@@ -8,6 +8,9 @@
 #include "word_exif_data_to_mem.h"
 #include "word_endings.h"
 
+#define MEM_NO_ALLOC 0
+#define MEM_ALLOC 1
+
 using namespace std;
 
 /*
@@ -130,7 +133,7 @@ string original_word, string small_word, string database[])
 
         if(!small_word.empty() && words_file[word_pos].compare(small_word) == 0){
             
-            words_file[1] = original_word; 
+            words_file[word_pos] = original_word; 
             print_word_info word_for_print;
             word_for_print.set_word(num_of_tokens, words_file);
             word_for_print.cout_word();
@@ -171,8 +174,8 @@ word_exif_func(string word_to_search)
     string original_word = word_to_search;
     string small_word = tolower_gr(word_to_search);
 
-    if(!normal_search(2189, 2, 0, original_word, small_word, name_to_mem)){ /* l0_name search */
-        if(!normal_search(595926, 6, 1, original_word, small_word, word_to_mem)){ /* l1_word search*/ 
+    if(!normal_search(2189, 5, 1, original_word, small_word, name_to_mem)){ /* l0_name search */
+        if(!normal_search(595926, 6, 1, original_word, small_word, word_to_mem)){ /* l1_word search */
             cout << "no info for " << small_word << endl;
             return 0;
         }
