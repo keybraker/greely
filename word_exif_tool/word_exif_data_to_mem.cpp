@@ -5,8 +5,8 @@
 * finish execution
 */
 
-#include "word_exif_data_to_mem.h"
-#include "word_endings.h"
+#include "word_exif_data_to_mem.hh"
+#include "word_endings.hh"
 
 #define MEM_NO_ALLOC 0
 #define MEM_ALLOC 1
@@ -164,11 +164,11 @@ word_exif_func(string word_to_search)
     }
     /* Opening l0 name database*/
     if(name_to_mem == nullptr)
-        name_to_mem = load_data_to_mem(2189, "l0_name.txt");
+        name_to_mem = load_data_to_mem(2189, "../db_txt_xlsx/l0_name.txt");
 
     /* Opening l1 word database*/
     if(word_to_mem == nullptr)
-        word_to_mem = load_data_to_mem(595926, "l1_database.txt");
+        word_to_mem = load_data_to_mem(595926, "../db_txt_xlsx/l1_database.txt");
 
     // prepei na perastei mikro giati allios ton pinei
     string original_word = word_to_search;

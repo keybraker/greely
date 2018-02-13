@@ -1,22 +1,5 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/mman.h>
-#include <unistd.h>
-#include <sys/mman.h>
-#include <assert.h>
-
-//#include <bits/stdc++.h>
-#include <vector>
-#include <cstddef>
 #include <iostream>
-#include <iomanip>
 #include <fstream>
-#include <algorithm>
-#include <string> 
 
 using namespace std;
 

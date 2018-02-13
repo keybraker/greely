@@ -1,6 +1,7 @@
  %{
     
     #include "../bison_flex/analyzer_funcs/word_exif_data_to_mem.h"
+    //#include "../word_exif_tool/word_exif_data_to_mem.hh"
 
     char* stiksiToString[18] = {
 

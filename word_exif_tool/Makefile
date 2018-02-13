@@ -3,5 +3,8 @@ all:
 	g++ -o greely main.cpp word_exif_data_to_mem.cpp 
 	./greely
 
+clean:
+	clear
+	rm -rf greely
 
 

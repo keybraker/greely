@@ -1,10 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <algorithm>
-#include <string>
-
-#include "word_exif_data_to_mem.h"
+#include "word_exif_data_to_mem.hh"
 
 using namespace std;
 
