@@ -12,7 +12,6 @@ all:
 	./output/greely input/input.txt
 	
 clean:
-	rm parser.o scanner.o word_exif_data_to_mem.o
-	rm output/parser.c output/scanner.c output/parser.output output/parser.h output/greely
-
-
+	rm parser.o scanner.o word_exif_data_to_mem.o \
+	output/parser.c output/scanner.c output/parser.output \
+	output/parser.h output/greely

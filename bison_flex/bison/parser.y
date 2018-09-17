@@ -1,9 +1,9 @@
- %{
-    
+%{
     #include "../bison_flex/analyzer_funcs/word_exif_data_to_mem.h"
     //#include "../word_exif_tool/word_exif_data_to_mem.hh"
 
-    char* stiksiToString[18] = {
+    char* stiksiToString[18] = 
+    {
 
         ",",
         ".",
@@ -23,11 +23,10 @@
         "/",
         "=",
         "~"
-
     };
 
-    char *stiksiToStringName[18] = { 
-
+    char *stiksiToStringName[18] = 
+    { 
         "κόμμα",
         "τελεία",
         "ερωτηματικό",
@@ -46,7 +45,6 @@
         "διά",
         "ίσον",
         "περίπου"
-
     };
 
     int yylex       (void);
@@ -56,11 +54,10 @@
     extern FILE*    yyout;
     extern char*    yytext;
     extern int      yylineno;
-
 %}
 
-%union{
-    
+%union
+{
     char*   leksi;
 
     char*   ousiastiko;
@@ -114,15 +111,16 @@
 
     LEKSEIS:    LEKSEIS MEROSLOGOU {    
 
-                                        if($1 == NULL && $2 != NULL){ 
+                                        if($1 == NULL && $2 != NULL)
+                                        { 
                                             $$ = (char*) calloc (strlen($2)+1, sizeof(char));
                                             strcpy($$,$2); 
-
-                                        }else if($$ != NULL && $1 != NULL && $2 != NULL){ 
+                                        }
+                                        else if($$ != NULL && $1 != NULL && $2 != NULL)
+                                        { 
                                             $$ = (char*) calloc (strlen($1)+strlen($2)+2, sizeof(char));
                                             strcpy($$, $1); strcat($$, " "); 
                                             strcat($$, $2);
-
                                         }
                                         
                                         //printf("    ➥ λέξεις μέρος του λόγου: %s\n\n",$$);
@@ -153,28 +151,28 @@
                 { 
                     $<arthro>$ = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
-                    printf(a_c_m italic bold"οριστικό άρθρο γένους αρσσενικό, ενικού" italic_re);       
+                    printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους αρσσενικό" italic_re);       
                     printf(") "); 
                 }
                 |ARS_PL_AR          
                 {
                     $<arthro>$ = yylval.arthro;
                     printf("%s (", yylval.arthro);
-                    printf(a_c_m italic bold"οριστικό άρθρο γένους αρσσενικό, πληθυντικού" italic_re);
+                    printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους αρσσενικό" italic_re);
                     printf(") "); 
                 }
                 |THY_EN_AR          
                 { 
                     $<arthro>$ = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
-                    printf(a_c_m italic bold"οριστικό άρθρο γένους θηλυκό, ενικού" italic_re);          
+                    printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους θηλυκό" italic_re);          
                     printf(") ");
                  }
                 |THY_PL_AR          
                 { 
                     $<arthro>$ = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
-                    printf(a_c_m italic bold"οριστικό άρθρο γένους θηλυκό, πληθυντικού" italic_re);     
+                    printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους θηλυκό" italic_re);     
                     printf(") "); 
                 }
 
@@ -182,14 +180,14 @@
                 { 
                     $<arthro>$ = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
-                    printf(a_c_m italic bold"οριστικό άρθρο γένους ουδέτερο ενικού" italic_re);        
+                    printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους ουδέτερο" italic_re);        
                     printf(") "); 
                 }
                 |OUD_PL_AR          
                 { 
                     $<arthro>$ = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
-                    printf(a_c_m italic bold"οριστικό άρθρο γένους ουδέτερο πληθυντικού" italic_re);   
+                    printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους ουδέτερο" italic_re);   
                     printf(") "); 
                 }
 
@@ -197,14 +195,14 @@
                 { 
                     $<arthro>$ = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
-                    printf(a_c_m italic bold"οριστικό άρθρο γένους αγνώστου ενικού" italic_re);         
+                    printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους αγνώστου" italic_re);         
                     printf(") "); 
                 }
                 |_PL_AR             
                 { 
                     $<arthro>$ = yylval.arthro;               
                     printf("%s (", yylval.arthro); 
-                    printf(a_c_m italic bold"οριστικό άρθρο γένους αγνώστου πληθυντικού" italic_re);    
+                    printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους αγνώστου" italic_re);    
                     printf(") "); 
                 }
 
@@ -224,59 +222,66 @@
     LSTIKSI:    STIKSI              
                 { 
                     $<stiksi>$ = yylval.stiksi;               
-                    if(yylval.stiksi == 17){
+                    if(yylval.stiksi == 17)
+                    {
                         printf("\n");
                     }
-                    else {
-                        printf("%s %s (", stiksiToString[yylval.stiksi], stiksiToStringName[yylval.stiksi]); 
+                    else 
+                    {
+                        printf("\"%s\" %s (", stiksiToString[yylval.stiksi], stiksiToStringName[yylval.stiksi]); 
                         printf(italic bold"σημείο στίξης" italic_re); 
                         printf(") ");
                     }
                 }
 
-    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko; word_exif_func(yylval.leksi); }
-                |ONOMATA            { $$ = yylval.onomata; }                                                                   
-                |EPITHETO           { $$ = yylval.epitheto; word_exif_func(yylval.leksi); }
-                |RIMA               { $$ = yylval.rima; word_exif_func(yylval.leksi); }
-                |EPIRIMA            { $$ = yylval.epirima; word_exif_func(yylval.leksi); }
-                |ANTONUMIA          { $$ = yylval.antonumia; word_exif_func(yylval.leksi); }
-                |ARTHRO             { $$ = yylval.arthro; word_exif_func(yylval.leksi); }
-                |PROTHESI           { $$ = yylval.prothesi; word_exif_func(yylval.leksi); }
-                |SUDESMOS           { $$ = yylval.sundesmos; word_exif_func(yylval.leksi); }
-                |EPIFONIMA          { $$ = yylval.epifonima; word_exif_func(yylval.leksi); }
+    LLEKSI:     OUSIASTIKO          { $$ = yylval.ousiastiko;   word_exif_func(yylval.leksi); }
+                |ONOMATA            { $$ = yylval.onomata;                                    }                                                                   
+                |EPITHETO           { $$ = yylval.epitheto;     word_exif_func(yylval.leksi); }
+                |RIMA               { $$ = yylval.rima;         word_exif_func(yylval.leksi); }
+                |EPIRIMA            { $$ = yylval.epirima;      word_exif_func(yylval.leksi); }
+                |ANTONUMIA          { $$ = yylval.antonumia;    word_exif_func(yylval.leksi); }
+                |ARTHRO             { $$ = yylval.arthro;       word_exif_func(yylval.leksi); }
+                |PROTHESI           { $$ = yylval.prothesi;     word_exif_func(yylval.leksi); }
+                |SUDESMOS           { $$ = yylval.sundesmos;    word_exif_func(yylval.leksi); }
+                |EPIFONIMA          { $$ = yylval.epifonima;    word_exif_func(yylval.leksi); }
 
 %%
 
 
-int yyerror (char* yaccProvidedMessage){
-
+int yyerror (char* yaccProvidedMessage)
+{
    printf("%s\n", yaccProvidedMessage);
    return 0;
-
 }
 
 int main(int argc, char** argv){
     	
     printf("\n");
     
-    if(argc > 2){
-        if(!(yyin = fopen(argv[1], "r"))){
+    if(argc > 2)
+    {
+        if(!(yyin = fopen(argv[1], "r")))
+        {
             fprintf(stderr,"Cannot read file: %s\n",argv[1]);
             return 1;
         }
-        if(!(yyout = fopen(argv[2], "w"))){
+        if(!(yyout = fopen(argv[2], "w")))
+        {
             fprintf(stderr,"Cannot write file: %s\n",argv[1]);
             return 1;
         }
         stdout = yyout ;
     }
-    else if(argc > 1){
-        if(!(yyin = fopen(argv[1], "r"))){
+    else if(argc > 1)
+    {
+        if(!(yyin = fopen(argv[1], "r")))
+        {
             fprintf(stderr,"Cannot read file: %s\n",argv[1]);
             return 1;
         }
     }
-    else{
+    else
+    {
         yyin = stdin;
     }
 

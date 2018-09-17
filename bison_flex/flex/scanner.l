@@ -24,17 +24,17 @@
 
 char* arthroBefore = NULL;
 
-void copyNewToOldFile(char* old, char* new){
-
+void copyNewToOldFile(char* old, char* new)
+{
 	FILE *older;
 	FILE *newer;
 
 	if ( (newer = fopen(new, "r") ) == NULL) { 
-		printf (a_c_r"1Couldn't open file nameDatabase %d\n"a_c_re, errno);
+		printf (a_c_r"[1] Couldn't open file nameDatabase %d\n"a_c_re, errno);
         exit(0);
     }
     if ( (older = fopen(old, "w+") ) == NULL) { 
-		printf (a_c_r"2Couldn't open file nameDatabase %d\n"a_c_re, errno);
+		printf (a_c_r"[2] Couldn't open file nameDatabase %d\n"a_c_re, errno);
         exit(0);
     }
 
@@ -48,8 +48,8 @@ void copyNewToOldFile(char* old, char* new){
 
 }
 
-char* addInfo(char* token, char* type){
-
+char* addInfo(char* token, char* type)
+{
 	char* stringer = calloc(sizeof(token)+sizeof("|0|0\n")+3, sizeof(char));
 	
 	if (strcmp(type,"ARS_EN_AR") == 0){
@@ -112,46 +112,41 @@ char* addInfo(char* token, char* type){
 * Lookup the complete database 
 * Has to get bitmapped and linked for pooling.
 */
-int nameCheck(char* name){ 
-
+int nameCheck(char* name)
+{ 
 	FILE* f1 = fopen ("bison_flex/analyzer_funcs/name_gr.txt", "r");
     if(!f1){ printf("Couldn't open bison_flex/analyzer_funcs/name_gr.txt"); exit(1); }
 
-    char    *word = calloc (255, sizeof(char)) ;
-    char    *type = calloc (255, sizeof(char)) ;
-    char    buffer[255];
-    
-    // 0 for men
-    // 1 for women
-    while (fgets(buffer,255, f1)!= NULL){
-        word = strtok(buffer,"|"); 
-        type = strtok(NULL,"|"); 
-        if(strncmp(name, word, strlen(name)) == 0 && ( strlen(name)+2 == strlen(word) || strlen(name) == strlen(word) ) ){
-        	if(strcmp("0", type) == 0){
-        		printf("'%s' (", name); printf(a_c_y italic bold"όνομα αρσενικό" italic_re); printf(") ");
-        	}else{
-        		printf("'%s' (", name); printf(a_c_y italic bold"όνομα θηλυκό" italic_re); printf(") ");
-        	}
-        	
-        	return 1;
-        }
-       
-        
-    }
+	char	*word = calloc (255, sizeof(char)) ;
+	char	*type = calloc (255, sizeof(char)) ;
+	char	buffer[255];
+	
+	// 0 for men
+	// 1 for women
+	while (fgets(buffer,255, f1)!= NULL)
+	{
+		word = strtok(buffer,"|"); 
+		type = strtok(NULL,"|"); 
+		if(strncmp(name, word, strlen(name)) == 0)
+		if(strlen(name)+2 == strlen(word) || strlen(name) == strlen(word))
+		{
+			if(strcmp("0", type) == 0) printf("'%s' (" a_c_y italic bold"όνομα αρσενικό" italic_re ") ", name); 
+			else printf("'%s' (" a_c_y italic bold "όνομα θηλυκό" italic_re ") ", name);
 
+			return 1;
+		}
+	}
     fclose(f1);
     return 0;
-
 }
 
-char* checktype(char* name){
-
+char* checktype(char* name)
+{
 	return "CUCURUCU";
-
 }
 
-char* ousiastikoExists(char* name, char* type){ 
-	
+char* ousiastikoExists(char* name, char* type)
+{ 	
 	//printf("name = %s, type = %s\n\n",name,type);
 	FILE *endingDatabase;
 
@@ -459,7 +454,7 @@ char* ousiastikoExists(char* name, char* type){
 					}
 
 [a-zA-Z]* 			{	/*---------------------------------------------------------------------- AGGLIKA ----------------------------------------------------------------------*/
-						printf(a_c_c"%s ("a_c_re, yytext);
+						printf(a_c_c "%s " a_c_re "(", yytext);
 						printf(italic bold"εγγλέζικα" italic_re);       
 						printf(") "); 
 						arthroBefore = NULL;
