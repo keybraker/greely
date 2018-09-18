@@ -73,11 +73,11 @@ void printRima(char* rima, char* isCap){
       strtok(NULL, "|");
       strtok(NULL, "|");
 
-  Xronos  = toInt(strtok(NULL, "|"));
+  Xronos    = toInt(strtok(NULL, "|"));
   Prosopos  = toInt(strtok(NULL, "|"));
   Arithmos  = toInt(strtok(NULL, "|"));
-  Klisi   = toInt(strtok(NULL, "|"));
-  Foni    = toInt(strtok(NULL, "|"));
+  Klisi     = toInt(strtok(NULL, "|"));
+  Foni      = toInt(strtok(NULL, "|"));
 
   if(isCap){
     printf("%s (" , isCap);
@@ -103,17 +103,17 @@ void printEpitheto(char* epitheto, char* isCap){
               strtok(NULL, "|");
         strtok(NULL, "|");
 
-  Genos   = toInt(strtok(NULL, "|"));
+  Genos     = toInt(strtok(NULL, "|"));
   Arithmos  = toInt(strtok(NULL, "|"));
-  Ptosi   = toInt(strtok(NULL, "|"));
+  Ptosi     = toInt(strtok(NULL, "|"));
 
   if(isCap){
     printf("%s (" , isCap);
-    printf(a_c_c italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(a_c_c italic bold "επίθετο, %s αριθμου, γένος %s, %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }else{
     printf("%s (" , word);
-    printf(a_c_c italic bold "επίθετο, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(a_c_c italic bold "επίθετο, %s αριθμου, γένος %s, %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }
 
@@ -137,11 +137,11 @@ void printOusiastiko(char* ousiastiko, char* isCap){
   
   if(isCap){
     printf("%s (" , isCap);
-    printf(a_c_c italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(a_c_c italic bold "ουσιαστικό, %s αριθμού, γένος %s, %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }else{
     printf("%s (" , word);
-    printf(a_c_c italic bold "ουσιαστικό, %s αριθμου , γένος %s , %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
+    printf(a_c_c italic bold "ουσιαστικό, %s αριθμού, γένος %s, %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }
 

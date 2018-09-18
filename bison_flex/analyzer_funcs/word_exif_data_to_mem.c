@@ -132,6 +132,9 @@ normal_search(char *isCap, char *wordInputSmall, char **file_to_mem)
         //printf("%s", file_to_mem[i]);
         i++;
     }
+
+    printf("%s " a_c_r "(no data in DB) " a_c_re, wordInputSmall);
+
 }
 
 /* 

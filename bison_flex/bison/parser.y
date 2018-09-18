@@ -102,8 +102,7 @@
 %%
 
     PROTASI:    LEKSEIS             { 
-                                        //printf(a_c_g"\nΗ ολοκληρωμένη πρόταση είναι: ");
-                                        //printf(a_c_m"%s\n\n\n",$<leksi>1); 
+                                        printf(a_c_g"\n\nΗ ολοκληρωμένη πρόταση είναι: " a_c_m "%s\n" a_c_re, $<leksi>1); 
                                         word_exif_func(NULL);
                                         printf("\n");
                                     }

@@ -45,7 +45,6 @@ void copyNewToOldFile(char* old, char* new)
 
     fclose(older);
 	fclose(newer);
-
 }
 
 char* addInfo(char* token, char* type)
@@ -437,11 +436,15 @@ char* ousiastikoExists(char* name, char* type)
 						return THY_EN_AR; 
 					} 
 
-[Α-ψ-ρ-π-ω-Ϋ]* 		{   /*---------------------------------------------------------------------- LEKSEIS ----------------------------------------------------------------------*/
-						if(nameCheck(yytext)) {
-							yylval.leksi = strdup(yytext); 
+[Α-ψ-ρ-π-ω-Ϋ]* 		{   /*------------------------------------------------------------- ELLINIKES LEKSEIS ----------------------------------------------------------------------*/
+						
+						// Check if what follows is a name
+						if(nameCheck(yytext))
+						{
+							yylval.leksi = strdup(yytext);
 							return ONOMATA; 
 						}
+
 						char* type;
 						// This is for updating ouastika database with the knowledge obtained
 						// by the arthra infront of the ousiastika !
@@ -453,7 +456,7 @@ char* ousiastikoExists(char* name, char* type)
 						return OUSIASTIKO;
 					}
 
-[a-zA-Z]* 			{	/*---------------------------------------------------------------------- AGGLIKA ----------------------------------------------------------------------*/
+[a-zA-Z]* 			{	/*------------------------------------------------------------------ AGGLIKA ---------------------------------------------------------------------------*/
 						printf(a_c_c "%s " a_c_re "(", yytext);
 						printf(italic bold"εγγλέζικα" italic_re);       
 						printf(") "); 
