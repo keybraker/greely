@@ -24,7 +24,8 @@
 
 char* arthroBefore = NULL;
 
-void copyNewToOldFile(char* old, char* new)
+void 
+copyNewToOldFile(char* old, char* new)
 {
 	FILE *older;
 	FILE *newer;
@@ -47,7 +48,8 @@ void copyNewToOldFile(char* old, char* new)
 	fclose(newer);
 }
 
-char* addInfo(char* token, char* type)
+char* 
+addInfo(char* token, char* type)
 {
 	char* stringer = calloc(sizeof(token)+sizeof("|0|0\n")+3, sizeof(char));
 	
@@ -111,7 +113,8 @@ char* addInfo(char* token, char* type)
 * Lookup the complete database 
 * Has to get bitmapped and linked for pooling.
 */
-int nameCheck(char* name)
+int 
+nameCheck(char* name)
 { 
 	FILE* f1 = fopen ("bison_flex/analyzer_funcs/name_gr.txt", "r");
     if(!f1){ printf("Couldn't open bison_flex/analyzer_funcs/name_gr.txt"); exit(1); }
@@ -139,12 +142,14 @@ int nameCheck(char* name)
     return 0;
 }
 
-char* checktype(char* name)
+char* 
+checktype(char* name)
 {
 	return "CUCURUCU";
 }
 
-char* ousiastikoExists(char* name, char* type)
+char* 
+ousiastikoExists(char* name, char* type)
 { 	
 	//printf("name = %s, type = %s\n\n",name,type);
 	FILE *endingDatabase;
@@ -313,9 +318,196 @@ char* ousiastikoExists(char* name, char* type)
 					  	yylval.arithmos = arithmos;
 					  	arthroBefore = NULL;
 					  	return ARITHMOSINT; 
+					  	/*---------------------------------------------------------------------- SYNDESMOI ----------------------------------------------------------------------*/
 					}
 
-ο|Ο 				{	/*---------------------------------------------------------------------- ARTHRA ----------------------------------------------------------------------*/
+και			{
+				yylval.sundesmos = 0; 
+				return SUNDESMOS; 
+			}	
+κι			{
+				yylval.sundesmos = 1; 
+				return SUNDESMOS; 
+			}										
+ούτε		{
+				yylval.sundesmos = 2; 
+				return SUNDESMOS; 
+			}										
+μήτε		{
+				yylval.sundesmos = 3; 
+				return SUNDESMOS; 
+			}										
+μήδε		{
+				yylval.sundesmos = 4; 
+				return SUNDESMOS; 
+			}										
+ούδε		{
+				yylval.sundesmos = 5; 
+				return SUNDESMOS; 
+			}
+ή			{
+				yylval.sundesmos = 6; 
+				return SUNDESMOS; 
+			}
+είτε		{
+				yylval.sundesmos = 7; 
+				return SUNDESMOS; 
+			}
+αν			{
+				yylval.sundesmos = 8; 
+				return SUNDESMOS; 
+			}
+αλλά		{
+				yylval.sundesmos = 9; 
+				return SUNDESMOS; 
+			}
+μα			{
+				yylval.sundesmos = 10; 
+				return SUNDESMOS; 
+			}
+παρά		{
+				yylval.sundesmos = 11; 
+				return SUNDESMOS; 
+			}
+όμως		{
+				yylval.sundesmos = 12; 
+				return SUNDESMOS; 
+			}
+ωστόσο		{
+				yylval.sundesmos = 13; 
+				return SUNDESMOS; 
+			}
+μόνο		{
+				yylval.sundesmos = 14; 
+				return SUNDESMOS; 
+			}
+που			{
+				yylval.sundesmos = 15;
+				return SUNDESMOS; 
+			}
+λοιπόν		{
+				yylval.sundesmos = 16;
+				return SUNDESMOS; 
+			}
+ώστε		{
+				yylval.sundesmos = 17;
+				return SUNDESMOS; 
+			}
+άρα			{
+				yylval.sundesmos = 18;
+				return SUNDESMOS; 
+			}
+επομένως	{
+				yylval.sundesmos = 19;
+				return SUNDESMOS; 
+			}
+οπότε		{
+				yylval.sundesmos = 20;
+				return SUNDESMOS; 
+			}				
+δηλαδή		{
+				yylval.sundesmos = 21;
+				return SUNDESMOS; 
+			}
+ότι			{
+				yylval.sundesmos = 22;
+				return SUNDESMOS; 
+			}
+πως			{
+				yylval.sundesmos = 23;
+				return SUNDESMOS; 
+			}
+μη			{
+				yylval.sundesmos = 24;
+				return SUNDESMOS; 
+			}
+μην			{
+				yylval.sundesmos = 25;
+				return SUNDESMOS; 
+			}	
+μήπως		{
+				yylval.sundesmos = 26;
+				return SUNDESMOS; 
+			}		
+να			{
+				yylval.sundesmos = 27;
+				return SUNDESMOS; 
+			}
+άμα			{
+				yylval.sundesmos = 28;
+				return SUNDESMOS; 
+			}
+όταν		{
+				yylval.sundesmos = 29;
+				return SUNDESMOS; 
+			}
+ενώ			{
+				yylval.sundesmos = 30;
+				return SUNDESMOS; 
+			}
+καθώς		{
+				yylval.sundesmos = 31;
+				return SUNDESMOS; 
+			}
+αφού		{
+				yylval.sundesmos = 32;
+				return SUNDESMOS; 
+			}
+αφότου		{
+				yylval.sundesmos = 33;
+				return SUNDESMOS; 
+			}
+πριν		{
+				yylval.sundesmos = 34;
+				return SUNDESMOS; 
+			}					
+μόλις		{
+				yylval.sundesmos = 35;
+				return SUNDESMOS; 
+			}
+προτού			{
+				yylval.sundesmos = 36;
+				return SUNDESMOS; 
+			}
+ώσπου		{
+				yylval.sundesmos = 37;
+				return SUNDESMOS; 
+			}
+ωσότου		{
+				yylval.sundesmos = 38;
+				return SUNDESMOS; 
+			}
+σαν			{
+				yylval.sundesmos = 39;
+				return SUNDESMOS; 
+			}
+επειδή		{
+				yylval.sundesmos = 40;
+				return SUNDESMOS; 
+			}
+τι			{
+				yylval.sundesmos = 41;
+				return SUNDESMOS; 
+			}
+εάν			{
+				yylval.sundesmos = 42;
+				return SUNDESMOS; 
+			}
+για			{
+				yylval.sundesmos = 43;
+				return SUNDESMOS; 
+			}
+γιατί		{
+				yylval.sundesmos = 44;
+				return SUNDESMOS; 
+			}
+μολονότι	{
+				yylval.sundesmos = 45; 
+				return SUNDESMOS; 
+			}
+
+
+ο|Ο					{	/*---------------------------------------------------------------------- ARTHRA ----------------------------------------------------------------------*/
 						yylval.leksi = strdup(yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; 
