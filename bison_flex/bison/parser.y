@@ -212,7 +212,7 @@
 					}
 					else 
 					{
-						printf("\"%s\" %s (" italic bold "σημείο στίξης" italic_re ") ",
+						printf("\"%s\" (%s ~ " italic bold "σημείο στίξης" italic_re ") ",
 						stiksi_to_string[yylval.stiksi], 
 						stiksi_to_string_name[yylval.stiksi]);
 					}
