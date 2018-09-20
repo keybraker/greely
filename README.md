@@ -1,6 +1,6 @@
-#### Disclaimer[1]: This is a very early stage in the development of greely, key functions don't work, just the shell of the program is running, production will continue in Q2-18. Some adjustments have been to execute alot faster and run on UNIX based operating systems. Minor functionallity will be added in upcomming months but steady updates will continue in half a year.
-
 #### Disclaimer[2]: Continuation of the project has continued (Q3 instead of originally planned Q2), focus given on speed and optimization with core functionallity being added day by day. Main project is set to be finished until October 18 if everything goes according to plan. Roadmap is to make a reliable exif tool for the Greek language, which will be enhanced.
+
+#### Disclaimer[1]: This is a very early stage in the development of greely, key functions don't work, just the shell of the program is running, production will continue in Q2-18. Some adjustments have been to execute alot faster and run on UNIX based operating systems. Minor functionallity will be added in upcomming months but steady updates will continue in half a year.
 
 ![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/greely%20logo.png)
 
