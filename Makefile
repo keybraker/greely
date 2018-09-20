@@ -5,7 +5,7 @@ all:
 	flex --outfile=output/scanner.c bison_flex/flex/scanner.l
 	
 	gcc -c output/scanner.c output/parser.c
-	gcc -c bison_flex/analyzer_funcs/word_exif_data_to_mem.c 
+	gcc -c bison_flex/analyzer/word_exif_data_to_mem.c 
 
 	gcc -o output/greely parser.o scanner.o word_exif_data_to_mem.o 
 

@@ -1,207 +1,8 @@
 %{
-	#include "../bison_flex/analyzer_funcs/word_exif_data_to_mem.h"
-	//#include "../word_exif_tool/word_exif_data_to_mem.hh"
-
-	char * 
-	sundesmoi_pair[52][52] = 
-	{
-		{
-			"και",
-			"κι",
-			"ούτε",
-			"μήτε",
-			"μήδε",
-			"ούδε",
-			"ή",
-			"είτε",
-			"αν",
-			"αλλά",
-			"μα",
-			"παρά",
-			"όμως",
-			"ωστόσο",
-			"μόνο",
-			"που",
-			"λοιπόν",
-			"ώστε",
-			"άρα",
-			"επομένως",
-			"οπότε",
-			"δηλαδή",
-			"ότι",
-			"πως",
-			"μη",
-			"μην",
-			"μήπως",
-			"να",
-			"άμα",
-			"όταν",
-			"ενώ",
-			"καθώς",
-			"αφού",
-			"αφότου",
-			"πριν",
-			"μόλις",
-			"προτού",
-			"ώσπου",
-			"ωσότου",
-			"σαν",
-			"επειδή",
-			"τι",
-			"εάν",
-			"για",
-			"γιατί",
-			"μολονότι",
-			"αν και",
-			"μόνο που",
-			"σαν που",
-			"πριν να",
-			"ώστε να",
-			"για να"
-		},
-		{
-			"συμπλεκτικός",
-			"συμπλεκτικός",
-			"συμπλεκτικός",
-			"συμπλεκτικός",
-			"συμπλεκτικός",
-			"συμπλεκτικός",
-			"διαχωριστικός",
-			"διαχωριστικός",
-			"υποθετικός",
-			"αντιθετικός",
-			"αντιθετικός",
-			"πρόθεση ~ αντιθετικός - συγκριτικός",
-			"αντιθετικός",
-			"αντιθετικός",
-			"επίρρημα ~ αντιθετικός",
-			"αναφορική αντωνυμία ~ ειδικός - αποτελεσματικός - χρονικός - αιτιολογικός - εναντιωματικός",
-			"επιφώνημα ~ συμπερασματικός",
-			"αποτελεσματικός, συμπερασματικός",
-			"συμπερασματικός",
-			"συμπερασματικός",
-			"συμπερασματικός",
-			"επεξηγηματικός",
-			"ειδικός - αιτιολογικός",
-			"ειδικός - αιτιολογικός (σπανιότερα)",
-			"ενδοιαστικός",
-			"ενδοιαστικός",
-			"ενδοιαστικός",
-			"μόριο ~ βουλητικός - τελικός",
-			"υποθετικός - χρονικός",
-			"χρονικός",
-			"αντιθετικός - χρονικός - εναντιωματικός",
-			"επίρρημα ~ χρονικός",
-			"Χρονικοί",
-			"Χρονικοί",
-			"πρόθεση - επίρρημα ~ χρονικός",
-			"επίρρημα ~ χρονικός",
-			"χρονικός",
-			"χρονικός",
-			"χρονικός",
-			"πρόθεση - επίρρημα ~ χρονικός - υποθετικός",
-			"αιτιολογικός",
-			"(ποιητικό) ερωτηματική αντωνυμία ~ αιτιολογικός",
-			"υποθετικός",
-			"πρόθεση ~ συμπερασματικός",
-			"αιτιολογικός",
-			"εναντιωματικός - αντιθετικός",
-			"εναντιωματικός - αντιθετικός",
-			"αντιθετικός",
-			"αιτιολογικός",
-			"χρονικός",
-			"αποτελεσματικός",
-			"τελικός"
-		}
-	};
-
-	char * 
-	protheseis_pair[37] = 
-	{
-		"με",
-		"σε",
-		"ως",
-		"προς",
-		"κατά",
-		"μετά",
-		"αντί",
-		"από",
-		"δίχως",
-		"χωρίς",
-		"έως",
-		"μέχρι",
-		"ίσαμε",
-		"μεταξύ",
-		"εναντίον",
-		"εξαιτίας",
-		"ανά",
-		"άνευ",
-		"διά",
-		"εις",
-		"εκ",
-		"εκτός",
-		"εν",
-		"ένεκα",
-		"εντός",
-		"επί",
-		"κατόπιν",
-		"λόγω",
-		"μείον",
-		"μέσω",
-		"περί",
-		"πλην",
-		"προ",
-		"συν",
-		"υπέρ",
-		"υπό",
-		"χάριν"
-	};
-
-	char * 
-	stiksi_to_string[18] = 
-	{
-		",",
-		".",
-		";",
-		":",
-		"!",
-		"_",
-		"(",
-		")",
-		"[",
-		"]",
-		"{",
-		"}",
-		"+",
-		"-",
-		"*",
-		"/",
-		"=",
-		"~"
-	};
-
-	char *
-	stiksi_to_string_name[18] = 
-	{
-		"κόμμα",
-		"τελεία",
-		"ερωτηματικό",
-		"ανώ και κάτω τελεία",
-		"θαυμαστικό",
-		"κάτω παύλα",
-		"άνοιγμα παρένθεσης",
-		"κλείσιμο παρένθεσης", 
-		"άνοιγμα μπλόκ",
-		"κλείσιμο μπλόκ", 
-		"άνοιγμα αγκύλης",
-		"κλείσιμο αγκύλης",
-		"πρόσθεση", 
-		"μείων",
-		"επί", 
-		"διά",
-		"ίσον",
-		"περίπου"
-	};
+	#include "../bison_flex/analyzer/word_exif_data_to_mem.h"
+	#include "../bison_flex/bison/greek_protheseis.h"
+	#include "../bison_flex/bison/greek_stikseis.h"
+	#include "../bison_flex/bison/greek_sundesmoi.h"
 
 	int yylex		(void);
 	int yyerror		(char* yaccProvidedMessage);
@@ -241,7 +42,8 @@
 %type<syndesmos>	LSYNDESMOS
 %type<prothesi>		LPROTHESI
 
-%token<arthro>		ARS_EN_AR ARS_PL_AR THY_EN_AR THY_PL_AR OUD_EN_AR OUD_PL_AR _PL_AR _EN_AR 
+%token<arthro>		ARS_EN_AR ARS_PL_AR THY_EN_AR 
+%token<arthro>		THY_PL_AR OUD_EN_AR OUD_PL_AR _PL_AR _EN_AR 
 
 %token<ousiastiko>	OUSIASTIKO 
 %token<onomata>		ONOMATA 
@@ -262,7 +64,7 @@
 
 	PROTASI:	LEKSEIS				{
 										printf(a_c_g"\n\nΗ ολοκληρωμένη πρόταση είναι: " a_c_m "%s\n" a_c_re, $<leksi>1); 
-										word_exif_func(NULL);
+										word_exif_func(NULL); // to free memory
 										printf("\n");
 									}
 									;
@@ -316,58 +118,74 @@
 	LARTHRO:	ARS_EN_AR
 				{
 					$<arthro>$ = yylval.arthro;
-					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους αρσσενικό" italic_re);
-					printf(") ");
+					printf("%s ("
+					a_c_m italic bold
+					"οριστικό άρθρο ενικού, γένους αρσσενικό" 
+					italic_re ") "
+					, yylval.arthro);
 				}
 				|ARS_PL_AR
 				{
 					$<arthro>$ = yylval.arthro;
-					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους αρσσενικό" italic_re);
-					printf(") ");
+					printf("%s ("
+					a_c_m italic bold
+					"οριστικό άρθρο πληθυντικού, γένους αρσσενικό" 
+					italic_re ") "
+					, yylval.arthro);
 				}
 				|THY_EN_AR
 				{
 					$<arthro>$ = yylval.arthro;
-					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους θηλυκό" italic_re);
-					printf(") ");
+					printf("%s ("
+					a_c_m italic bold
+					"οριστικό άρθρο ενικού, γένους θηλυκό" 
+					italic_re ") "
+					, yylval.arthro);
 				 }
 				|THY_PL_AR
 				{
 					$<arthro>$ = yylval.arthro;
-					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους θηλυκό" italic_re);
-					printf(") ");
+					printf("%s ("
+					a_c_m italic bold
+					"οριστικό άρθρο πληθυντικού, γένους θηλυκό" 
+					italic_re ") "
+					, yylval.arthro);
 				}
 				|OUD_EN_AR
 				{
 					$<arthro>$ = yylval.arthro;
-					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους ουδέτερο" italic_re);
-					printf(") ");
+					printf("%s ("
+					a_c_m italic bold
+					"οριστικό άρθρο ενικού, γένους ουδέτερο" 
+					italic_re ") "
+					, yylval.arthro);
 				}
 				|OUD_PL_AR
 				{
 					$<arthro>$ = yylval.arthro;
-					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους ουδέτερο" italic_re);
-					printf(") ");
+					printf("%s ("
+					a_c_m italic bold
+					"οριστικό άρθρο πληθυντικού, γένους ουδέτερο" 
+					italic_re ") "
+					, yylval.arthro);
 				}
 				|_EN_AR
 				{
 					$<arthro>$ = yylval.arthro;
-					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους αγνώστου" italic_re);
-					printf(") ");
+					printf("%s ("
+					a_c_m italic bold
+					"οριστικό άρθρο ενικού, γένους αγνώστου" 
+					italic_re ") "
+					, yylval.arthro);
 				}
 				|_PL_AR
 				{
 					$<arthro>$ = yylval.arthro;
-					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους αγνώστου" italic_re);
-					printf(") ");
+					printf("%s ("
+					a_c_m italic bold
+					"οριστικό άρθρο πληθυντικού, γένους αγνώστου" 
+					italic_re ") "
+					, yylval.arthro);
 				}
 				;
 
@@ -403,42 +221,42 @@
 
 	LSYNDESMOS: SYNDESMOS SYNDESMOS
 				{
-					if		($<syndesmos>$ == 8  && $2 == 0)
+					if($<syndesmos>$ == 8  && $2 == 0)
 					{
 						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
 						sundesmoi_pair[0][46], 
 						sundesmoi_pair[1][46]);
 						$<syndesmos>$ = 46;
 					}
-					else if	($<syndesmos>$ == 14 && $2 == 15)
+					else if($<syndesmos>$ == 14 && $2 == 15)
 					{
 						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
 						sundesmoi_pair[0][47], 
 						sundesmoi_pair[1][47]);
 						$<syndesmos>$ = 47;
 					}
-					else if	($<syndesmos>$ == 39 && $2 == 15)
+					else if($<syndesmos>$ == 39 && $2 == 15)
 					{
 						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
 						sundesmoi_pair[0][48], 
 						sundesmoi_pair[1][48]);
 						$<syndesmos>$ = 48;
 					}
-					else if	($<syndesmos>$ == 34 && $2 == 27)
+					else if($<syndesmos>$ == 34 && $2 == 27)
 					{
 						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
 						sundesmoi_pair[0][49], 
 						sundesmoi_pair[1][49]);
 						$<syndesmos>$ = 49;
 					}
-					else if	($<syndesmos>$ == 17 && $2 == 27)
+					else if($<syndesmos>$ == 17 && $2 == 27)
 					{
 						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
 						sundesmoi_pair[0][50], 
 						sundesmoi_pair[1][50]);
 						$<syndesmos>$ = 50;
 					}
-					else if	($<syndesmos>$ == 43 && $2 == 27)
+					else if($<syndesmos>$ == 43 && $2 == 27)
 					{
 						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
 						sundesmoi_pair[0][51], 

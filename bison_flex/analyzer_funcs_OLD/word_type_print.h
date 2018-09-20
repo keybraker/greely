@@ -1,40 +1,47 @@
 #include "word_syllab_arrays.h"
 
 
-char *delete_slash_n(char* withSlashN){
+char *
+delete_slash_n(char* withSlashN)
+{
   strtok(withSlashN, "\n");
   return withSlashN;
-
 }
 
-int toInt(char a[]) {
+int
+toInt(char a[])
+{
   int c, sign, offset, n;
  
-  if (a[0] == '-') {  // Handle negative integers
+  if(a[0] == '-')
+  {  // Handle negative integers
     sign = -1;
-  }else{
+  }
+  else
+  {
     sign = 0;
   }
  
-  if (sign == -1) {  // Set starting position to convert
+  if (sign == -1)
+  {  // Set starting position to convert
     offset = 1;
-  }
-  else {
+  }else{
     offset = 0;
   }
  
   n = 0;
  
-  for (c = offset; a[c] != '\0'; c++) {
+  for(c = offset; a[c] != '\0'; c++)
+  {
     n = n * 10 + a[c] - '0';
   }
  
-  if (sign == -1) {
+  if(sign == -1)
+  {
     n = -n;
   }
  
   return n;
-
 }
 
 /*
@@ -42,7 +49,9 @@ int toInt(char a[]) {
 * σε μικρό, διότι η λέξεις τις 
 * βάσεις είναι σε μικρά
 */
-char* capToSmall(char* wordInput){
+char* 
+capToSmall(char* wordInput)
+{
 
     char* oldWordInput = calloc(16,sizeof(char));
 
@@ -58,11 +67,12 @@ char* capToSmall(char* wordInput){
     };
 
     return wordInput;
-
 }
 
 // #0
-void printRima(char* rima, char* isCap){
+void 
+print_rima(char* rima, char* isCap)
+{
 
   int  Xronos, Prosopos, Arithmos, Klisi, Foni;
   char *word;
@@ -88,12 +98,12 @@ void printRima(char* rima, char* isCap){
     printf(a_c_c italic bold "ρήμα, %s πρόσωπο %s %s, %s φώνης, %s κλίσης"DEUNDER, prosopo[Prosopos], arithmos[Arithmos], xronos[Xronos], foni[Foni], klisi[Klisi]);
     printf(") ");
   }
-
 }
 
 // #1
-void printEpitheto(char* epitheto, char* isCap){
-
+void 
+print_epitheto(char* epitheto, char* isCap)
+{
   int  Genos, Arithmos, Ptosi;
   char *word;
 
@@ -116,12 +126,12 @@ void printEpitheto(char* epitheto, char* isCap){
     printf(a_c_c italic bold "επίθετο, %s αριθμου, γένος %s, %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }
-
 }
 
 // #2
-void printOusiastiko(char* ousiastiko, char* isCap){
-
+void 
+print_ousiastiko(char* ousiastiko, char* isCap)
+{
   int  Genos, Arithmos, Ptosi;
   char *word;
 
@@ -144,12 +154,12 @@ void printOusiastiko(char* ousiastiko, char* isCap){
     printf(a_c_c italic bold "ουσιαστικό, %s αριθμού, γένος %s, %s πτώση"DEUNDER, arithmos[Arithmos], genos[Genos], ptosi[Ptosi]);
     printf(") ");
   }
-
 }
 
 // #3
-void printMetoxi(char* metoxi, char* isCap){
-
+void 
+print_metoxi(char* metoxi, char* isCap)
+{
   strtok(metoxi, "|");
   char *word  = strtok(NULL, "|");
 
@@ -162,12 +172,12 @@ void printMetoxi(char* metoxi, char* isCap){
     printf(a_c_c italic bold "μετοχή" DEUNDER);
     printf(") ");
   } 
-
 }
 
 // #4
-void printArithmitika(char* arithmitika, char* isCap){
-
+void 
+print_arithmitika(char* arithmitika, char* isCap)
+{
   strtok(arithmitika, "|");
   char *word  = strtok(NULL, "|");
             strtok(NULL, "|");
@@ -185,12 +195,12 @@ void printArithmitika(char* arithmitika, char* isCap){
     printf(a_c_c italic bold "αριθμητικό, με πραματική τιμή: %d"DEUNDER, actualNum);
     printf(") ");
   }
-
 }
 
 // #5
-void printEpirima(char* epirima, char* isCap){
-
+void 
+print_epirima(char* epirima, char* isCap)
+{
   int  Katigoria;
   char *word;
 
@@ -211,12 +221,12 @@ void printEpirima(char* epirima, char* isCap){
     printf(a_c_c italic bold "%s επίρρημα"DEUNDER, epirimata[Katigoria]);
     printf(") ");
   }
-
 }
 
 // #6
-void printSundesmo(char* sundesmo, char* isCap){
-
+void 
+print_sundesmo(char* sundesmo, char* isCap)
+{
   int  Katigoria;
   char *word;
 
@@ -237,12 +247,12 @@ void printSundesmo(char* sundesmo, char* isCap){
     printf(a_c_c italic bold "%s σύνδεσμος"DEUNDER, sundesmos[Katigoria]);
     printf(") ");
   }
-
 }
 
 // #7
-void printAntonimia(char* antonimia, char* isCap){
-
+void 
+print_antonimia(char* antonimia, char* isCap)
+{
   strtok(antonimia, "|");
   char *word  = strtok(NULL, "|");
   
@@ -255,21 +265,21 @@ void printAntonimia(char* antonimia, char* isCap){
     printf(a_c_c italic bold "αντωνυμία"DEUNDER);
     printf(") ");
   }
-
 }
 
 // a k r a i o 
 typedef void (*f)(char*, char*); 
-f functionPrinter[8] = {
-  &printRima,
-  &printEpitheto,
-  &printOusiastiko,
-  &printMetoxi,
-  &printArithmitika, 
-  &printEpirima,
-  &printSundesmo,
-  &printAntonimia
- }; 
+f functionPrinter[8] = 
+{
+  &print_rima,
+  &print_epitheto,
+  &print_ousiastiko,
+  &print_metoxi,
+  &print_arithmitika, 
+  &print_epirima,
+  &print_sundesmo,
+  &print_antonimia
+}; 
 // a k r a i o 
 
 
