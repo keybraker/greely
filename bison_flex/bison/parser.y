@@ -1,10 +1,9 @@
 %{
 	#include "../bison_flex/analyzer_funcs/word_exif_data_to_mem.h"
-	#include "string.h"
 	//#include "../word_exif_tool/word_exif_data_to_mem.hh"
 
 	char * 
-	sundesmoi_pair[53][53] = 
+	sundesmoi_pair[52][52] = 
 	{
 		{
 			"και",
@@ -50,7 +49,7 @@
 			"επειδή",
 			"τι",
 			"εάν",
-			"για"
+			"για",
 			"γιατί",
 			"μολονότι",
 			"αν και",
@@ -104,7 +103,7 @@
 			"αιτιολογικός",
 			"(ποιητικό) ερωτηματική αντωνυμία ~ αιτιολογικός",
 			"υποθετικός",
-			"συμπερασματικός",
+			"πρόθεση ~ συμπερασματικός",
 			"αιτιολογικός",
 			"εναντιωματικός - αντιθετικός",
 			"εναντιωματικός - αντιθετικός",
@@ -112,8 +111,50 @@
 			"αιτιολογικός",
 			"χρονικός",
 			"αποτελεσματικός",
-			"πρόθεση ~ τελικός"
+			"τελικός"
 		}
+	};
+
+	char * 
+	protheseis_pair[37] = 
+	{
+		"με",
+		"σε",
+		"ως",
+		"προς",
+		"κατά",
+		"μετά",
+		"αντί",
+		"από",
+		"δίχως",
+		"χωρίς",
+		"έως",
+		"μέχρι",
+		"ίσαμε",
+		"μεταξύ",
+		"εναντίον",
+		"εξαιτίας",
+		"ανά",
+		"άνευ",
+		"διά",
+		"εις",
+		"εκ",
+		"εκτός",
+		"εν",
+		"ένεκα",
+		"εντός",
+		"επί",
+		"κατόπιν",
+		"λόγω",
+		"μείον",
+		"μέσω",
+		"περί",
+		"πλην",
+		"προ",
+		"συν",
+		"υπέρ",
+		"υπό",
+		"χάριν"
 	};
 
 	char * 
@@ -162,42 +203,43 @@
 		"περίπου"
 	};
 
-	int yylex       (void);
-	int yyerror     (char* yaccProvidedMessage);
+	int yylex		(void);
+	int yyerror		(char* yaccProvidedMessage);
 	
-	extern FILE*    yyin;
-	extern FILE*    yyout;
-	extern char*    yytext;
-	extern int      yylineno;
+	extern FILE*	yyin;
+	extern FILE*	yyout;
+	extern char*	yytext;
+	extern int		yylineno;
 %}
 
 %union
 {
-	char*   leksi;
+	char*	leksi;
 
-	char*   ousiastiko;
-	char*   onomata;
-	char*   epitheto;
-	char*   rima;
-	char*   epirima;
-	char*   antonumia;
-	char*   arthro;
-	char*   prothesi;
-	char*   epifonima;
+	char*	ousiastiko;
+	char*	onomata;
+	char*	epitheto;
+	char*	rima;
+	char*	epirima;
+	char*	antonumia;
+	char*	arthro;
+	char*	epifonima;
 
 	double  arithmos;
 
-	int     sundesmos;
-	int     stiksi;
+	int		prothesi;
+	int		syndesmos;
+	int		stiksi;
 }
 
-%start              PROTASI
+%start				PROTASI
 
 %type<leksi>		LEKSEIS LLEKSI MEROSLOGOU
 %type<stiksi>		LSTIKSI
 %type<arithmos>		LARITHMOS 
 %type<arthro>		LARTHRO
-%type<sundesmos>	LSUNDESMOS
+%type<syndesmos>	LSYNDESMOS
+%type<prothesi>		LPROTHESI
 
 %token<arthro>		ARS_EN_AR ARS_PL_AR THY_EN_AR THY_PL_AR OUD_EN_AR OUD_PL_AR _PL_AR _EN_AR 
 
@@ -208,12 +250,12 @@
 %token<epirima>		EPIRIMA 
 %token<antonumia>	ANTONUMIA 
 %token<arthro>		ARTHRO 
-%token<prothesi>	PROTHESI 
 %token<epifonima>	EPIFONIMA 
 
-%token<sundesmos>	SUNDESMOS
+%token<prothesi>	PROTHESI 
+%token<syndesmos>	SYNDESMOS
 
-%token<stiksi>	STIKSI
+%token<stiksi>		STIKSI
 %token<arithmos>    ARITHMOSFLOAT ARITHMOSINT 
 
 %%
@@ -225,7 +267,7 @@
 									}
 									;
 
-	LEKSEIS:	LEKSEIS MEROSLOGOU	{   
+	LEKSEIS:	LEKSEIS MEROSLOGOU	{
 										if($1 == NULL && $2 != NULL)
 										{
 											$$ = (char*) calloc (strlen($2)+1, sizeof(char));
@@ -237,11 +279,11 @@
 											strcpy($$, $1); strcat($$, " "); 
 											strcat($$, $2);
 										}
-										//printf("    ➥ λέξεις μέρος του λόγου: %s\n\n",$$);
+										//printf("	➥ λέξεις μέρος του λόγου: %s\n\n",$$);
 									}
 									| 
 									{
-										$$ = NULL; 
+										$$ = NULL;
 									}
 									;
 	MEROSLOGOU:	LLEKSI
@@ -254,17 +296,20 @@
 				}
 				|LARITHMOS
 				{
-					$<leksi>$ = calloc(1, sizeof(char*));     
+					$<leksi>$ = calloc(1, sizeof(char*));
 					sprintf($<leksi>$, "%f", $1);
 				}
 				|LSTIKSI
 				{
-					$<leksi>$ = strdup(stiksi_to_string_name[$1]);  
+					$<leksi>$ = strdup(stiksi_to_string_name[$1]);
 				}
-				|LSUNDESMOS
+				|LSYNDESMOS
 				{
-					printf("$1 : %d\n", $1);
 					$<leksi>$ = strdup(sundesmoi_pair[0][$1]);
+				}
+				|LPROTHESI
+				{
+					$<leksi>$ = strdup(protheseis_pair[$1]);
 				}
 				;
 
@@ -272,15 +317,15 @@
 				{
 					$<arthro>$ = yylval.arthro;
 					printf("%s (", yylval.arthro);
-					printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους αρσσενικό" italic_re);	
-					printf(") "); 
+					printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους αρσσενικό" italic_re);
+					printf(") ");
 				}
 				|ARS_PL_AR
 				{
 					$<arthro>$ = yylval.arthro;
 					printf("%s (", yylval.arthro);
 					printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους αρσσενικό" italic_re);
-					printf(") "); 
+					printf(") ");
 				}
 				|THY_EN_AR
 				{
@@ -294,28 +339,28 @@
 					$<arthro>$ = yylval.arthro;
 					printf("%s (", yylval.arthro);
 					printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους θηλυκό" italic_re);
-					printf(") "); 
+					printf(") ");
 				}
 				|OUD_EN_AR
 				{
 					$<arthro>$ = yylval.arthro;
 					printf("%s (", yylval.arthro);
 					printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους ουδέτερο" italic_re);
-					printf(") "); 
+					printf(") ");
 				}
 				|OUD_PL_AR
 				{
 					$<arthro>$ = yylval.arthro;
 					printf("%s (", yylval.arthro);
 					printf(a_c_m italic bold"οριστικό άρθρο πληθυντικού, γένους ουδέτερο" italic_re);
-					printf(") "); 
+					printf(") ");
 				}
 				|_EN_AR
 				{
 					$<arthro>$ = yylval.arthro;
 					printf("%s (", yylval.arthro);
 					printf(a_c_m italic bold"οριστικό άρθρο ενικού, γένους αγνώστου" italic_re);
-					printf(") "); 
+					printf(") ");
 				}
 				|_PL_AR
 				{
@@ -349,84 +394,106 @@
 					}
 					else 
 					{
-						printf("\"%s\" %s (", stiksi_to_string[yylval.stiksi], stiksi_to_string_name[yylval.stiksi]); 
-						printf(italic bold"σημείο στίξης" italic_re); 
-						printf(") ");
+						printf("\"%s\" %s (" italic bold "σημείο στίξης" italic_re ") ",
+						stiksi_to_string[yylval.stiksi], 
+						stiksi_to_string_name[yylval.stiksi]);
 					}
 				}
 				;
 
-	LSUNDESMOS: SUNDESMOS SUNDESMOS
+	LSYNDESMOS: SYNDESMOS SYNDESMOS
 				{
-					if		($<sundesmos>$ == 8  && $2 == 0)
+					if		($<syndesmos>$ == 8  && $2 == 0)
 					{
-						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ", sundesmoi_pair[0][46], sundesmoi_pair[1][46]);
-						$<sundesmos>$ = 46;
+						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
+						sundesmoi_pair[0][46], 
+						sundesmoi_pair[1][46]);
+						$<syndesmos>$ = 46;
 					}
-					else if	($<sundesmos>$ == 15 && $2 == 14)
+					else if	($<syndesmos>$ == 14 && $2 == 15)
 					{
-						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ", sundesmoi_pair[0][47], sundesmoi_pair[1][47]);
-						$<sundesmos>$ = 47;
+						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
+						sundesmoi_pair[0][47], 
+						sundesmoi_pair[1][47]);
+						$<syndesmos>$ = 47;
 					}
-					else if	($<sundesmos>$ == 15 && $2 == 39)
+					else if	($<syndesmos>$ == 39 && $2 == 15)
 					{
-						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ", sundesmoi_pair[0][48], sundesmoi_pair[1][48]);
-						$<sundesmos>$ = 48;
+						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
+						sundesmoi_pair[0][48], 
+						sundesmoi_pair[1][48]);
+						$<syndesmos>$ = 48;
 					}
-					else if	($<sundesmos>$ == 27 && $2 == 34)
+					else if	($<syndesmos>$ == 34 && $2 == 27)
 					{
-						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ", sundesmoi_pair[0][49], sundesmoi_pair[1][49]);
-						$<sundesmos>$ = 49;
+						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
+						sundesmoi_pair[0][49], 
+						sundesmoi_pair[1][49]);
+						$<syndesmos>$ = 49;
 					}
-					else if	($<sundesmos>$ == 27 && $2 == 17)
+					else if	($<syndesmos>$ == 17 && $2 == 27)
 					{
-						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ", sundesmoi_pair[0][50], sundesmoi_pair[1][50]);
-						$<sundesmos>$ = 50;
+						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
+						sundesmoi_pair[0][50], 
+						sundesmoi_pair[1][50]);
+						$<syndesmos>$ = 50;
 					}
-					else if	($<sundesmos>$ == 27 && $2 == 43)
+					else if	($<syndesmos>$ == 43 && $2 == 27)
 					{
-						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ", sundesmoi_pair[0][51], sundesmoi_pair[1][51]);
-						$<sundesmos>$ = 51;
+						printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
+						sundesmoi_pair[0][51], 
+						sundesmoi_pair[1][51]);
+						$<syndesmos>$ = 51;
 					}
 					else
 					{
-						printf(a_c_r "\n\nΗ χρήση \"%s %s\" ενδέχεται να είναι λανθασμένη\n\n" a_c_re, sundesmoi_pair[0][$$], sundesmoi_pair[0][$2]);
+						printf(a_c_r "\"%s %s\" (ενδέχεται να είναι λανθασμένος συνδιασμός συνδέσμων) " a_c_re,
+						sundesmoi_pair[0][$$],
+						sundesmoi_pair[0][$2]);
 						exit(0);
 					}
 				}
 				|
-				SUNDESMOS
+				SYNDESMOS
 				{
-					printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ", sundesmoi_pair[0][$1], sundesmoi_pair[1][$1]);
-					$<sundesmos>$ = $1;
+					printf("\"%s\" (" italic bold "%s σύνδεσμος" italic_re ") ",
+					sundesmoi_pair[0][$1], 
+					sundesmoi_pair[1][$1]);
+					$<syndesmos>$ = $1;
 				}
 				;
 
-	LLEKSI:		OUSIASTIKO	{$<leksi>$ = yylval.ousiastiko;   word_exif_func(yylval.leksi);	}
+	LPROTHESI:	PROTHESI	
+				{
+					$<prothesi>$ = yylval.prothesi;
+					printf("\"%s\" (" italic bold "πρόθεση" italic_re ") ",
+					protheseis_pair[$1]);
+				}
+				;
+
+	LLEKSI:		OUSIASTIKO	{$<leksi>$ = yylval.ousiastiko;	  word_exif_func(yylval.leksi);	}
 				|ONOMATA	{$<leksi>$ = yylval.onomata;									}
 				|EPITHETO	{$<leksi>$ = yylval.epitheto;     word_exif_func(yylval.leksi);	}
 				|RIMA		{$<leksi>$ = yylval.rima;         word_exif_func(yylval.leksi);	}
 				|EPIRIMA	{$<leksi>$ = yylval.epirima;      word_exif_func(yylval.leksi);	}
 				|ANTONUMIA	{$<leksi>$ = yylval.antonumia;    word_exif_func(yylval.leksi);	}
 				|ARTHRO		{$<leksi>$ = yylval.arthro;       word_exif_func(yylval.leksi);	}
-				|PROTHESI	{$<leksi>$ = yylval.prothesi;     word_exif_func(yylval.leksi);	}
 				|EPIFONIMA	{$<leksi>$ = yylval.epifonima;    word_exif_func(yylval.leksi);	}
 				;
 
 %%
 
 
-int 
+int
 yyerror (char* yaccProvidedMessage)
 {
-   printf("%s\n", yaccProvidedMessage);
-   return 0;
+	printf("%s\n", yaccProvidedMessage);
+	return 0;
 }
 
-int 
+int
 main(int argc, char** argv)
 {
-		
 	printf("\n");
 	
 	if(argc > 2)

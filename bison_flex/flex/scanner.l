@@ -233,7 +233,7 @@ ousiastikoExists(char* name, char* type)
 
 %%
 
-","					{ 	/*---------------------------------------------------------------------- STIKSEIS ----------------------------------------------------------------------*/
+","					{ 	/*~~~~~~~~~~~~~~ STIKSEIS ~~~~~~~~~~~~~~*/
 						yylval.stiksi = 0; 	
 						return STIKSI; 
 					}
@@ -307,7 +307,7 @@ ousiastikoExists(char* name, char* type)
 						return STIKSI; 
 					}
 
-[0-9]+\.[0-9]*		{   /*---------------------------------------------------------------------- ARITHMOI ----------------------------------------------------------------------*/
+[0-9]+\.[0-9]*		{   /*~~~~~~~~~~~~~~ ARITHMOI ~~~~~~~~~~~~~~*/
 						double arithmos ; sscanf(yytext,"%lf",&arithmos);
 						yylval.arithmos = arithmos; 
 						arthroBefore = NULL;
@@ -318,196 +318,345 @@ ousiastikoExists(char* name, char* type)
 					  	yylval.arithmos = arithmos;
 					  	arthroBefore = NULL;
 					  	return ARITHMOSINT; 
-					  	/*---------------------------------------------------------------------- SYNDESMOI ----------------------------------------------------------------------*/
+					  	
 					}
 
-και			{
-				yylval.sundesmos = 0; 
-				return SUNDESMOS; 
-			}	
-κι			{
-				yylval.sundesmos = 1; 
-				return SUNDESMOS; 
-			}										
-ούτε		{
-				yylval.sundesmos = 2; 
-				return SUNDESMOS; 
-			}										
-μήτε		{
-				yylval.sundesmos = 3; 
-				return SUNDESMOS; 
-			}										
-μήδε		{
-				yylval.sundesmos = 4; 
-				return SUNDESMOS; 
-			}										
-ούδε		{
-				yylval.sundesmos = 5; 
-				return SUNDESMOS; 
-			}
-ή			{
-				yylval.sundesmos = 6; 
-				return SUNDESMOS; 
-			}
-είτε		{
-				yylval.sundesmos = 7; 
-				return SUNDESMOS; 
-			}
-αν			{
-				yylval.sundesmos = 8; 
-				return SUNDESMOS; 
-			}
-αλλά		{
-				yylval.sundesmos = 9; 
-				return SUNDESMOS; 
-			}
-μα			{
-				yylval.sundesmos = 10; 
-				return SUNDESMOS; 
-			}
-παρά		{
-				yylval.sundesmos = 11; 
-				return SUNDESMOS; 
-			}
-όμως		{
-				yylval.sundesmos = 12; 
-				return SUNDESMOS; 
-			}
-ωστόσο		{
-				yylval.sundesmos = 13; 
-				return SUNDESMOS; 
-			}
-μόνο		{
-				yylval.sundesmos = 14; 
-				return SUNDESMOS; 
-			}
-που			{
-				yylval.sundesmos = 15;
-				return SUNDESMOS; 
-			}
-λοιπόν		{
-				yylval.sundesmos = 16;
-				return SUNDESMOS; 
-			}
-ώστε		{
-				yylval.sundesmos = 17;
-				return SUNDESMOS; 
-			}
-άρα			{
-				yylval.sundesmos = 18;
-				return SUNDESMOS; 
-			}
-επομένως	{
-				yylval.sundesmos = 19;
-				return SUNDESMOS; 
-			}
-οπότε		{
-				yylval.sundesmos = 20;
-				return SUNDESMOS; 
-			}				
-δηλαδή		{
-				yylval.sundesmos = 21;
-				return SUNDESMOS; 
-			}
-ότι			{
-				yylval.sundesmos = 22;
-				return SUNDESMOS; 
-			}
-πως			{
-				yylval.sundesmos = 23;
-				return SUNDESMOS; 
-			}
-μη			{
-				yylval.sundesmos = 24;
-				return SUNDESMOS; 
-			}
-μην			{
-				yylval.sundesmos = 25;
-				return SUNDESMOS; 
-			}	
-μήπως		{
-				yylval.sundesmos = 26;
-				return SUNDESMOS; 
-			}		
-να			{
-				yylval.sundesmos = 27;
-				return SUNDESMOS; 
-			}
-άμα			{
-				yylval.sundesmos = 28;
-				return SUNDESMOS; 
-			}
-όταν		{
-				yylval.sundesmos = 29;
-				return SUNDESMOS; 
-			}
-ενώ			{
-				yylval.sundesmos = 30;
-				return SUNDESMOS; 
-			}
-καθώς		{
-				yylval.sundesmos = 31;
-				return SUNDESMOS; 
-			}
-αφού		{
-				yylval.sundesmos = 32;
-				return SUNDESMOS; 
-			}
-αφότου		{
-				yylval.sundesmos = 33;
-				return SUNDESMOS; 
-			}
-πριν		{
-				yylval.sundesmos = 34;
-				return SUNDESMOS; 
-			}					
-μόλις		{
-				yylval.sundesmos = 35;
-				return SUNDESMOS; 
-			}
-προτού			{
-				yylval.sundesmos = 36;
-				return SUNDESMOS; 
-			}
-ώσπου		{
-				yylval.sundesmos = 37;
-				return SUNDESMOS; 
-			}
-ωσότου		{
-				yylval.sundesmos = 38;
-				return SUNDESMOS; 
-			}
-σαν			{
-				yylval.sundesmos = 39;
-				return SUNDESMOS; 
-			}
-επειδή		{
-				yylval.sundesmos = 40;
-				return SUNDESMOS; 
-			}
-τι			{
-				yylval.sundesmos = 41;
-				return SUNDESMOS; 
-			}
-εάν			{
-				yylval.sundesmos = 42;
-				return SUNDESMOS; 
-			}
-για			{
-				yylval.sundesmos = 43;
-				return SUNDESMOS; 
-			}
-γιατί		{
-				yylval.sundesmos = 44;
-				return SUNDESMOS; 
-			}
-μολονότι	{
-				yylval.sundesmos = 45; 
-				return SUNDESMOS; 
-			}
+με|Με				{ /*~~~~~~~~~~~~~~ PROTHESEIS ~~~~~~~~~~~~~~*/
+						yylval.prothesi = 0; 
+						return PROTHESI; 
+					}
+σε|Σε				{
+						yylval.prothesi = 1; 
+						return PROTHESI; 
+					}
+ως|Ως				{
+						yylval.prothesi = 2; 
+						return PROTHESI; 
+					}
+προς|Προς			{
+						yylval.prothesi = 3; 
+						return PROTHESI; 
+					}
+κατά|Κατά			{
+						yylval.prothesi = 4; 
+						return PROTHESI; 
+					}
+μετά|Μετά			{
+						yylval.prothesi = 5; 
+						return PROTHESI; 
+					}
+αντί|Αντί			{
+						yylval.prothesi = 6; 
+						return PROTHESI; 
+					}
+από|Από				{
+						yylval.prothesi = 7; 
+						return PROTHESI; 
+					}
+δίχως|Δίχως			{
+						yylval.prothesi = 8; 
+						return PROTHESI; 
+					}
+χωρίς|Χωρίς			{
+						yylval.prothesi = 9; 
+						return PROTHESI; 
+					}
+έως|Έως				{
+						yylval.prothesi = 10; 
+						return PROTHESI; 
+					}
+μέχρι|Μέχρι			{
+						yylval.prothesi = 11; 
+						return PROTHESI; 
+					}
+ίσαμε|Ίσαμε			{
+						yylval.prothesi = 12; 
+						return PROTHESI; 
+					}
+μεταξύ|Μεταξύ		{
+						yylval.prothesi = 13; 
+						return PROTHESI; 
+					}
+εναντίον|Εναντίον	{
+						yylval.prothesi = 14; 
+						return PROTHESI; 
+					}
+εξαιτίας|Εξαιτίας	{
+						yylval.prothesi = 15; 
+						return PROTHESI; 
+					}
+ανά|Ανά				{
+						yylval.prothesi = 16; 
+						return PROTHESI; 
+					}
+άνευ|Άνευ			{
+						yylval.prothesi = 17; 
+						return PROTHESI; 
+					}
+διά|Διά				{
+						yylval.prothesi = 18; 
+						return PROTHESI; 
+					}
+εις|Εις				{
+						yylval.prothesi = 19; 
+						return PROTHESI; 
+					}
+εκ|Εκ				{
+						yylval.prothesi = 20; 
+						return PROTHESI; 
+					}
+εκτός|Εκτός			{
+						yylval.prothesi = 21; 
+						return PROTHESI; 
+					}
+εν|Εν				{
+						yylval.prothesi = 22; 
+						return PROTHESI; 
+					}
+ένεκα|Ένεκα			{
+						yylval.prothesi = 23; 
+						return PROTHESI; 
+					}
+εντός|Εντός			{
+						yylval.prothesi = 24; 
+						return PROTHESI; 
+					}
+επί|Επί				{
+						yylval.prothesi = 25; 
+						return PROTHESI; 
+					}
+κατόπιν|Κατόπιν		{
+						yylval.prothesi = 26; 
+						return PROTHESI; 
+					}
+λόγω|Λόγω			{
+						yylval.prothesi = 27; 
+						return PROTHESI; 
+					}
+μείον|Μείον			{
+						yylval.prothesi = 28; 
+						return PROTHESI; 
+					}
+μέσω|Μέσω			{
+						yylval.prothesi = 29; 
+						return PROTHESI; 
+					}
+περί|Περί			{
+						yylval.prothesi = 30; 
+						return PROTHESI; 
+					}
+πλην|Πλην			{
+						yylval.prothesi = 31; 
+						return PROTHESI; 
+					}
+προ|Προ				{
+						yylval.prothesi = 32; 
+						return PROTHESI; 
+					}
+συν|Συν				{
+						yylval.prothesi = 33; 
+						return PROTHESI; 
+					}
+υπέρ|Υπέρ			{
+						yylval.prothesi = 34; 
+						return PROTHESI; 
+					}
+υπό|Υπό				{
+						yylval.prothesi = 35; 
+						return PROTHESI; 
+					}
+χάρι|Χάρι			{
+						yylval.prothesi = 36; 
+						return PROTHESI; 
+					}
+
+και|Και				{	/*~~~~~~~~~~~~~~ SYNDESMOI ~~~~~~~~~~~~~~*/
+						yylval.syndesmos = 0; 
+						return SYNDESMOS; 
+					}	
+κι|Κι				{
+						yylval.syndesmos = 1; 
+						return SYNDESMOS; 
+					}										
+ούτε|Ούτε			{
+						yylval.syndesmos = 2; 
+						return SYNDESMOS; 
+					}										
+μήτε|Μήτε			{
+						yylval.syndesmos = 3; 
+						return SYNDESMOS; 
+					}										
+μήδε|Μήδε			{
+						yylval.syndesmos = 4; 
+						return SYNDESMOS; 
+					}										
+ούδε|Ούδε			{
+						yylval.syndesmos = 5; 
+						return SYNDESMOS; 
+					}
+ή|Ή					{
+						yylval.syndesmos = 6; 
+						return SYNDESMOS; 
+					}
+είτε|Είτε			{
+						yylval.syndesmos = 7; 
+						return SYNDESMOS; 
+					}
+αν|Αν				{
+						yylval.syndesmos = 8; 
+						return SYNDESMOS; 
+					}
+αλλά|Αλλά			{
+						yylval.syndesmos = 9; 
+						return SYNDESMOS; 
+					}
+μα|Μα				{
+						yylval.syndesmos = 10; 
+						return SYNDESMOS; 
+					}
+παρά|Παρά			{
+						yylval.syndesmos = 11; 
+						return SYNDESMOS; 
+					}
+Όμως|όμως			{
+						yylval.syndesmos = 12; 
+						return SYNDESMOS; 
+					}
+ωστόσο|Ωστόσο		{
+						yylval.syndesmos = 13; 
+						return SYNDESMOS; 
+					}
+μόνο|Μόνο			{
+						yylval.syndesmos = 14; 
+						return SYNDESMOS; 
+					}
+που|Που				{
+						yylval.syndesmos = 15;
+						return SYNDESMOS; 
+					}
+λοιπόν|Λοιπόν		{
+						yylval.syndesmos = 16;
+						return SYNDESMOS; 
+					}
+ώστε|Ώστε			{
+						yylval.syndesmos = 17;
+						return SYNDESMOS; 
+					}
+άρα|Άρα				{
+						yylval.syndesmos = 18;
+						return SYNDESMOS; 
+					}
+επομένως|Επομένως	{
+						yylval.syndesmos = 19;
+						return SYNDESMOS; 
+					}
+οπότε|Οπότε			{
+						yylval.syndesmos = 20;
+						return SYNDESMOS; 
+					}				
+δηλαδή|Δηλαδή		{
+						yylval.syndesmos = 21;
+						return SYNDESMOS; 
+					}
+ότι|Ότι				{
+						yylval.syndesmos = 22;
+						return SYNDESMOS; 
+					}
+πως|Πως				{
+						yylval.syndesmos = 23;
+						return SYNDESMOS; 
+					}
+μη|Μη				{
+						yylval.syndesmos = 24;
+						return SYNDESMOS; 
+					}
+μην|Μην				{
+						yylval.syndesmos = 25;
+						return SYNDESMOS; 
+					}	
+μήπως|Μήπως			{
+						yylval.syndesmos = 26;
+						return SYNDESMOS; 
+					}		
+να|Να				{
+						yylval.syndesmos = 27;
+						return SYNDESMOS; 
+					}
+άμα|Άμα				{
+						yylval.syndesmos = 28;
+						return SYNDESMOS; 
+					}
+όταν|Όταν			{
+						yylval.syndesmos = 29;
+						return SYNDESMOS; 
+					}
+ενώ|Ενώ				{
+						yylval.syndesmos = 30;
+						return SYNDESMOS; 
+					}
+καθώς|Καθώς			{
+						yylval.syndesmos = 31;
+						return SYNDESMOS; 
+					}
+αφού|Αφού			{
+						yylval.syndesmos = 32;
+						return SYNDESMOS; 
+					}
+αφότου|Αφότου		{
+						yylval.syndesmos = 33;
+						return SYNDESMOS; 
+					}
+πριν|Πριν			{
+						yylval.syndesmos = 34;
+						return SYNDESMOS; 
+					}					
+μόλις|Μόλις			{
+						yylval.syndesmos = 35;
+						return SYNDESMOS; 
+					}
+προτού|Προτού		{
+						yylval.syndesmos = 36;
+						return SYNDESMOS; 
+					}
+ώσπου|Ώσπου			{
+						yylval.syndesmos = 37;
+						return SYNDESMOS; 
+					}
+ωσότου|Ωσότου		{
+						yylval.syndesmos = 38;
+						return SYNDESMOS; 
+					}
+σαν|Σαν				{
+						yylval.syndesmos = 39;
+						return SYNDESMOS; 
+					}
+επειδή|Επειδή		{
+						yylval.syndesmos = 40;
+						return SYNDESMOS; 
+					}
+τι|Τι				{
+						yylval.syndesmos = 41;
+						return SYNDESMOS; 
+					}
+εάν|Εάν				{
+						yylval.syndesmos = 42;
+						return SYNDESMOS; 
+					}
+για|Για				{
+						yylval.syndesmos = 43;
+						return SYNDESMOS; 
+					}
+γιατί|Γιατί			{
+						yylval.syndesmos = 44;
+						return SYNDESMOS; 
+					}
+μολονότι|Μολονότι	{
+						yylval.syndesmos = 45; 
+						return SYNDESMOS; 
+					}
 
 
-ο|Ο					{	/*---------------------------------------------------------------------- ARTHRA ----------------------------------------------------------------------*/
+ο|Ο					{	/*~~~~~~~~~~~~~~ ARTHRA ~~~~~~~~~~~~~~*/
 						yylval.leksi = strdup(yytext); 
 						arthroBefore = "ARS_EN_AR";
 						return ARS_EN_AR; 
