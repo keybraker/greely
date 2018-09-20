@@ -53,13 +53,11 @@ but if you find any trouble, these are the links to follow:
 * flex - https://www.gnu.org/software/flex/
 * bison - https://www.gnu.org/software/bison/
 
-➽ In the end only gcc will be needed
-
 ### Downloading
 
 Clone the project to your computer and run make, it's simple as that !
 ```
-git clone https://github.com/keybraker/greek-Ai-Bot.git
+git clone https://github.com/keybraker/Greely.git
 ```
 
 ### Running
