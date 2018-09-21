@@ -54,8 +54,8 @@ Ai that understands and learns the human language and you.
 |   |   └── greely_logo.png			// greely logo info
 |   |
 |   ├── MARKDOWNS
-|   |   ├── CONTRIBUTING.md 			// Contribution MD
-|   |   └── LICENSE.md				// LICENSE MD
+|   |   ├── CONTRIBUTING.md 			// Contribution Markdown
+|   |   └── LICENSE.md				// License Markdown
 |   |
 |   └── WORD_EXIF_TOOL_CPP
 |       ├── main.cpp 					
