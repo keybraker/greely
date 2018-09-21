@@ -2,7 +2,7 @@
 
 #### Disclaimer[1]: This is a very early stage in the development of greely, key functions don't work, just the shell of the program is running, production will continue in Q2-18. Some adjustments have been to execute alot faster and run on UNIX based operating systems. Minor functionallity will be added in upcomming months but steady updates will continue in half a year.
 
-![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/extras/IMAGES/greely%20logo.png)
+![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/extras/IMAGES/greely_logo.png)
 
 # Lexical and Grammatical Analyzer for Greek with the use of Flex Bison
 
@@ -15,31 +15,63 @@ Ai that understands and learns the human language and you.
 ```text
 │ 
 ├── bison_flex
-|   ├── analyzer_funcs
-|   |   ├── word_exif_data_to_mem.c // funcs for print
-|   |   ├── word_exif_data_to_mem.h		
-|   |   ├── word_syllab_arrays.h    // arrays for print
-|   |   ├── word_type_print.h       // helping funcs for print
-|   |   └── * databases             // current database
+|   ├── analyzer
+|   |   ├── greek_endings.h				// greek word endings
+|   |   ├── greek_word_data.h			// greek word database
+|   |   ├── word_exif_data_to_mem.c		// funcs for print	
+|   |   ├── word_exif_data_to_mem.h		// funcs for print	
+|   |   ├── word_syllab_arrays.h		// arrays for print
+|   |   └── word_type_print.h			// helping funcs for print
+|   |
 |   ├── bison
-|   |   └── parser.y    // grammatical analyzer
+|   |   ├── greek_protheseis.h 			// greek word protheseis
+|   |   ├── greek_stikseis.h 			// greek word stikseis
+|   |   ├── greek_sundesmoi.h 			// greek word sundesmoi
+|   |   └── parser.y					// grammatical analyzer
+|   |
 |   └── flex
-|       └── scanner.l   // lexical analyzer
+|       ├── greek_names.h 				// greek word names
+|       └── scanner.l					// lexical analyzer
 |
-├── database_generator
-|   ├── realDatabase.c  // learning in proggress
-|   └── * databases     // source database
+├── EXTRAS
+|   ├── ANALYZER_OLD
+|   |   ├── greek_endings_genos.txt		// greek endings genos
+|   |   ├── name_gr.txt					// greek names
+|   |   ├── greek_word_data.txt			// greek word database
+|   |   ├── word_exif_data_to_mem.c		// funcs for print	
+|   |   ├── word_exif_data_to_mem.h	
+|   |   ├── word_syllab_arrays.h		// arrays for print
+|   |   └── word_type_print.h			// helping funcs for print
+|	|
+|   ├── DATABASES
+|   |   ├── l0_name.txt 				// greek database
+|   |   ├── l1_database.txt 			// greek database
+|   |   ├── t1_relations.txt			// greek database
+|   |   ├── word_exif_database.xlsx		// greek database
+|   |   └── word_exif_names.xlsx		// greek database
+|   |
+|   ├── IMAGES
+|   |   └── greely_logo.png				// greely logo info
+|   |
+|   ├── MARKDOWNS
+|   |   ├── CONTRIBUTING.md 			// Contribution MD
+|   |   └── LICENSE.md					// LICENSE MD
+|   |
+|   └── WORD_EXIF_TOOL_CPP
+|       ├── main.cpp 					
+|       ├── Makefile					
+|       ├── word_endings.hpp 			
+|       ├── word_exif_data_to_mem.cpp	
+|       └── word_exif_data_to_mem.hpp	
 |
 ├── input
-|   └── input.txt       // current input
+|   └── input.txt						// current input
 │ 
 ├── output
-|   └── blank           // compiled files
+|   └── blank							// compiled files
 |
-├── Makefile
-├── LICENSE
-├── CONTRIBUTING.md
-└── README.md
+├── Makefile							// Makefile
+└── README.md							// README MD
 ```
 
 ## Getting Started
@@ -87,8 +119,8 @@ if given as input to greekLex you will get the following output:
 
 ## Built With
 
-* [c](https://gcc.gnu.org/) - The merging of all the parts and for database generation
-* [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
+* [c    ](https://gcc.gnu.org/) - The merging of all the parts and for database generation
+* [flex ](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
 ## Authors
