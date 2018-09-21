@@ -12,9 +12,9 @@ Ai that understands and learns the human language and you.
 
 ### Example
 
-This example is a sentence in natural greek language:
-"Καλημέρα, με λένε Ιωάννη και μου αρέσει το ποδόσφαιρο.", 
-if given as input to greekLex you will get the following output: 
+This example is a sentence in natural greek language:<br>
+"Καλημέρα, με λένε Ιωάννη και μου αρέσει το ποδόσφαιρο."<br>
+if given as input to Greely you will get the following output: 
 
 ```
 Καλημέρα (ουσιαστικό, ενικού αριθμου , γένος θηλύκο , ονομαστική πτώση)  , κόμμα (σημείο στίξης)  
@@ -119,8 +119,8 @@ make clean
 
 ## Built With
 
-* [c    ](https://gcc.gnu.org/) - The merging of all the parts and for database generation
-* [flex ](https://www.gnu.org/software/flex/) - The Lexical Analysis
+* [c](https://gcc.gnu.org/) - The merging of all the parts and for database generation
+* [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
 ## Authors
