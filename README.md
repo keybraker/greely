@@ -2,7 +2,7 @@
 
 #### Disclaimer[1]: This is a very early stage in the development of greely, key functions don't work, just the shell of the program is running, production will continue in Q2-18. Some adjustments have been to execute alot faster and run on UNIX based operating systems. Minor functionallity will be added in upcomming months but steady updates will continue in half a year.
 
-![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/greely%20logo.png)
+![alt text](https://raw.githubusercontent.com/keybraker/Lexical-Grammatical-Analyzer-for-Greek/master/extras/IMAGES/greely%20logo.png)
 
 # Lexical and Grammatical Analyzer for Greek with the use of Flex Bison
 
@@ -99,8 +99,8 @@ if given as input to greekLex you will get the following output:
 
 * [CypressA](https://github.com/CypressA/GreekLex-2)
 
-## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/CONTRIBUTING.md)
+## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/CONTRIBUTING.md)
 
-## [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/LICENSE)
+## [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/LICENSE)
 
 ## [Versioning](http://semver.org/)
