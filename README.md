@@ -10,6 +10,20 @@ A new way to interpret and understand natural human language.
 Greek as first language to be worked on.
 Ai that understands and learns the human language and you.
 
+### Example
+
+This example is a sentence in natural greek language:
+"Καλημέρα, με λένε Ιωάννη και μου αρέσει το ποδόσφαιρο.", 
+if given as input to greekLex you will get the following output: 
+
+```
+Καλημέρα (ουσιαστικό, ενικού αριθμου , γένος θηλύκο , ονομαστική πτώση)  , κόμμα (σημείο στίξης)  
+με (επεξηγηματικός σύνδεσμος)   λένε-[λέ]  'Ιωάννη' (όνομα αρσενικό)  και (συμπλεκτικός σύνδεσμος) 
+μου (ουσιαστικό, ενικού αριθμου , γένος θηλύκο , ονομαστική πτώση)   αρέσει-[α]  
+το (οριστικό άρθρο γένους ουδέτερο ενικού) 
+ποδόσφαιρο (ουσιαστικό, ενικού αριθμου , γένος ουδέτερο , ονομαστική πτώση)  . τελεία (σημείο στίξης)
+```
+
 ## Structure for interprentation 
 
 ```text
@@ -101,20 +115,6 @@ make
 to clean all products created by the program run command 
 ```
 make clean
-```
-
-### Example
-
-This example is a sentence in natural greek language:
-"Καλημέρα, με λένε Ιωάννη και μου αρέσει το ποδόσφαιρο.", 
-if given as input to greekLex you will get the following output: 
-
-```
-Καλημέρα (ουσιαστικό, ενικού αριθμου , γένος θηλύκο , ονομαστική πτώση)  , κόμμα (σημείο στίξης)  
-με (επεξηγηματικός σύνδεσμος)   λένε-[λέ]  'Ιωάννη' (όνομα αρσενικό)  και (συμπλεκτικός σύνδεσμος) 
-μου (ουσιαστικό, ενικού αριθμου , γένος θηλύκο , ονομαστική πτώση)   αρέσει-[α]  
-το (οριστικό άρθρο γένους ουδέτερο ενικού) 
-ποδόσφαιρο (ουσιαστικό, ενικού αριθμου , γένος ουδέτερο , ονομαστική πτώση)  . τελεία (σημείο στίξης)
 ```
 
 ## Built With
