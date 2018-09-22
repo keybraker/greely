@@ -128,11 +128,13 @@ make clean
 * **Ioannis Tsiakkas** - *(Keybraker)* - [Keybraker](https://github.com/keybraker)
 
 ### Acknowledgments
-
 * [CypressA](https://github.com/CypressA/GreekLex-2)
 
-### [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/CONTRIBUTING.md)
+### Contributing
+* [Contribution Refulations](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/CONTRIBUTING.md)
 
-### [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/LICENSE)
+### License
+* [License Regulations](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/LICENSE.md)
 
-### [Versioning](http://semver.org/)
+### Versioning
+* [Versioning Regulations](http://semver.org/)
