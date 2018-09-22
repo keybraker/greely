@@ -117,14 +117,12 @@ to clean all products created by the program run command
 make clean
 ```
 
-## Built With
-
+### Built With
 * [c](https://gcc.gnu.org/) - The merging of all the parts and for database generation
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
 ### Authors
-
 * **Ioannis Tsiakkas** - *[Keybraker](https://github.com/keybraker)*
 
 ### Acknowledgments
