@@ -120,6 +120,10 @@ to clean all products created by the program run command
 ```
 make clean
 ```
+#### Future improvements and features:
+* Threads
+* CUDA
+* better interpretation
 
 ### Built With
 * [c](https://gcc.gnu.org/) - The merging of all the parts and for database generation
