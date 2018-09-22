@@ -123,16 +123,16 @@ make clean
 * [flex](https://www.gnu.org/software/flex/) - The Lexical Analysis
 * [bison](https://www.gnu.org/software/bison/) - The Grammatical Analysis
 
-## Authors
+### Authors
 
 * **Ioannis Tsiakkas** - *(Keybraker)* - [Keybraker](https://github.com/keybraker)
 
-## Acknowledgments
+### Acknowledgments
 
 * [CypressA](https://github.com/CypressA/GreekLex-2)
 
-## [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/CONTRIBUTING.md)
+### [Contributing](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/CONTRIBUTING.md)
 
-## [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/LICENSE)
+### [License](https://github.com/keybraker/greek-Ai-Bot/blob/master/extras/MARKDOWNS/LICENSE)
 
-## [Versioning](http://semver.org/)
+### [Versioning](http://semver.org/)
