@@ -125,7 +125,7 @@ make clean
 
 ### Authors
 
-* **Ioannis Tsiakkas** - *(Keybraker)* - [Keybraker](https://github.com/keybraker)
+* **Ioannis Tsiakkas** - *[Keybraker](https://github.com/keybraker)*
 
 ### Acknowledgments
 * [CypressA](https://github.com/CypressA/GreekLex-2)
