@@ -2,6 +2,7 @@
 	#include "../bison_flex/analyzer/word_exif_data_to_mem.h"
 	#include "../bison_flex/bison/greek_protheseis.h"
 	#include "../bison_flex/bison/greek_stikseis.h"
+	#include "../bison_flex/bison/greek_moria.h"
 	#include "../bison_flex/bison/greek_sundesmoi.h"
 
 	int yylex		(void);
@@ -30,6 +31,7 @@
 
 	int		prothesi;
 	int		syndesmos;
+	int		morio;
 	int		stiksi;
 }
 
@@ -39,6 +41,7 @@
 %type<stiksi>		LSTIKSI
 %type<arithmos>		LARITHMOS 
 %type<arthro>		LARTHRO
+%type<morio>		LMORIO
 %type<syndesmos>	LSYNDESMOS
 %type<prothesi>		LPROTHESI
 
@@ -55,6 +58,7 @@
 %token<epifonima>	EPIFONIMA 
 
 %token<prothesi>	PROTHESI 
+%token<morio>		MORIO
 %token<syndesmos>	SYNDESMOS
 
 %token<stiksi>		STIKSI
@@ -104,6 +108,10 @@
 				|LSTIKSI
 				{
 					$<leksi>$ = strdup(stiksi_to_string_name[$1]);
+				}
+				|LMORIO
+				{
+					$<leksi>$ = strdup(moria_pair[0][$1]);
 				}
 				|LSYNDESMOS
 				{
@@ -219,6 +227,15 @@
 				}
 				;
 
+	LMORIO:		MORIO
+				{
+					$<morio>$ = yylval.morio;
+					printf("\"%s\" (" italic bold "πρόθεση [%s]" italic_re ") ",
+					moria_pair[$1][0],
+					moria_pair[$1][1]);
+				}
+				;
+
 	LSYNDESMOS: SYNDESMOS SYNDESMOS
 				{
 					if($<syndesmos>$ == 8  && $2 == 0)
@@ -289,17 +306,26 @@
 				}
 				;
 
-	LLEKSI:		OUSIASTIKO	{$<leksi>$ = yylval.ousiastiko;	  word_exif_func(yylval.leksi);	}
-				|ONOMATA	{$<leksi>$ = yylval.onomata;									}
-				|EPITHETO	{$<leksi>$ = yylval.epitheto;     word_exif_func(yylval.leksi);	}
-				|RIMA		{$<leksi>$ = yylval.rima;         word_exif_func(yylval.leksi);	}
-				|EPIRIMA	{$<leksi>$ = yylval.epirima;      word_exif_func(yylval.leksi);	}
-				|ANTONUMIA	{$<leksi>$ = yylval.antonumia;    word_exif_func(yylval.leksi);	}
-				|ARTHRO		{$<leksi>$ = yylval.arthro;       word_exif_func(yylval.leksi);	}
-				|EPIFONIMA	{$<leksi>$ = yylval.epifonima;    word_exif_func(yylval.leksi);	}
+	LLEKSI:		OUSIASTIKO		{$<leksi>$ = yylval.ousiastiko;	  word_exif_func(yylval.leksi);	}
+				|ONOMATA		{$<leksi>$ = yylval.onomata;									}
+				|EPITHETO		{$<leksi>$ = yylval.epitheto;     word_exif_func(yylval.leksi);	}
+				|RIMA			{$<leksi>$ = yylval.rima;         word_exif_func(yylval.leksi);	}
+				|LMORIO RIMA	{ printf("KOUKOUROUKOU\n\n\n\n");	}
+				|EPIRIMA		{$<leksi>$ = yylval.epirima;      word_exif_func(yylval.leksi);	}
+				|ANTONUMIA		{$<leksi>$ = yylval.antonumia;    word_exif_func(yylval.leksi);	}
+				|ARTHRO			{$<leksi>$ = yylval.arthro;       word_exif_func(yylval.leksi);	}
+				|EPIFONIMA		{$<leksi>$ = yylval.epifonima;    word_exif_func(yylval.leksi);	}
 				;
 
 %%
+
+
+
+
+
+
+
+
 
 
 int

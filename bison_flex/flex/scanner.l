@@ -139,6 +139,11 @@ name_check(char* name)
 					  	
 					}
 
+θα|Θα				{ /*~~~~~~~~~~~~~~ MORIA ~~~~~~~~~~~~~~*/
+						yylval.morio = 0; 
+						return MORIO; 
+					}
+
 με|Με				{ /*~~~~~~~~~~~~~~ PROTHESEIS ~~~~~~~~~~~~~~*/
 						yylval.prothesi = 0; 
 						return PROTHESI; 
@@ -563,7 +568,7 @@ name_check(char* name)
 						return THY_EN_AR; 
 					} 
 
-[Α-ψ-ρ-π-ω-Ϋ]* 		{   /*------------------------------------------------------------- ELLINIKES LEKSEIS ----------------------------------------------------------------------*/
+[Α-ψ-ρ-π-ω-Ϋ]* 		{   /*~~~~~~~~~~~~~~ ELLINIKES LEKSEIS ~~~~~~~~~~~~~~*/
 						
 						// Check if what follows is a name
 						if(name_check(yytext))
@@ -573,10 +578,10 @@ name_check(char* name)
 						}
 
 						yylval.leksi = strdup(yytext);
-						return OUSIASTIKO;
+						return RIMA;
 					}
 
-[a-zA-Z]* 			{	/*------------------------------------------------------------------ AGGLIKA ---------------------------------------------------------------------------*/
+[a-zA-Z]* 			{	/*~~~~~~~~~~~~~~ AGGLIKA ~~~~~~~~~~~~~~*/
 						printf(a_c_c "%s " a_c_re "(", yytext);
 						printf(italic bold"εγγλέζικα" italic_re);       
 						printf(") "); 

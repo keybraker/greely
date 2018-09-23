@@ -120,10 +120,11 @@ to clean all products created by the program run command
 ```
 make clean
 ```
-#### Future improvements and features:
-* Threads
-* CUDA
-* better interpretation
+#### TIMELINE
+* [10/2018] - Core functionallity
+* [11/2018] - Performance improvements
+* [12/2018] - Threads / CUDA
+* [1 /2019] - Learning Algorythm deployment (ALPHA)
 
 ### Built With
 * [c](https://gcc.gnu.org/) - The merging of all the parts and for database generation
