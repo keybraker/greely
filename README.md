@@ -10,9 +10,7 @@
 
 # Lexical and Grammatical Analyzer for Greek with the use of Flex Bison
 
-A new way to interpret and understand natural human language.
-Greek as first language to be worked on.
-Ai that understands and learns the human language and you.
+A new way to interpret and understand natural human language with Greek being the language of focus.
 
 ### Example
 
@@ -42,6 +40,7 @@ if given as input to Greely you will get the following output:
 |   |   └── word_type_print.h			// helping funcs for print
 |   |
 |   ├── bison
+|   |   ├── greek_moria.h 			// greek word moria
 |   |   ├── greek_protheseis.h 			// greek word protheseis
 |   |   ├── greek_stikseis.h 			// greek word stikseis
 |   |   ├── greek_sundesmoi.h 			// greek word sundesmoi
@@ -120,7 +119,9 @@ to clean all products created by the program run command
 ```
 make clean
 ```
+
 #### TIMELINE
+* [09/2018] - Verb, Noun and Adjective separation
 * [10/2018] - Core functionallity
 * [11/2018] - Performance improvements
 * [12/2018] - Threads / CUDA
