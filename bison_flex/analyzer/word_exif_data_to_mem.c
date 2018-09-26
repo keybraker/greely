@@ -39,35 +39,11 @@ void *
 verb_ending_checker(void *ending_void, int return_type)
 {
 	int *value_int = (int *) malloc(10*sizeof(int));
+	*value_int = 0;
 	char *ending = (char *) ending_void;
 
 	for(int i=0; i<6; i++) 
 	{
-		if(!strcmp(ending, enestotas_oristikis_enegitikis[i][0]))
-		{
-			if(return_type)
-			{
-				return enestotas_oristikis_enegitikis[i][1];
-			}
-			else
-			{
-				*value_int = i;
-				return value_int;
-			}
-		}
-		if(!strcmp(ending, paratatikos_oristikis_enegitikis[i][0]))
-		{
-			if(return_type)
-			{
-				return paratatikos_oristikis_enegitikis[i][1];
-			}
-			else
-			{
-				*value_int = 10+i;
-				return value_int;
-			}
-		}
-
 		for(int l=0; l<3; l++) 
 		{
 			if(!strcmp(ending, stigmiaios_mellontas_oristikis_enegitikis[l][i][0]))
@@ -78,7 +54,7 @@ verb_ending_checker(void *ending_void, int return_type)
 				}
 				else
 				{
-					*value_int = 20+i;
+					*value_int += 20+i;
 					return value_int;
 				}
 			}
@@ -90,9 +66,34 @@ verb_ending_checker(void *ending_void, int return_type)
 				}
 				else
 				{
-					*value_int = 30+i;
+					*value_int += 30+i;
 					return value_int;
 				}
+			}
+		}
+
+		if(!strcmp(ending, enestotas_oristikis_enegitikis[i][0]))
+		{
+			if(return_type)
+			{
+				return enestotas_oristikis_enegitikis[i][1];
+			}
+			else
+			{
+				*value_int += i;
+				return value_int;
+			}
+		}
+		if(!strcmp(ending, paratatikos_oristikis_enegitikis[i][0]))
+		{
+			if(return_type)
+			{
+				return paratatikos_oristikis_enegitikis[i][1];
+			}
+			else
+			{
+				*value_int += (i+10);
+				return value_int;
 			}
 		}
 	}
@@ -184,6 +185,32 @@ srch_spcl(void *word_small_void, int type, int return_type)
 
 	if(return_type)
 	{
+		for (int j = 0; j < len; j+=2)
+		{
+			// mhdenismos gia neo elegxo
+			for (int i = 0; i < 30; ++i) 
+				frgm_fl[i] = '\0';
+
+			for (int k = j, l = 0; k < len; k+=2)
+			{
+				frgm_fl[l] = word_small[k];
+				frgm_fl[l+1] = word_small[k+1];
+
+				l+=2;
+			}
+
+			if((value = (char *) srch_type[type](frgm_fl, return_type)))
+			{
+				final = strdup("ρήμα ~ ");
+				strcat(final, value);
+
+				return final;
+			}
+		}
+
+		return NULL;
+		/* THIS GETS THE WORD, LETTER BY LETTER FROM THE BACK
+			BUT DOESNT WORK CORRECTLY FOR THIS CASE eq. χάνει, χάσει
 		for (int j = len; j > 0; j-=2)
 		{
 			// mhdenismos gia neo elegxo
@@ -206,9 +233,36 @@ srch_spcl(void *word_small_void, int type, int return_type)
 		}
 
 		return NULL;
+		*/
 	}
 	else
 	{	
+		for (int j = 0; j < len; j+=2)
+		{
+			// mhdenismos gia neo elegxo
+			for (int i = 0; i < 30; ++i) 
+				frgm_fl[i] = '\0';
+
+			for (int k = j, l = 0; k < len; k+=2)
+			{
+				frgm_fl[l] = word_small[k];
+				frgm_fl[l+1] = word_small[k+1];
+
+				l+=2;
+			}
+
+			if((value_int = (int *) srch_type[type](frgm_fl, return_type)))
+			{
+				printf("kappa %d\n", *value_int);
+				return value_int;
+			}
+		}
+
+		*value_int = -1;
+		return value_int;
+
+		/* THIS GETS THE WORD, LETTER BY LETTER FROM THE BACK
+			BUT DOESNT WORK CORRECTLY FOR THIS CASE eq. χάνει, χάσει
 		for (int j = len; j > 0; j-=2)
 		{
 			// mhdenismos gia neo elegxo
@@ -223,11 +277,14 @@ srch_spcl(void *word_small_void, int type, int return_type)
 
 			if((value_int = (int *) srch_type[type](frgm_fl, return_type)))
 			{
+				printf("kappa %d\n", *value_int);
 				return value_int;
 			}
 		}
+
 		*value_int = -1;
 		return value_int;
+		*/
 	}
 
 	return NULL;
@@ -262,7 +319,7 @@ word_exif_func(char* word, int type, int return_type)
 	{
 		if((output_int = (int *) srch_spcl(word_small, type, return_type)))
 		{
-			printf("%s (%d) ", word, *output_int);
+			printf(" mode 2: %s (%d) ", word, *output_int);
 		}
 		else
 		{
