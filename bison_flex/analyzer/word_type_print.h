@@ -2,10 +2,10 @@
 
 
 char *
-delete_slash_n(char* withSlashN)
+delete_slash_n(char* with_slash_n)
 {
-  strtok(withSlashN, "\n");
-  return withSlashN;
+  strtok(with_slash_n, "\n");
+  return with_slash_n;
 }
 
 int

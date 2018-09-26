@@ -1,5 +1,31 @@
 %{
+
 	#include "../bison_flex/analyzer/word_exif_data_to_mem.h"
+
+	#include <stdlib.h>
+	#include <stdio.h>
+	#include <stdint.h>
+	#include <string.h>
+	#include <fcntl.h>
+	#include <sys/stat.h>
+	#include <sys/mman.h>
+	#include <unistd.h>
+	#include <sys/mman.h>
+
+	#define a_c_r     "\x1b[31m"
+	#define a_c_g     "\x1b[32m"
+	#define a_c_y     "\x1b[33m"
+	#define a_c_b     "\x1b[34m"
+	#define a_c_m     "\x1b[35m"
+	#define a_c_c     "\x1b[36m"
+	#define a_c_re    "\x1b[0m"
+	#define under     "\e[4m"
+	#define under_re  "\e[0m"
+	#define italic    "\e[3m"
+	#define italic_re "\e[0m"
+	#define bold      "\e[1m"
+	#define bold_re   "\e[0m"
+
 	#include "../bison_flex/bison/greek_protheseis.h"
 	#include "../bison_flex/bison/greek_stikseis.h"
 	#include "../bison_flex/bison/greek_moria.h"
@@ -68,7 +94,6 @@
 
 	PROTASI:	LEKSEIS				{
 										printf(a_c_g"\n\nΗ ολοκληρωμένη πρόταση είναι: " a_c_m "%s\n" a_c_re, $<leksi>1); 
-										word_exif_func(NULL); // to free memory
 										printf("\n");
 									}
 									;
@@ -306,26 +331,19 @@
 				}
 				;
 
-	LLEKSI:		OUSIASTIKO		{$<leksi>$ = yylval.ousiastiko;	  word_exif_func(yylval.leksi);	}
-				|ONOMATA		{$<leksi>$ = yylval.onomata;									}
-				|EPITHETO		{$<leksi>$ = yylval.epitheto;     word_exif_func(yylval.leksi);	}
-				|RIMA			{$<leksi>$ = yylval.rima;         word_exif_func(yylval.leksi);	}
-				|LMORIO RIMA	{ printf("KOUKOUROUKOU\n\n\n\n");	}
-				|EPIRIMA		{$<leksi>$ = yylval.epirima;      word_exif_func(yylval.leksi);	}
-				|ANTONUMIA		{$<leksi>$ = yylval.antonumia;    word_exif_func(yylval.leksi);	}
-				|ARTHRO			{$<leksi>$ = yylval.arthro;       word_exif_func(yylval.leksi);	}
-				|EPIFONIMA		{$<leksi>$ = yylval.epifonima;    word_exif_func(yylval.leksi);	}
+	LLEKSI:		ONOMATA				{$<leksi>$ = yylval.onomata;	}
+				|OUSIASTIKO			{$<leksi>$ = yylval.ousiastiko;	word_exif_func(yytext, 1, 1);	}
+				|EPITHETO			{$<leksi>$ = yylval.epitheto;	word_exif_func(yytext, 2, 1);	}
+				|RIMA				{$<leksi>$ = yylval.rima;		word_exif_func(yytext, 0, 1);	}
+				|LSYNDESMOS RIMA	{$<leksi>$ = yylval.rima; 		printf("SYNDESMOS RIMA");	word_exif_func(yytext, 0, 0);	}
+				|LMORIO RIMA		{$<leksi>$ = yylval.rima; 		printf("MORIO RIMA");	word_exif_func(yytext, 0, 0);	}
+				|EPIRIMA			{$<leksi>$ = yylval.epirima;	}
+				|ANTONUMIA			{$<leksi>$ = yylval.antonumia;	}
+				|ARTHRO				{$<leksi>$ = yylval.arthro;		}
+				|EPIFONIMA			{$<leksi>$ = yylval.epifonima;	}
 				;
 
 %%
-
-
-
-
-
-
-
-
 
 
 int
