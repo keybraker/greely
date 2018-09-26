@@ -1,3 +1,6 @@
+#ifndef _WORD_SYLLAB_ARRAY
+#define _WORD_SYLLAB_ARRAY
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -141,3 +144,5 @@ sundesmos[15] =
   "συγκριτικός",
   "βουλητικός"
 };
+
+#endif

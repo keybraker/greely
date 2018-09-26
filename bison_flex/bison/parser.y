@@ -31,6 +31,9 @@
 	#include "../bison_flex/bison/greek_moria.h"
 	#include "../bison_flex/bison/greek_sundesmoi.h"
 
+	char*
+	prosopo_this[3] = {"πρώτο", "δεύτερο", "τρίτο"};
+
 	int yylex		(void);
 	int yyerror		(char* yaccProvidedMessage);
 	
@@ -331,16 +334,97 @@
 				}
 				;
 
-	LLEKSI:		ONOMATA				{$<leksi>$ = yylval.onomata;	}
-				|OUSIASTIKO			{$<leksi>$ = yylval.ousiastiko;	word_exif_func(yytext, 1, 1);	}
-				|EPITHETO			{$<leksi>$ = yylval.epitheto;	word_exif_func(yytext, 2, 1);	}
-				|RIMA				{$<leksi>$ = yylval.rima;		word_exif_func(yytext, 0, 1);	}
-				|LSYNDESMOS RIMA	{$<leksi>$ = yylval.rima; 		printf("SYNDESMOS RIMA");	word_exif_func(yytext, 0, 0);	}
-				|LMORIO RIMA		{$<leksi>$ = yylval.rima; 		printf("MORIO RIMA");	word_exif_func(yytext, 0, 0);	}
-				|EPIRIMA			{$<leksi>$ = yylval.epirima;	}
-				|ANTONUMIA			{$<leksi>$ = yylval.antonumia;	}
-				|ARTHRO				{$<leksi>$ = yylval.arthro;		}
-				|EPIFONIMA			{$<leksi>$ = yylval.epifonima;	}
+	LLEKSI:		ONOMATA				
+				{
+					$<leksi>$ = yylval.onomata;
+				}
+				|OUSIASTIKO			
+				{
+					$<leksi>$ = yylval.ousiastiko;
+					word_exif_func(yytext, 1, 1);	
+				}
+				|EPITHETO			
+				{
+					$<leksi>$ = yylval.epitheto;
+					word_exif_func(yytext, 2, 1);	
+				}
+				|RIMA				
+				{
+					$<leksi>$ = yylval.rima;
+					word_exif_func(yytext, 0, 1);	
+				}
+				|LSYNDESMOS RIMA	
+				{
+					//ΟΤΑΝ ΑΡΑ ΥΠΟΤΑΚΤΙΚΗ
+					$<leksi>$ = yylval.rima;
+					printf("SYNDESMOS RIMA");	
+					
+					greek_tense *num_type = (greek_tense *) malloc(10*sizeof(greek_tense));
+					num_type = (greek_tense *) word_exif_func(yytext, 0, 0);	
+					printf("WTF\n");
+					switch(num_type->tense)
+					{
+						case 0: 
+							printf("%s (%s πρόσωπο ενικού οριστικής του Εξακολουθητικού μέλλοντα"
+							" στην ενεργητική φωνή, του ρήματος \")", yytext, prosopo_this[num_type->face]);
+							break;
+						case 1:
+							printf("%s (paratatikos %d prosopo)", yytext, num_type->face);//paratatikos_oristikis_enegitikis[num_type->face][2]);
+							break;
+						case 2:
+							printf(" (something is wrong)");
+							break;
+						case 3:
+							printf("%s (paratatikos %d prosopo)", yytext, num_type->face);//stigmiaios_mellontas_oristikis_enegitikis[0][num_type->face][2]);
+							break;
+						default:
+							printf("WTF OMG LOL\n");
+					}
+				}	
+				|LMORIO RIMA		
+				{
+					//ΘΑ
+					$<leksi>$ = yylval.rima;
+					printf("MORIO RIMA");	
+					
+					greek_tense *num_type = (greek_tense *) malloc(10*sizeof(greek_tense));
+					num_type = (greek_tense *) word_exif_func(yytext, 0, 0);	
+					printf("WTF\n");
+					switch(num_type->tense)
+					{
+						case 0: 
+							printf("%s (%s πρόσωπο ενικού οριστικής του Εξακολουθητικού μέλλοντα"
+							" στην ενεργητική φωνή, του ρήματος \")", yytext, prosopo_this[num_type->face]);
+							break;
+						case 1:
+							printf("%s (paratatikos %d prosopo)", yytext, num_type->face);//paratatikos_oristikis_enegitikis[num_type->face][2]);
+							break;
+						case 2:
+							printf(" (something is wrong)");
+							break;
+						case 3:
+							printf("%s (paratatikos %d prosopo)", yytext, num_type->face);//stigmiaios_mellontas_oristikis_enegitikis[0][num_type->face][2]);
+							break;
+						default:
+							printf("WTF OMG LOL\n");
+					}
+				}
+				|EPIRIMA			
+				{
+					$<leksi>$ = yylval.epirima;
+				}
+				|ANTONUMIA			
+				{
+					$<leksi>$ = yylval.antonumia;
+				}
+				|ARTHRO				
+				{
+					$<leksi>$ = yylval.arthro;
+				}
+				|EPIFONIMA			
+				{
+					$<leksi>$ = yylval.epifonima;
+				}
 				;
 
 %%

@@ -1,3 +1,6 @@
+#ifndef _GREEK_HELPING_VERBS
+#define _GREEK_HELPING_VERBS
+
 char*
 helping_verb_exo[15][2] = 
 {
@@ -46,3 +49,5 @@ helping_verb_eimai[11][2] =
 
 	{"όντας","μετοχή"}
 }
+
+#endif

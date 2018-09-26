@@ -38,40 +38,11 @@ capital_to_lower(char* word)
 void *
 verb_ending_checker(void *ending_void, int return_type)
 {
-	int *value_int = (int *) malloc(10*sizeof(int));
-	*value_int = 0;
+	greek_tense *num_type = (greek_tense *) malloc (sizeof(greek_tense));
 	char *ending = (char *) ending_void;
 
 	for(int i=0; i<6; i++) 
 	{
-		for(int l=0; l<3; l++) 
-		{
-			if(!strcmp(ending, stigmiaios_mellontas_oristikis_enegitikis[l][i][0]))
-			{
-				if(return_type)
-				{
-					return stigmiaios_mellontas_oristikis_enegitikis[l][i][1];
-				}
-				else
-				{
-					*value_int += 20+i;
-					return value_int;
-				}
-			}
-			if(!strcmp(ending, aoristos_oristikis_enegitikis[l][i][0]))
-			{
-				if(return_type)
-				{
-					return aoristos_oristikis_enegitikis[l][i][1];
-				}
-				else
-				{
-					*value_int += 30+i;
-					return value_int;
-				}
-			}
-		}
-
 		if(!strcmp(ending, enestotas_oristikis_enegitikis[i][0]))
 		{
 			if(return_type)
@@ -80,8 +51,10 @@ verb_ending_checker(void *ending_void, int return_type)
 			}
 			else
 			{
-				*value_int += i;
-				return value_int;
+				num_type->tense = 0;
+				num_type->face = i;
+
+				return num_type;
 			}
 		}
 		if(!strcmp(ending, paratatikos_oristikis_enegitikis[i][0]))
@@ -92,8 +65,42 @@ verb_ending_checker(void *ending_void, int return_type)
 			}
 			else
 			{
-				*value_int += (i+10);
-				return value_int;
+				num_type->tense = 1;
+				num_type->face = i;
+				
+				return num_type;
+			}
+		}
+
+		for(int l=0; l<3; l++) 
+		{
+			if(!strcmp(ending, stigmiaios_mellontas_oristikis_enegitikis[l][i][0]))
+			{
+				if(return_type)
+				{
+					return stigmiaios_mellontas_oristikis_enegitikis[l][i][1];
+				}
+				else
+				{
+					num_type->tense = 2;
+					num_type->face = i;
+
+					return num_type;
+				}
+			}
+			if(!strcmp(ending, aoristos_oristikis_enegitikis[l][i][0]))
+			{
+				if(return_type)
+				{
+					return aoristos_oristikis_enegitikis[l][i][1];
+				}
+				else
+				{
+					num_type->tense = 3;
+					num_type->face = i;
+
+					return num_type;
+				}
 			}
 		}
 	}
@@ -155,7 +162,7 @@ srch_eql(void *word_small_void)
 		{
 			//printf("%s (found) ", word_data[len_id][i][1]);
 			//functionPrinter[type](buffer_b, is_cap);
-			final - strdup("(found)");
+			final = strdup("(found)");
 			return final;
 		} 
 	}
@@ -176,7 +183,8 @@ srch_spcl(void *word_small_void, int type, int return_type)
 
 	int len = strlen(word_small);
 
-	int *value_int = (int *) malloc(10*sizeof(int));
+	greek_tense *num_type = (greek_tense *) malloc (sizeof(greek_tense));
+
 	char *value = NULL;
 	char *final = NULL;
 	char *frgm_fl = NULL;
@@ -251,15 +259,16 @@ srch_spcl(void *word_small_void, int type, int return_type)
 				l+=2;
 			}
 
-			if((value_int = (int *) srch_type[type](frgm_fl, return_type)))
+			if((num_type = (greek_tense *) srch_type[type](frgm_fl, return_type)))
 			{
-				printf("kappa %d\n", *value_int);
-				return value_int;
+				return num_type;
 			}
 		}
 
-		*value_int = -1;
-		return value_int;
+		num_type->tense = -1;
+		num_type->face = -1;
+
+		return num_type;
 
 		/* THIS GETS THE WORD, LETTER BY LETTER FROM THE BACK
 			BUT DOESNT WORK CORRECTLY FOR THIS CASE eq. χάνει, χάσει
@@ -275,29 +284,35 @@ srch_spcl(void *word_small_void, int type, int return_type)
 				frgm_fl[l] = word_small[k];
 			}
 
-			if((value_int = (int *) srch_type[type](frgm_fl, return_type)))
+			if((num_type = (greek_tense *) srch_type[type](frgm_fl, return_type)))
 			{
-				printf("kappa %d\n", *value_int);
-				return value_int;
+				printf("greek_tense->tense %d\n", num_type->tense);
+				printf("greek_tense->face %d\n", num_type->face);
+				return num_type;
 			}
 		}
 
-		*value_int = -1;
-		return value_int;
+		num_type->tense = -1;
+		num_typeface = -1;
+		
+		return num_type;
 		*/
 	}
 
 	return NULL;
 }
 
-int
+greek_tense *
 word_exif_func(char* word, int type, int return_type)
 {    
 	/* Makes string all small characters */
 	char *word_cap = strdup(word);
 	char *word_small = capital_to_lower(word);
 
-	int *output_int = (int *) malloc(10*sizeof(int));
+	greek_tense *num_type = (greek_tense *) malloc (sizeof(greek_tense));
+	num_type->tense = -1;
+	num_type->face = -1;
+
 	char *output = NULL;
 	char *is_capital = NULL;
 
@@ -317,9 +332,9 @@ word_exif_func(char* word, int type, int return_type)
 	}
 	else
 	{
-		if((output_int = (int *) srch_spcl(word_small, type, return_type)))
+		if((num_type = (greek_tense *) srch_spcl(word_small, type, return_type)))
 		{
-			printf(" mode 2: %s (%d) ", word, *output_int);
+			return num_type;
 		}
 		else
 		{
@@ -327,7 +342,10 @@ word_exif_func(char* word, int type, int return_type)
 		}
 	}
 
-	return 1;
+	num_type->tense = -1;
+	num_type->face = -1;
+
+	return num_type;
 }
 
 int type_of_word(char *word)

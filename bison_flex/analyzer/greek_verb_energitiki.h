@@ -1,3 +1,6 @@
+#ifndef _GREEK_VERB_ENERGITIKI
+#define _GREEK_VERB_ENERGITIKI
+
 // enestotas energitikis fonis
 
 char*
@@ -92,4 +95,4 @@ aoristos_oristikis_enegitikis[3][6][2] =
 }
 ;
 
-
+#endif

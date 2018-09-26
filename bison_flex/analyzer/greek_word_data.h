@@ -1,3 +1,6 @@
+#ifndef _GREEK_WORD_DATA
+#define _GREEK_WORD_DATA
+
 int 
 word_data_sizes[21] =
 {
@@ -33733,3 +33736,5 @@ word_data[21][4954][4] =
 	}
 }
 ;
+
+#endif

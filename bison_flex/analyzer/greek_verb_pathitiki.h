@@ -1,3 +1,6 @@
+#ifndef _GREEK_VERB_PATHITIKI
+#define _GREEK_VERB_PATHITIKI
+
 // enestotas pathitikis fonis
 
 char*
@@ -92,4 +95,4 @@ aoristos_oristikis_pathitikis[3][6][2] =
 }
 ;
 
-
+#endif

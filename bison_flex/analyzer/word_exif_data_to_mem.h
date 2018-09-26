@@ -1,3 +1,6 @@
+#ifndef _WORD_EXIF_DATA_TO_MEM
+#define _WORD_EXIF_DATA_TO_MEM
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -23,5 +26,18 @@
 #define bold      "\e[1m"
 #define bold_re   "\e[0m"
 
-int word_exif_func(char *, int, int);
-int type_of_word(char *);
+typedef struct greek_tense
+{
+	int tense;
+	int face;
+}
+greek_tense
+;
+
+greek_tense *
+word_exif_func(char *, int, int);
+
+int 
+type_of_word(char *);
+
+#endif

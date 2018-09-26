@@ -1,5 +1,7 @@
-#include "word_syllab_arrays.h"
+#ifndef _WORD_TYPE_PRINT
+#define _WORD_TYPE_PRINT
 
+#include "word_syllab_arrays.h"
 
 char *
 delete_slash_n(char* with_slash_n)
@@ -306,3 +308,4 @@ f functionPrinter[8] =
 // a k r a i o 
 
 
+#endif
